@@ -8,7 +8,7 @@ wiki/LocalSettings.php.bak
 .user.ini
 php.ini
 wordfence-waf.php
-*.bak
+/*.bak
 .env
 
 # --- user content (already on the server, large) ---
@@ -31,11 +31,11 @@ wp-content/updraft/
 wp-content/ai1wm-backups/
 wp-content/debug.log
 wiki/cache/
-*.log
-*.sql
-*.sql.gz
-*.tar.gz
-*.zip
+/*.log
+/*.sql
+/*.sql.gz
+/*.tar.gz
+/*.zip
 sitemap.backup.xml*
 error_log
 
@@ -44,3 +44,4 @@ error_log
 /i.php
 /.htaccess.bk
 /test.txt
+/wp-content/themes/jarida/includes/widgets/widget-author.php.bak
