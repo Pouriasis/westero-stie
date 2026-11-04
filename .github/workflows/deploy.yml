@@ -30,7 +30,7 @@ jobs:
 
       # Give each file its last-commit time, so later runs only upload files that changed.
       - name: Restore file times from git
-        run: git restore-mtime --quiet
+        run: git restore-mtime --quiet --commit-time
 
       - name: Upload with lftp
         env:
@@ -46,7 +46,7 @@ jobs:
           set net:timeout 30
           set net:max-retries 5
           set net:reconnect-interval-base 5
-          mirror --reverse --only-newer --parallel=4 --verbose=1 $DRY \
+          mirror --reverse --only-newer --no-perms --parallel=4 --verbose=1 $DRY \
             --exclude-glob .git/ --exclude-glob .github/ \
             --exclude-glob .git* --exclude-glob .cpanel.yml \
             --exclude-glob wp-config.php --exclude-glob .maintenance \
