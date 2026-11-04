@@ -1,0 +1,50 @@
+# Fast deploy: build ONE zip of the code and upload it over FTPS to public_html/_deploy/
+# (that folder is closed to the web by its own .htaccess). Then, in cPanel File Manager,
+# extract the zip into public_html and delete it. Runs only when started by hand.
+name: Upload code package (zip)
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build zip (tracked code only)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          SHA=$(git rev-parse --short HEAD)
+          echo "ZIP=site-$SHA.zip" >> "$GITHUB_ENV"
+          git archive --format=zip -9 -o "site-$SHA.zip" HEAD -- . \
+            ':(exclude).github' ':(exclude).cpanel.yml' ':(exclude).gitignore'
+          ls -lh site-*.zip
+          printf 'Require all denied\n<IfModule !mod_authz_core.c>\nDeny from all\n</IfModule>\n' > deny.htaccess
+
+      - name: Upload zip
+        env:
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          lftp -u "$FTP_USERNAME" --env-password "$FTP_SERVER" <<LFTP
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          # Host uses a self-signed FTPS cert: trust ONLY this exact certificate (SHA1 fingerprint pin).
+          set ssl:verify-certificate/90:D8:AA:39:E0:6F:C7:EA:8F:D8:89:52:B6:C0:38:04:91:E7:1B:FD no
+          set ftp:passive-mode true
+          set net:timeout 60
+          set net:max-retries 10
+          set net:reconnect-interval-base 5
+          mkdir -f _deploy
+          put deny.htaccess -o _deploy/.htaccess
+          put -c $ZIP -o _deploy/$ZIP
+          cls -l _deploy/
+          bye
+          LFTP

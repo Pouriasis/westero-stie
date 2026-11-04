@@ -3,4 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/wester/public_html/
     # copy code over the live site; NO --delete, so uploads/config/forum on the server stay untouched
-    - /bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='.gitignore' ./ $DEPLOYPATH
+    - /bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='.gitignore' --exclude='.github' ./ $DEPLOYPATH
