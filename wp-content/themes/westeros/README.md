@@ -1,6 +1,12 @@
-# Westeros — standalone WordPress theme 2.4.0
+# Westeros — standalone WordPress theme 2.4.1
 
 Persian editorial theme for the Library of Westeros direction. No parent theme is required. The existing stone/sage palette, blue-green masthead, bronze details, magazine order and responsive panel alignment are retained.
+
+## Solar Hijri dates — version 2.4.1
+
+- `inc/dates.php` renders publication/modification dates, podcast dates, native comment dates/times, the footer year and theme administration date labels with Solar Hijri dates and Persian digits. It uses real timestamps and the configured WordPress timezone (currently the fixed `+03:30` offset). The conversion is adapted from the attributed MediaWiki algorithm already present in this repository and needs no plugin or PHP Intl extension.
+- Native date archive URLs and queries keep their existing Gregorian ranges; their visible headings show the corresponding Solar Hijri start/end dates. Stored dates, publication scheduling, ISO `datetime` attributes, feeds, REST responses and SEO metadata retain WordPress's native date handling. Comment formatting filters are installed only during the theme's comment-list rendering and always removed afterward.
+- QA: independent ICU comparison for every day from 1900 through 2100, Nowruz/leap-year/timezone cases, WordPress rendering and stored-date preservation checks; public desktop/mobile checks cover the homepage, articles, podcast archives/episodes, comments and date archives. Scripts and screenshots are under `/.westeros-qa/dates*` (local only). This change is local and has not been deployed to production.
 
 ## Ownership
 

@@ -31,7 +31,7 @@ function westeros_collection_context() {
             if (westeros_option('author_rss')) { $context['feed'] = get_author_feed_link($author->ID); }
         }
     } elseif (is_archive()) {
-        $context['title'] = wp_strip_all_tags(get_the_archive_title());
+        $context['title'] = is_date() ? westeros_date_archive_title() : wp_strip_all_tags(get_the_archive_title());
         $context['eyebrow'] = is_date() ? 'از آرشیو روایت‌ها' : 'در کتابخانهٔ وستروس';
         $context['description'] = get_the_archive_description();
     }

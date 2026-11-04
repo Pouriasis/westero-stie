@@ -58,7 +58,7 @@ function westeros_dossier_search() {
     $raw=$_GET['q']??'';$query=is_string($raw)?sanitize_text_field(wp_unslash($raw)):'';
     if (mb_strlen($query)<2||mb_strlen($query)>100) { wp_send_json_error(array('message'=>'بین ۲ تا ۱۰۰ نویسه وارد کنید.'),400); }
     $posts=get_posts(array('post_type'=>'post','post_status'=>'publish','has_password'=>false,'s'=>$query,'posts_per_page'=>12,'no_found_rows'=>true,'orderby'=>'relevance','suppress_filters'=>false));
-    wp_send_json_success(array_map(static fn($p)=>array('id'=>(int)$p->ID,'title'=>get_the_title($p),'date'=>get_the_date('', $p)), $posts));
+    wp_send_json_success(array_map(static fn($p)=>array('id'=>(int)$p->ID,'title'=>get_the_title($p),'date'=>westeros_post_date($p)), $posts));
 }
 add_action('wp_ajax_westeros_dossier_search','westeros_dossier_search');
 add_action('admin_enqueue_scripts',function($hook){

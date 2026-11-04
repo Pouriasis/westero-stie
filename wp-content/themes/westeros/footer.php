@@ -12,9 +12,9 @@
         <p class="ws-footer-copyright"><?php
             $copyright = westeros_option('footer_one');
             if ($copyright) {
-                echo wp_kses_post(str_replace(array('%year%', '%site%', '%url%'), array(wp_date('Y'), get_bloginfo('name'), home_url('/')), htmlspecialchars_decode($copyright)));
+                echo wp_kses_post(str_replace(array('%year%', '%site%', '%url%'), array(westeros_jalali_date(null, 'Y'), get_bloginfo('name'), home_url('/')), htmlspecialchars_decode($copyright)));
             } else {
-                echo esc_html('تمامی حقوق برای وبگاه وستروس محفوظ است. © ' . wp_date('Y'));
+                echo esc_html('تمامی حقوق برای وبگاه وستروس محفوظ است. © ' . westeros_jalali_date(null, 'Y'));
             }
         ?></p>
         <div class="ws-footer-tools">

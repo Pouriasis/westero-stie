@@ -3,6 +3,7 @@
 defined('ABSPATH') || exit;
 require_once __DIR__ . '/inc/settings.php';
 require_once __DIR__ . '/inc/platform.php';
+require_once __DIR__ . '/inc/dates.php';
 require_once __DIR__ . '/inc/media.php';
 require_once __DIR__ . '/inc/category-settings.php';
 require_once __DIR__ . '/inc/reader.php';
@@ -102,7 +103,7 @@ function westeros_meta($id, $author = true) {
     if ($author) {
         echo '<span class="ws-meta-author">' . westeros_icon('user') . esc_html(get_the_author_meta('display_name', (int) get_post_field('post_author', $id))) . '</span>';
     }
-    echo '<time datetime="' . esc_attr(get_the_date(DATE_W3C, $id)) . '">' . westeros_icon('calendar') . esc_html(get_the_date('', $id)) . '</time></div>';
+    echo '<time datetime="' . esc_attr(get_the_date(DATE_W3C, $id)) . '">' . westeros_icon('calendar') . esc_html(westeros_post_date($id)) . '</time></div>';
     // The reader has a full notice; previews all share this explicit badge.
     if (!(is_singular('post') && (int)get_queried_object_id() === (int)$id)) { westeros_spoiler_badge($id); }
 }

@@ -169,7 +169,7 @@ function westeros_podcast_card($episode) {
     else { echo '<span class="ws-placeholder">'.westeros_icon('headphones').'</span>'; }
     echo '<span class="ws-play-mark">'.westeros_icon('play').'</span></a><div class="ws-podcast-copy"><p class="ws-podcast-kicker">رادیو وستروس';
     if ($episode['season']!==null) { echo ' · فصل '.esc_html(number_format_i18n($episode['season'])); }
-    echo '</p><h3><a href="'.esc_url($url).'">'.esc_html($episode['title']).'</a></h3><div class="ws-podcast-meta"><time datetime="'.esc_attr(gmdate('c',$episode['published'])).'">'.esc_html(wp_date(get_option('date_format'),$episode['published'])).'</time>';
+    echo '</p><h3><a href="'.esc_url($url).'">'.esc_html($episode['title']).'</a></h3><div class="ws-podcast-meta"><time datetime="'.esc_attr(gmdate('c',$episode['published'])).'">'.esc_html(westeros_jalali_date($episode['published'])).'</time>';
     if ($episode['duration']) { echo '<span>'.westeros_icon('headphones').'<bdi>'.esc_html($episode['duration']).'</bdi></span>'; }
     echo '<a href="'.esc_url($url.'#comments').'">'.esc_html(number_format_i18n((int)get_comments_number($episode['post_id']))).' دیدگاه</a></div><p class="ws-podcast-excerpt">'.esc_html(wp_trim_words(wp_strip_all_tags($episode['description']),26,'…')).'</p><a class="ws-more" href="'.esc_url($url).'">شنیدن قسمت '.westeros_icon('play').'</a></div></article>';
 }

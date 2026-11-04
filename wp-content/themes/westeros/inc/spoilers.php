@@ -25,8 +25,14 @@ function westeros_spoiler_badge($id) {
 /** Use the native walker, replies, moderation and pagination without filtering feeds/REST. */
 function westeros_list_spoiler_comments() {
     add_filter('comment_text', 'westeros_comment_spoiler_text', 99, 2);
+    add_filter('get_comment_date', 'westeros_comment_date', 10, 3);
+    add_filter('get_comment_time', 'westeros_comment_time', 10, 4);
     try { wp_list_comments(array('style'=>'ol', 'short_ping'=>true, 'avatar_size'=>44)); }
-    finally { remove_filter('comment_text', 'westeros_comment_spoiler_text', 99); }
+    finally {
+        remove_filter('comment_text', 'westeros_comment_spoiler_text', 99);
+        remove_filter('get_comment_date', 'westeros_comment_date', 10);
+        remove_filter('get_comment_time', 'westeros_comment_time', 10);
+    }
 }
 
 function westeros_comment_spoiler_text($text, $comment = null) {

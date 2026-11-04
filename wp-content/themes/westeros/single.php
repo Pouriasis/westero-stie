@@ -35,7 +35,7 @@ get_header();
                 <?php if (!$protected) : ?><span class="ws-reading-duration"><?php echo westeros_icon('clock'); ?><?php echo esc_html(number_format_i18n(westeros_reading_minutes(get_the_content()))); ?> دقیقه مطالعه</span><?php endif; ?>
             </div>
             <?php if (get_the_modified_time('U') > get_the_time('U') + DAY_IN_SECONDS) : ?>
-                <p class="ws-reader-updated">آخرین به‌روزرسانی: <time datetime="<?php echo esc_attr(get_the_modified_date(DATE_W3C)); ?>"><?php echo esc_html(get_the_modified_date()); ?></time></p>
+                <p class="ws-reader-updated">آخرین به‌روزرسانی: <time datetime="<?php echo esc_attr(get_the_modified_date(DATE_W3C)); ?>"><?php echo esc_html(westeros_post_date(null, 'modified')); ?></time></p>
             <?php endif; ?>
         </div>
         <div class="ws-reading-toolbar ws-js-control" role="group" aria-label="ابزارهای مطالعه">
