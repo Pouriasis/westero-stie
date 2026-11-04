@@ -26,6 +26,8 @@
     item.addEventListener('focusin', (event) => { if (desktop() && event.target !== button) setSubmenu(true); });
     item.addEventListener('focusout', (event) => { if (!item.contains(event.relatedTarget)) setSubmenu(false); });
   });
+  // Reveal disclosure controls only once their handlers are available.
+  nav?.classList.add('is-ready');
   nav?.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     const submenu = event.target.closest('li.is-open');
@@ -52,6 +54,7 @@
     const slides = [...slider.querySelectorAll('.ws-feature-slide')];
     const dots = [...slider.querySelectorAll('[data-feature-index]')];
     const status = slider.querySelector('[data-feature-status]');
+    if (!slides.length) return;
     let current = 0;
     const show = (index) => {
       current = (index + slides.length) % slides.length;
@@ -73,6 +76,8 @@
         show(current + (event.key === 'ArrowLeft' ? 1 : -1));
       }
     });
+    slides.forEach((slide, index) => { slide.hidden = index !== 0; });
+    slider.classList.add('is-ready');
   });
 
   document.querySelectorAll('[data-shelf]').forEach((shelf) => {

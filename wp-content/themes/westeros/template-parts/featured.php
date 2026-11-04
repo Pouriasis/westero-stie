@@ -16,7 +16,7 @@ $briefs = array_slice($featured, 1, 3);
         <?php foreach ($featured as $index => $item) : $category = get_the_category($item->ID); ?>
         <article class="ws-feature-slide" <?php echo $index ? 'hidden' : ''; ?> role="group" aria-roledescription="اسلاید" aria-label="<?php echo esc_attr(sprintf('%s از %s', number_format_i18n($index + 1), number_format_i18n(count($featured)))); ?>">
             <a class="ws-feature-link" href="<?php echo esc_url(get_permalink($item)); ?>" aria-labelledby="ws-feature-title-<?php echo esc_attr($index); ?>">
-                <?php westeros_image($item->ID, 'full', $index === 0); ?>
+                <?php westeros_image($item->ID, 'full', $index === 0, 'hero'); ?>
             </a>
             <div class="ws-feature-caption">
                 <?php if ($category) : ?><span class="ws-category-label"><?php echo esc_html($category[0]->name); ?></span><?php endif; ?>

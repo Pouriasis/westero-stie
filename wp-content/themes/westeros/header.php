@@ -24,7 +24,7 @@
         <?php $logo = westeros_option('logo'); ?>
         <a class="ws-masthead" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php echo esc_attr(get_bloginfo('name') . '؛ صفحهٔ اصلی'); ?>">
             <?php if ($logo) : ?>
-                <img src="<?php echo esc_url($logo); ?>" width="1440" height="350" alt="" aria-hidden="true" fetchpriority="high" loading="eager" decoding="async" data-no-lazy="1" class="skip-lazy">
+                <?php westeros_masthead_image($logo); ?>
             <?php endif; ?>
             <span class="ws-brand-lockup">
                 <span class="ws-brand-emblem" aria-hidden="true"><?php echo westeros_icon('crown'); ?></span>

@@ -12,6 +12,7 @@ require_once __DIR__ . '/inc/discovery.php';
 require_once __DIR__ . '/inc/spoilers.php';
 require_once __DIR__ . '/inc/search.php';
 require_once __DIR__ . '/inc/assets.php';
+require_once __DIR__ . '/inc/polish.php';
 require_once __DIR__ . '/inc/legacy-downloads.php';
 require_once __DIR__ . '/inc/downloads.php';
 require_once __DIR__ . '/inc/podcast.php';
@@ -34,6 +35,10 @@ add_action('wp_enqueue_scripts', function () {
 
 // Keep native controls and WordPress jQuery available before delayed plugin scripts.
 add_filter('script_loader_tag',function($tag,$handle){
+    if ($handle === 'westeros') {
+        $fallback = "document.querySelector('.ws-nav')?.classList.add('has-failed')";
+        $tag = str_replace('<script ', '<script onerror="' . esc_attr($fallback) . '" ', $tag);
+    }
     return in_array($handle,array('westeros','westeros-reader','jquery-core','jquery-migrate'),true)?str_replace('<script ','<script data-no-optimize="1" data-no-defer="1" ',$tag):$tag;
 },10,2);
 
@@ -85,10 +90,19 @@ add_filter('wp_nav_menu_objects', function ($items, $args) {
 
 /** Respect the existing primary menu and use native, keyboard-operable disclosure buttons. */
 class Westeros_Menu_Walker extends Walker_Nav_Menu {
+    private $submenu_ids = array();
+
+    public function start_lvl(&$output, $depth = 0, $args = null) {
+        $start = strlen($output);
+        parent::start_lvl($output, $depth, $args);
+        $output = substr($output, 0, $start) . preg_replace('/<ul\b/', '<ul id="' . esc_attr($this->submenu_ids[$depth]) . '"', substr($output, $start), 1);
+    }
+
     public function start_el(&$output, $data_object, $depth = 0, $args = null, $current_object_id = 0) {
         parent::start_el($output, $data_object, $depth, $args, $current_object_id);
         if (in_array('menu-item-has-children', (array) $data_object->classes, true)) {
-            $output .= '<button class="ws-submenu-toggle" type="button" aria-expanded="false" aria-label="' . esc_attr('باز و بسته کردن زیرمنوی ' . wp_strip_all_tags($data_object->title)) . '">' . westeros_icon('down') . '</button>';
+            $this->submenu_ids[$depth] = wp_unique_id('ws-submenu-');
+            $output .= '<button class="ws-submenu-toggle" type="button" aria-expanded="false" aria-controls="' . esc_attr($this->submenu_ids[$depth]) . '" aria-label="' . esc_attr('باز و بسته کردن زیرمنوی ' . wp_strip_all_tags($data_object->title)) . '">' . westeros_icon('down') . '</button>';
         }
     }
 }
@@ -109,9 +123,10 @@ function westeros_meta($id, $author = true) {
     if (!(is_singular('post') && (int)get_queried_object_id() === (int)$id)) { westeros_spoiler_badge($id); }
 }
 
-function westeros_image($id, $size = 'slider', $hero = false) {
+function westeros_image($id, $size = 'slider', $hero = false, $context = 'card') {
     if (has_post_thumbnail($id)) {
         $attributes = array('class' => $hero ? 'ws-image skip-lazy' : 'ws-image', 'loading' => $hero ? 'eager' : 'lazy', 'decoding' => 'async');
+        $attributes['sizes'] = westeros_image_sizes($hero ? 'hero' : ($size === 'tie-small' ? 'small' : $context));
         if ($hero) {
             $attributes['fetchpriority'] = 'high';
             $attributes['data-no-lazy'] = '1';
@@ -156,7 +171,7 @@ function westeros_section_heading($title, $url, $shelf = false, $icon = 'book') 
 
 function westeros_card($id, $podcast = false) {
     echo '<article class="ws-card"><a class="ws-card-image" href="' . esc_url(get_permalink($id)) . '" tabindex="-1" aria-hidden="true">';
-    westeros_image($id);
+    westeros_image($id, 'slider', false, 'shelf');
     if ($podcast) {
         echo '<span class="ws-play-mark" aria-hidden="true">' . westeros_icon('play') . '</span>';
     }

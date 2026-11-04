@@ -1,6 +1,14 @@
-# Westeros — standalone WordPress theme 2.5.0
+# Westeros — standalone WordPress theme 2.6.0
 
 Persian editorial theme for the Library of Westeros direction. No parent theme is required. The existing stone/sage palette, blue-green masthead, bronze details, magazine order and responsive panel alignment are retained.
+
+## Final polish — version 2.6.0
+
+- `inc/polish.php` preloads only the local 29,820-byte body font, retaining `font-display: swap` and demand loading for the other weights. The masthead uses its registered attachment's real dimensions and responsive variants; custom unregistered banner URLs keep their fallback. Existing originals and stored settings are unchanged.
+- Image slots now reflect the hero, card, shelf and small-thumbnail layouts, including full-width articles. Extracted opening article images use the cover slot and retain their content, credits and candidate URLs. WordPress still owns responsive candidate generation and lazy loading; no bulk image regeneration or new image codec is required.
+- Navigation reserves its mobile toggle's height before initialization and reveals the control after its handlers initialize. A script download error restores the expanded fallback. Every submenu button names its own unique `aria-controls` target. Without JavaScript, mobile submenus and all featured stories remain exposed in the server HTML/CSS; inactive disclosure buttons stay hidden. Enhanced sliders remain manual, and shelf scrolling respects reduced motion.
+- Focus colors cover dark navigation, native selects/summaries and the search wrapper. Small-screen header controls and slider dots have larger targets; Windows forced-colors has explicit focus/selection outlines. Mobile no longer uses a fixed page background.
+- QA: 19 WordPress checks (including syntax for all 46 theme PHP files), 19 controlled controller interactions, 75 HTTP/HTML/asset checks across ten real routes, and all 31 previous download checks passed. HTTP observations include compressed bytes and local TTFB; these are not Web Vitals or a production benchmark. Browser host and native pipe were unavailable, so visual QA at 390/768/1366, browser no-JS/reduced-motion/keyboard checks, and LCP/CLS/INP remain pending, including the download library. See STAGE-9.md and `/.westeros-qa/stage9-*`.
 
 ## Download library — version 2.5.0
 

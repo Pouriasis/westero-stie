@@ -117,9 +117,8 @@ function westeros_reader_intro($id, $html) {
             $image_html->set_attribute('loading', 'eager');
             $image_html->set_attribute('fetchpriority', 'high');
             $image_html->set_attribute('data-no-lazy', '1');
-            // WordPress may have added auto sizes while this image was lazy loaded.
-            $sizes = $image_html->get_attribute('sizes');
-            if (is_string($sizes)) { $image_html->set_attribute('sizes', preg_replace('/^auto,\s*/', '', $sizes)); }
+            // This image now occupies the reading cover rather than the article body.
+            $image_html->set_attribute('sizes', westeros_image_sizes('hero'));
         }
         $intro['cover'] = $image_html->get_updated_html();
         $intro['html'] = substr($html, strlen($match[0]));

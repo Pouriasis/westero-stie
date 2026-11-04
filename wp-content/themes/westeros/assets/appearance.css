@@ -71,3 +71,39 @@ html.ws-night-reading{color-scheme:dark;--ws-paper:#1e2925;--ws-surface:#28352f;
   html.ws-night-reading{color-scheme:light;--ws-paper:#fff;--ws-surface:#fff;--ws-ink:#111;--ws-muted:#444;--ws-bronze:#5a4020;--ws-line:#aaa}
   .ws-night-reading .ws-site .ws-reader{--reader-bg:white;--reader-ink:black;--reader-muted:#444;--reader-line:#aaa;--reader-link:black}
 }
+
+/* Final polish: visible focus on dark surfaces and native controls. */
+.ws-site :is(select,summary):focus-visible{outline:3px solid var(--ws-bronze);outline-offset:4px}
+.ws-site :is(.ws-utility,.ws-nav,.ws-footer) :focus-visible{outline-color:#e4c48a}
+.ws-search:focus-within{outline:3px solid #e4c48a;outline-offset:4px}
+.ws-site .ws-submenu-toggle,.ws-site .ws-mobile-toggle{display:none}
+.ws-site .ws-nav.is-ready .ws-submenu-toggle{display:flex;min-width:32px;min-height:40px}
+.ws-site [data-feature-slider]:not(.is-ready) .ws-js-control{display:none}
+.ws-site .ws-feature-dots button{width:36px;height:32px}
+.ws-feature-dots{bottom:8px}
+.ws-site .ws-footer-tools>a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+
+/* Every featured story and menu destination remains reachable without scripts. */
+html:not(.ws-js) .ws-site .ws-feature-slide[hidden]{display:block!important}
+html:not(.ws-js) .ws-home-lead :is(.ws-feature-slider,.ws-feature-slides,.ws-feature-slide){height:auto}
+html:not(.ws-js) .ws-site .ws-feature-slide+.ws-feature-slide{margin-top:16px}
+
+@media(max-width:767px){
+  /* Reserve the toggle's height before initialization, avoiding a menu layout jump. */
+  .ws-js .ws-site .ws-nav:not(.has-failed) .ws-mobile-toggle{display:flex;visibility:hidden}
+  .ws-js .ws-site .ws-nav.is-ready .ws-mobile-toggle{visibility:visible}
+  .ws-site .ws-nav:not(.is-ready) .ws-menu ul{display:block}
+  .ws-site .ws-feature-dots button{width:44px;height:44px}
+  .ws-feature-dots{bottom:0}
+  .ws-site .ws-feature-caption{bottom:52px}
+  .ws-site .ws-utility-actions :is(button,input[type=search]){min-height:44px}
+  .ws-site .ws-search button{min-width:44px}
+  /* Fixed background repainting adds no value while reading on a small screen. */
+  body.ws-site{background-attachment:scroll}
+}
+@media(forced-colors:active){
+  .ws-site :focus-visible,.ws-search:focus-within{outline:3px solid Highlight!important}
+  .ws-site :is(button,input,select,textarea,.ws-listing-pagination a){border:1px solid ButtonText}
+  .ws-site .ws-feature-dots button:before{background:ButtonText}
+  .ws-site .ws-feature-dots button[aria-current=true]{outline:2px solid Highlight}
+}
