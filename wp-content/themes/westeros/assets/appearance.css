@@ -77,6 +77,7 @@ html.ws-night-reading{color-scheme:dark;--ws-paper:#1e2925;--ws-surface:#28352f;
 .ws-site :is(.ws-utility,.ws-nav,.ws-footer) :focus-visible{outline-color:#e4c48a}
 .ws-search:focus-within{outline:3px solid #e4c48a;outline-offset:4px}
 .ws-site .ws-submenu-toggle,.ws-site .ws-mobile-toggle{display:none}
+html:not(.ws-js) .ws-site .ws-submenu-toggle,.ws-site .ws-nav.has-failed .ws-submenu-toggle{display:none}
 .ws-site .ws-nav.is-ready .ws-submenu-toggle{display:flex;min-width:32px;min-height:40px}
 .ws-site [data-feature-slider]:not(.is-ready) .ws-js-control{display:none}
 .ws-site .ws-feature-dots button{width:36px;height:32px}
@@ -84,9 +85,9 @@ html.ws-night-reading{color-scheme:dark;--ws-paper:#1e2925;--ws-surface:#28352f;
 .ws-site .ws-footer-tools>a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
 
 /* Every featured story and menu destination remains reachable without scripts. */
-html:not(.ws-js) .ws-site .ws-feature-slide[hidden]{display:block!important}
-html:not(.ws-js) .ws-home-lead :is(.ws-feature-slider,.ws-feature-slides,.ws-feature-slide){height:auto}
-html:not(.ws-js) .ws-site .ws-feature-slide+.ws-feature-slide{margin-top:16px}
+html:is(:not(.ws-js),.ws-site-script-failed) .ws-site .ws-feature-slide[hidden]{display:block!important}
+html:is(:not(.ws-js),.ws-site-script-failed) .ws-home-lead :is(.ws-feature-slider,.ws-feature-slides,.ws-feature-slide){height:auto}
+html:is(:not(.ws-js),.ws-site-script-failed) .ws-site .ws-feature-slide+.ws-feature-slide{margin-top:16px}
 
 @media(max-width:767px){
   /* Reserve the toggle's height before initialization, avoiding a menu layout jump. */

@@ -11,7 +11,7 @@ $items=array_slice($filtered,($page-1)*$per_page,$per_page);
 ?>
 <div class="content-wrap"><main class="content ws-main ws-podcast-archive" aria-label="قسمت‌های رادیو وستروس">
     <header class="ws-podcast-intro">
-        <?php if (!empty($feed['image'])) : ?><img src="<?php echo esc_url($feed['image']); ?>" width="180" height="180" alt="نشان رادیو وستروس" decoding="async"><?php endif; ?>
+        <?php if (!empty($feed['image'])) { westeros_podcast_image($feed['image'], array('width' => 180, 'height' => 180, 'alt' => 'رادیو وستروس')); } ?>
         <div><p class="ws-podcast-kicker">پادکست وستروس</p><h1><?php echo esc_html($feed['title']??'رادیو وستروس'); ?></h1><p>همراه روایت‌ها و گفت‌وگوهای جهان نغمهٔ یخ و آتش</p><p class="ws-podcast-meta"><?php echo esc_html(number_format_i18n(count($episodes))); ?> قسمت در آرشیو پادکست</p><a class="ws-more" href="<?php echo esc_url(westeros_podcast_feed_url()); ?>"><?php echo westeros_icon('rss'); ?> دنبال‌کردن با فید RSS</a></div>
     </header>
     <?php if ($seasons) : ?><form class="ws-podcast-filter" method="get" action="<?php echo esc_url(westeros_podcast_url()); ?>"><label for="ws-podcast-season">فصل ثبت‌شده در فید</label><select id="ws-podcast-season" name="ws_podcast_season"><option value="">همهٔ قسمت‌ها</option><?php foreach ($seasons as $key=>$unused) : ?><option value="<?php echo esc_attr($key); ?>" <?php selected($season,(string)$key); ?>>فصل <?php echo esc_html(number_format_i18n($key)); ?></option><?php endforeach; ?></select><button type="submit">نمایش</button><p>برخی قسمت‌های قدیمی در فید، شمارهٔ فصل ندارند؛ آن‌ها را در «همهٔ قسمت‌ها» ببینید.</p></form><?php endif; ?>

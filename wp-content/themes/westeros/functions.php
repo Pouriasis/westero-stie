@@ -36,7 +36,7 @@ add_action('wp_enqueue_scripts', function () {
 // Keep native controls and WordPress jQuery available before delayed plugin scripts.
 add_filter('script_loader_tag',function($tag,$handle){
     if ($handle === 'westeros') {
-        $fallback = "document.querySelector('.ws-nav')?.classList.add('has-failed')";
+        $fallback = "document.querySelector('.ws-nav')?.classList.add('has-failed');document.documentElement.classList.add('ws-site-script-failed')";
         $tag = str_replace('<script ', '<script onerror="' . esc_attr($fallback) . '" ', $tag);
     }
     return in_array($handle,array('westeros','westeros-reader','jquery-core','jquery-migrate'),true)?str_replace('<script ','<script data-no-optimize="1" data-no-defer="1" ',$tag):$tag;

@@ -162,10 +162,22 @@ function westeros_podcast_player($episode) {
     $src='https://embed.acast.com/'.$episode['show_id'].'/'.$episode['episode_id'];
     echo '<section class="ws-podcast-player" aria-label="'.esc_attr('پخش '.$episode['title']).'"><iframe src="'.esc_url($src).'" title="'.esc_attr('پلیر Acast: '.$episode['title']).'" loading="lazy" allow="autoplay" referrerpolicy="strict-origin-when-cross-origin"></iframe><details class="ws-podcast-fallback"><summary>پلیر باز نمی‌شود؟ پخش مستقیم فایل صوتی</summary><audio controls preload="none" src="'.esc_url($episode['audio']).'" aria-label="'.esc_attr($episode['title']).'"></audio><p><a href="'.esc_url($episode['audio']).'">باز کردن فایل صوتی</a></p><p class="ws-podcast-audio-error" hidden>دریافت فایل صوتی ممکن نشد؛ اتصال را بررسی کنید یا صفحهٔ Acast را باز کنید.</p></details><a class="ws-podcast-acast-link" href="'.esc_url($episode['link']).'" target="_blank" rel="noopener noreferrer">شنیدن این قسمت در Acast '.westeros_icon('arrow').'</a></section>';
 }
+/** Keep the reserved artwork slot when the external image host is unavailable. */
+function westeros_podcast_image($url, $attributes = array()) {
+    $attributes = array_merge(array('src' => $url, 'alt' => '', 'width' => 400, 'height' => 400, 'decoding' => 'async'), $attributes);
+    $attributes['data-fallback-src'] = get_stylesheet_directory_uri() . '/assets/podcast-placeholder.svg';
+    $attributes['onerror'] = 'this.onerror=null;this.src=this.dataset.fallbackSrc';
+    echo '<img';
+    foreach ($attributes as $name => $value) {
+        $escaped = in_array($name, array('src', 'data-fallback-src'), true) ? esc_url($value) : esc_attr($value);
+        echo ' ' . esc_attr($name) . '="' . $escaped . '"';
+    }
+    echo '>';
+}
 function westeros_podcast_card($episode) {
     $url=get_permalink($episode['post_id']);
     echo '<article class="ws-podcast-card"><a class="ws-podcast-cover" href="'.esc_url($url).'" tabindex="-1" aria-hidden="true">';
-    if ($episode['image']) { echo '<img src="'.esc_url($episode['image']).'" alt="" loading="lazy" decoding="async">'; }
+    if ($episode['image']) { westeros_podcast_image($episode['image'], array('loading' => 'lazy')); }
     else { echo '<span class="ws-placeholder">'.westeros_icon('headphones').'</span>'; }
     echo '<span class="ws-play-mark">'.westeros_icon('play').'</span></a><div class="ws-podcast-copy"><p class="ws-podcast-kicker">رادیو وستروس';
     if ($episode['season']!==null) { echo ' · فصل '.esc_html(number_format_i18n($episode['season'])); }
