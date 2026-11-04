@@ -1,6 +1,15 @@
-# Westeros — standalone WordPress theme 2.4.1
+# Westeros — standalone WordPress theme 2.5.0
 
 Persian editorial theme for the Library of Westeros direction. No parent theme is required. The existing stone/sage palette, blue-green masthead, bronze details, magazine order and responsive panel alignment are retained.
+
+## Download library — version 2.5.0
+
+- The existing `/download/` page's `[download_page]` now renders a native library; `[westeros_download_library]` is also available. Stored page content, download IDs and existing URLs are preserved. The old popularity/150-row display attributes are deliberately replaced by a fixed 12-title page size, without invented popularity rankings.
+- Search normalizes Persian/Arabic yeh/kaf and spacing. Native GET filters cover existing categories, explicitly recorded language, actual file extension and locally present files. Pagination retains all filters; file search does not alter the site's main search. All published, unprotected download records are considered; private/draft/trash/password-protected entries are excluded even for administrators.
+- The audit found 320 public download titles: 203 have locally present files, 115 point to missing files and 2 use external hosts that remain unverified. These are record counts, not a claim of unique files. Missing records remain visible with an unavailable message and no download button. Exact file sizes come from the filesystem; unavailable/external records use clearly marked registered size metadata when available. Language comes only from explicit language categories or the new per-download language field; 300 titles remain unspecified.
+- Verified local mirrors are resolved only inside allowed upload/download directories, including the audited old server root and percent-encoded filenames. Runtime `_files`/`_filesize` aliases fix delivery without rewriting stored metadata; aliases do not run in the admin editor. Download Monitor still generates links and performs its own path, membership and access checks. Its pinned version remains 4.9.14. Library links use native endpoint navigation without buffering large downloads as JavaScript blobs.
+- Appearance → کتابخانهٔ دانلود provides a paginated audit with edit links for missing/external files and unspecified languages. Each download editor has a nonce/capability-protected language override, including explicit unknown and category inheritance.
+- QA: 31 library integration checks, 17 isolated access/admin checks and 231 HTTP/delivery checks passed. All 203 locally present records were checked at their plugin endpoints: four complete files matched SHA-256, and the other 199 matched endpoint size and first 1024 bytes. These requests can naturally create download logs/counters. Browser visual QA was unavailable in this session; responsive CSS and night colors are implemented but have not been visually verified. See STAGE-8.md and `/.westeros-qa/download-*` for evidence. Local only; missing-file recovery and external-host delivery remain open.
 
 ## Solar Hijri dates — version 2.4.1
 

@@ -13,6 +13,7 @@ require_once __DIR__ . '/inc/spoilers.php';
 require_once __DIR__ . '/inc/search.php';
 require_once __DIR__ . '/inc/assets.php';
 require_once __DIR__ . '/inc/legacy-downloads.php';
+require_once __DIR__ . '/inc/downloads.php';
 require_once __DIR__ . '/inc/podcast.php';
 if (is_admin()) { require_once __DIR__ . '/inc/discovery-admin.php'; }
 

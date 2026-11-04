@@ -31,7 +31,7 @@ add_action('wp_enqueue_scripts', function () {
         foreach (array('contact-form-7','contact-form-7-rtl') as $handle) { wp_dequeue_style($handle); }
     }
     $download = westeros_html_has_download($content);
-    foreach (array('download','downloads','download_data','dlm_no_access','wpdm_tree','wpdm_category','wpdm-all-packages','wpdm_button_template') as $tag) {
+    foreach (array('download','downloads','download_page','westeros_download_library','download_data','dlm_no_access','wpdm_tree','wpdm_category','wpdm-all-packages','wpdm_button_template') as $tag) {
         $download = $download || has_shortcode($content, $tag);
     }
     if ($download) { westeros_download_assets(); }
