@@ -10,16 +10,25 @@ get_header();
     westeros_record_view(get_the_ID());
     $protected = post_password_required();
     $filtered = apply_filters('the_content', get_the_content());
-    $outline = $protected ? array('html'=>$filtered, 'headings'=>array()) : westeros_content_outline($filtered);
+    $intro = westeros_reader_intro(get_the_ID(), $filtered);
+    $outline = $protected ? array('html'=>$filtered, 'headings'=>array()) : westeros_content_outline($intro['html']);
     $review_position = $get_meta['tie_review_position'][0] ?? '';
 ?>
     <nav class="ws-reader-breadcrumb" aria-label="مسیر صفحه"><a href="<?php echo esc_url(home_url('/')); ?>">وستروس</a><span aria-hidden="true">/</span><span><?php echo esc_html(get_the_title()); ?></span></nav>
     <?php westeros_reader_banner('above', get_the_ID()); ?>
-    <article id="the-post" <?php post_class('ws-reader'); ?> data-reader>
+    <article id="the-post" <?php post_class('ws-reader' . ($intro['cover'] ? ' ws-reader-has-cover' : '')); ?> data-reader>
+        <div class="ws-reader-intro<?php echo $intro['cover'] ? ' ws-reader-intro-with-cover' : ''; ?>">
+        <?php if ($intro['cover']) : ?>
+            <div class="ws-reader-cover"><?php echo $intro['cover']; // Existing WordPress-filtered media HTML. ?></div>
+        <?php endif; ?>
         <header class="ws-reader-header">
             <?php westeros_post_kicker(get_the_ID()); ?>
-            <?php if (!$protected) { westeros_spoiler_notice(get_the_ID()); } ?>
             <h1 class="ws-reader-title"><?php the_title(); ?></h1>
+        </header>
+        </div>
+        <?php if ($intro['caption']) : ?><div class="ws-reader-caption"><?php echo $intro['caption']; // Existing WordPress-filtered image caption. ?></div><?php endif; ?>
+        <div class="ws-reader-details">
+            <?php if (!$protected) { westeros_spoiler_notice(get_the_ID()); } ?>
             <?php if (has_excerpt() && !$protected) : ?><p class="ws-reader-deck"><?php echo esc_html(wp_strip_all_tags(get_the_excerpt())); ?></p><?php endif; ?>
             <div class="ws-reader-byline">
                 <?php westeros_meta(get_the_ID()); ?>
@@ -28,14 +37,14 @@ get_header();
             <?php if (get_the_modified_time('U') > get_the_time('U') + DAY_IN_SECONDS) : ?>
                 <p class="ws-reader-updated">آخرین به‌روزرسانی: <time datetime="<?php echo esc_attr(get_the_modified_date(DATE_W3C)); ?>"><?php echo esc_html(get_the_modified_date()); ?></time></p>
             <?php endif; ?>
-        </header>
+        </div>
         <div class="ws-reading-toolbar ws-js-control" role="group" aria-label="ابزارهای مطالعه">
             <span class="ws-reading-toolbar-label"><?php echo westeros_icon('book'); ?> همراهِ این روایت</span>
             <button class="ws-tool-button" type="button" data-reading-theme aria-pressed="false"><?php echo westeros_icon('moon'); ?><span data-theme-label>حالت شب</span></button>
             <button class="ws-tool-button" type="button" data-save-post data-post-id="<?php the_ID(); ?>" data-post-title="<?php echo esc_attr(get_the_title()); ?>" data-post-url="<?php echo esc_url(get_permalink()); ?>" aria-pressed="false"><?php echo westeros_icon('bookmark'); ?><span data-save-label>نشان کردن</span></button>
         </div>
         <p class="ws-sr-only" data-reader-status role="status" aria-live="polite"></p>
-        <?php if (!$protected) { westeros_reader_media(get_the_ID()); } ?>
+        <?php echo $intro['media']; // Existing WordPress-rendered audio, video or gallery. ?>
         <?php if (count($outline['headings']) >= 2) : ?>
         <details class="ws-toc">
             <summary><?php echo westeros_icon('book'); ?> در این صفحه <span><?php echo esc_html(number_format_i18n(count($outline['headings']))); ?> بخش</span><?php echo westeros_icon('down'); ?></summary>

@@ -73,6 +73,14 @@ function westeros_icon($name) {
     return '<svg class="ws-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' . $path . '</svg>';
 }
 
+// Omit the forum link from the header navigation on desktop and mobile.
+add_filter('wp_nav_menu_objects', function ($items, $args) {
+    if (($args->theme_location ?? '') !== 'primary') { return $items; }
+    return array_values(array_filter($items, function ($item) {
+        return trim((string) wp_parse_url($item->url, PHP_URL_PATH), '/') !== 'forums';
+    }));
+}, 10, 2);
+
 /** Respect the existing primary menu and use native, keyboard-operable disclosure buttons. */
 class Westeros_Menu_Walker extends Walker_Nav_Menu {
     public function start_el(&$output, $data_object, $depth = 0, $args = null, $current_object_id = 0) {

@@ -102,7 +102,42 @@ add_shortcode('westeros_spoiler', function ($attributes, $content = '') {
     return '<details class="ws-spoiler"><summary>' . esc_html($attributes['title']) . '</summary><div class="ws-spoiler-body">' . do_shortcode($content ?? '') . '</div></details>';
 });
 
-/** Render existing media formats and use a larger, captioned image for normal posts. */
+/** Compose the article introduction without rewriting its stored content. */
+function westeros_reader_intro($id, $html) {
+    $intro = array('html' => $html, 'cover' => '', 'caption' => '', 'media' => '');
+    if (post_password_required($id)) { return $intro; }
+    $kind = get_post_meta($id, 'tie_post_head', true);
+    $image_kind = !$kind || in_array($kind, array('thumb', 'lightbox'), true);
+    // Only lift a standalone opening image; never remove surrounding article text.
+    $image = '(?:<a\b[^>]*>\s*)?<img\b[^>]*>\s*(?:</a>\s*)?';
+    $pattern = '~\A\s*(?:<!--.*?-->\s*)*(?<image><p\b[^>]*>\s*' . $image . '</p>|<figure\b[^>]*>\s*' . $image . '(?:<figcaption\b[^>]*>.*?</figcaption>\s*)?</figure>|<div\b[^>]*class=["\'][^"\']*\bwp-caption\b[^"\']*["\'][^>]*>\s*' . $image . '(?:<p\b[^>]*>.*?</p>\s*)?</div>)\s*~is';
+    if ($image_kind && preg_match($pattern, $html, $match)) {
+        $image_html = new WP_HTML_Tag_Processor($match['image']);
+        if ($image_html->next_tag('IMG')) {
+            $image_html->set_attribute('loading', 'eager');
+            $image_html->set_attribute('fetchpriority', 'high');
+            $image_html->set_attribute('data-no-lazy', '1');
+            // WordPress may have added auto sizes while this image was lazy loaded.
+            $sizes = $image_html->get_attribute('sizes');
+            if (is_string($sizes)) { $image_html->set_attribute('sizes', preg_replace('/^auto,\s*/', '', $sizes)); }
+        }
+        $intro['cover'] = $image_html->get_updated_html();
+        $intro['html'] = substr($html, strlen($match[0]));
+    } else {
+        ob_start();
+        westeros_reader_media($id);
+        $intro[$image_kind ? 'cover' : 'media'] = ob_get_clean();
+    }
+    // Keep image credits outside the title overlay, including legacy caption markup.
+    $caption_pattern = '~<(?:figcaption\b[^>]*|p\b[^>]*class=["\'][^"\']*\bwp-caption-text\b[^"\']*["\'][^>]*)>(.*?)</(?:figcaption|p)>~is';
+    if ($intro['cover'] && preg_match($caption_pattern, $intro['cover'], $caption, PREG_OFFSET_CAPTURE)) {
+        $intro['caption'] = $caption[1][0];
+        $intro['cover'] = substr_replace($intro['cover'], '', $caption[0][1], strlen($caption[0][0]));
+    }
+    return $intro;
+}
+
+/** Render existing media formats and captioned featured images. */
 function westeros_reader_media($id) {
     $kind = get_post_meta($id, 'tie_post_head', true);
     if ($kind === 'none') { return; }

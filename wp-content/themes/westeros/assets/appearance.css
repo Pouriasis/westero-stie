@@ -8,6 +8,12 @@
 .ws-site .ws-brand-latin{font-size:9px;letter-spacing:.4em;margin:3px 0 7px;color:#d9bd83}
 .ws-site .ws-brand-description{font-size:10px;line-height:1.9;padding-top:7px;border-color:#bfa16b55;color:#e3dac4}
 
+/* Readable header navigation at every viewport width. */
+.ws-menu{flex-wrap:wrap}
+.ws-menu>li>a{font-size:16px}
+.ws-menu ul li{font-size:15px}
+.ws-site .ws-mobile-toggle{font-size:16px}
+
 /* A named, keyboard-operable appearance control on every page. */
 .ws-utility-actions{gap:14px}
 .ws-appearance-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:6px 11px;border:1px solid #bca77888;border-radius:4px;background:#17282355;color:#f0e5cc;font:11px/1.8 var(--ws-font);white-space:nowrap;cursor:pointer}
