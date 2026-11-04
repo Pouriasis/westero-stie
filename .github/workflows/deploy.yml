@@ -1,8 +1,7 @@
-# Deploy code to westeros.ir over FTP. Runs ONLY when started by hand
+# Deploy code to westeros.ir over FTPS with lftp. Runs ONLY when started by hand
 # (GitHub > Actions > "Deploy to westeros.ir" > Run workflow).
-# Secrets needed: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
-# The FTP account's home must be /home/wester/public_html, so server-dir is ./
-# Nothing outside what this action uploaded is ever deleted (uploads, configs, wiki images stay safe).
+# Secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD. The FTP account's home is /home/wester/public_html.
+# Never deletes anything on the server (no --delete): uploads, configs, wiki images stay safe.
 name: Deploy to westeros.ir
 
 on:
@@ -19,32 +18,42 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v4
-
-      - name: FTP deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          server-dir: ./
-          dry-run: ${{ inputs.dry_run }}
-          log-level: standard
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            .cpanel.yml
-            .gitignore
-            wp-config.php
-            wiki/LocalSettings.php
-            .htaccess
-            wp-content/uploads/**
-            wiki/images/**
-            forums/**
-            dl/**
-            downloads/**
-            beyondthewall/**
+          fetch-depth: 0
+
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp git-restore-mtime
+
+      # Give each file its last-commit time, so later runs only upload files that changed.
+      - name: Restore file times from git
+        run: git restore-mtime --quiet
+
+      - name: Upload with lftp
+        env:
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          DRY: ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: |
+          lftp -u "$FTP_USERNAME" --env-password "$FTP_SERVER" <<LFTP
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ftp:passive-mode true
+          set net:timeout 30
+          set net:max-retries 5
+          set net:reconnect-interval-base 5
+          mirror --reverse --only-newer --parallel=4 --verbose=1 $DRY \
+            --exclude-glob .git/ --exclude-glob .github/ \
+            --exclude-glob .git* --exclude-glob .cpanel.yml \
+            --exclude-glob wp-config.php --exclude-glob .maintenance \
+            --exclude ^\.htaccess$ \
+            --exclude ^wiki/LocalSettings\.php$ \
+            --exclude ^wp-content/uploads/ --exclude ^wiki/images/ \
+            --exclude ^forums/ --exclude ^dl/ --exclude ^downloads/ --exclude ^beyondthewall/ \
+            ./ ./
+          bye
+          LFTP
