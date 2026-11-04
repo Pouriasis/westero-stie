@@ -42,6 +42,9 @@ jobs:
           lftp -u "$FTP_USERNAME" --env-password "$FTP_SERVER" <<LFTP
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
+          # Host uses a self-signed FTPS cert: trust ONLY this exact certificate (SHA1 fingerprint pin).
+          # Any other certificate is still rejected. If the host renews the cert, update this fingerprint.
+          set ssl:verify-certificate/90:D8:AA:39:E0:6F:C7:EA:8F:D8:89:52:B6:C0:38:04:91:E7:1B:FD no
           set ftp:passive-mode true
           set net:timeout 30
           set net:max-retries 5
