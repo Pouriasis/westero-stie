@@ -1,0 +1,69 @@
+# Westeros — standalone WordPress theme 2.4.0
+
+Persian editorial theme for the Library of Westeros direction. No parent theme is required. The existing stone/sage palette, blue-green masthead, bronze details, magazine order and responsive panel alignment are retained.
+
+## Ownership
+
+- Native bootstrap and support: functions.php, inc/platform.php, assets/foundation.css.
+- Native settings, first-run legacy configuration import and category settings: inc/settings.php, inc/category-settings.php. Appearance → تنظیمات وستروس manages the banner, featured stories, ordered homepage sections, reading/archive flags, custom sidebars and footer. Settings use the WordPress Settings API and capability checks; raw administrator code requires unfiltered_html.
+- Native media, gallery editor and presentation metadata: inc/media.php and assets/admin.js. Existing image-size, post-meta, sidebar and gallery-type identifiers remain compatible with stored records; their names do not load vendor code.
+- Native comments: comments.php uses the WordPress walker, form, moderation, threading and pagination hooks. Footer widgets and sharing links also live in this theme.
+- Feed-backed podcasts: inc/podcast.php reads the fixed Acast feed, uses RSS GUIDs for identity and Acast namespace IDs for the official player. podcast-archive.php and podcast-single.php render current feed data on native WordPress post IDs. The audited legacy map keeps previous URLs and comment ownership; missing feed episodes remain in the site's archive. See STAGE-7.md.
+- Spoiler labels and disclosure: inc/spoilers.php and inc/spoilers-admin.php share explicit editorial labels across previews, articles and native comments. Unreviewed content has no public badge or warning; unknown comments render normally. The in-content spoiler disclosure remains available. Reader filtering is implemented but stays disabled until editorial readiness is acknowledged under Appearance → مدیریت اسپویل. See STAGE-6.md.
+- Existing site.js and reader.js retain keyboard menus, manual sliders, browser-local bookmarks, night reading and progress. inc/reader.php retains deterministic heading outlines, reading estimates and editorial spoiler metadata. inc/collections.php and shared templates use the WordPress main query and native pagination.
+- Fonts are served from assets/fonts/. These are the site's existing licensed IRANSans files; proprietary font licensing still applies. They are not public-domain redistributable assets.
+
+## Migration and retained data
+
+At first setup, westeros_options, westeros_home_sections and westeros_category_options are initialized from the existing Jarida options. Original tie_options, tie_home_cats1…4 and tie_cat_* are retained unchanged. Import is idempotent: later native edits are never overwritten from the legacy source. Post/page bodies, URLs, menu assignment and all widget assignments stay intact. No backup is created by this migration.
+
+Existing populated legacy metadata is read directly without bulk edits. Native [divider] replaces the only parent-owned shortcode used in stored content (54 occurrences). Core/plugin shortcodes remain owned by their plugins. The shortcode registration map was compared under separate Jarida and native bootstraps and is identical for stored content. Legacy unregistered media, gallery, spoiler and download shortcodes are pre-existing content/plugin issues; this migration does not claim to repair them. Two stored template-onecolumn.php selections already pointed to a missing parent template; ordinary page fallback remains in effect.
+
+No custom Jarida widgets, custom slider records, special post-head media records or enabled category sliders were found. Stage 2.2.2 removes the audited inactive/unused plugins, including advanced-recent-posts, wp-jalali and UpdraftPlus, while retaining stored content and existing backups. Download Monitor stays pinned. Wiki, forum and production are outside this change.
+
+## Local operation and rollback
+
+The active local template and stylesheet are both westeros, with parent=false. No Jarida PHP, CSS or JavaScript is required. The original Jarida directory is retained unchanged for rollback. Activate Jarida under Appearance → Themes to select the former presentation. Its bootstrap was exercised separately and the WordPress switch API was tested to Jarida and back; the final active theme is Westeros. Native settings are independent after import: future Westeros setting edits do not synchronize back into Jarida options.
+
+Homepage category order is 652, 653, 654, 18, 597; primary menu remains 16. The normal configured WordPress page size is 5; the parent-specific page-size override has been removed. Stage-three data hashes matched its baseline. Version 2.2.2 deliberately removes audited plugins and one empty Instagram widget; the posts, protected metadata, comments, users, roles, menu and theme settings still match the cleanup baseline.
+
+## Validation and limits
+
+PHP and JavaScript syntax, native settings/editor/comment rendering and sanitizers, independent bootstrapping, content/configuration preservation, rollback API, real HTTP pages, asset requests and the existing 18 JavaScript interaction checks are covered by stage-three QA. Native assets are now served directly after local LiteSpeed removal. No form, comment or email was submitted. Stage five and the subsequent fixes add public desktop/tablet/mobile visual QA in headless Chrome; testing on a physical phone and visual rollback remain separate. Local changes have not been deployed to production.
+
+See STAGE-5.md for Persian search and responsive browser verification, and ROADMAP.md for the remaining milestones. Earlier discovery and migration reports remain in the Codex outputs directory.
+
+
+## Content discovery — version 2.1
+
+- Public curated reading dossiers use the native ws_dossier post type at /dossiers/. Each stores up to40 ordered public, unprotected post IDs plus an exact reverse membership index. Existing post bodies, metadata and URLs are not rewritten. Dossiers can be draft/published, have an excerpt and cover image, and be featured at the end of the magazine. The editor searches existing public posts with an authenticated, nonce-checked AJAX endpoint and provides keyboard-operable reorder/remove buttons. No fake stories or ratings were added.
+- Three local dossiers were populated from existing archive series: history-in-pictures season1 (20 posts), behind-the-scenes season1 (2 posts) and the existing thirty-books articles (2 posts). The article count describes stored posts, including any episodes grouped within a post. All are editable from پرونده‌های وستروس in wp-admin.
+- Article paths show the current position, previous/next within the selected dossier and an expandable ordered index. ws_path selects a valid public dossier context without changing the original article canonical URL. The parameter is deliberately distinct from the post type's own query variable. Path position does not track reader completion.
+- ws_kind filters the main home/archive/search query by configured existing category IDs, including descendants. Default types are news1, articles18, podcasts652, interviews597 and downloads13. It intersects existing context and tax-query constraints, preserves search/pagination, ignores invalid kinds and does not affect secondary/admin/feed/REST queries. Native GET forms and the public reading path work without JavaScript. Persian letter normalization was added in stage five.
+- Settings: پرونده‌های وستروس → تنظیمات کشف محتوا controls the home strip and category mapping. Original magazine order, menus and widget assignments remain unchanged. Deleting/unpublishing an article removes it from public dossier membership output; saving/deleting a dossier or changing/deleting a member purges theme caches. Stored missing IDs may remain visible to an editor until the next deliberate save.
+- Stage4 checks: 41 native WP state/query/access/editor cases, authenticated AJAX checks, 8 new controlled-DOM editor interactions plus18 previous interactions, 18 real HTTP routes and all20 first-dossier member URLs. All33 theme PHP files were syntax checked. Its public browser visual QA was completed during stage five; external file delivery/media playback was not retested.
+
+## Persian search — version 2.2
+
+- inc/search.php normalizes Persian/Arabic yeh and kaf, ZWNJ and nonbreaking spaces on both sides of public main-search comparisons. The established تاج‌وتخت title spelling also matches تاج و تخت. Stored content, original search text, article URLs and canonical links are retained.
+- WordPress still parses quoted phrases, excluded terms and stopwords, and owns visibility, taxonomy, author and pagination constraints. Normalized comparisons cover title, excerpt and content, with matching relevance ranking and an ID tie breaker. Column filters remain supported. Admin, secondary, feed, embed, REST and explicitly suppressed queries keep their original behavior.
+- The search form retains a valid selected ws_kind when submitting new words. Type changes reset pagination and retain the search text.
+- Browser QA corrected the dossier start link's contrast, select/summary focus outlines and tablet submenu controls. The known legacy iframe integration is repaired only when rendered: it uses jQuery's explicit name and adds its root class without erasing menu/night classes. Its stored administrator code is preserved. WordPress jQuery bypasses LiteSpeed's script combining/delay. The theme removes only the old comment-preview hook that replaced jQuery with external version 1.6.3; the plugin's preview, saved settings and activation remain intact.
+- QA scripts and evidence are in /.westeros-qa/, denied to HTTP by .htaccess; PHP QA scripts also require CLI. Fixtures use a connection-local temporary table compatible with the archive's MyISAM storage. No test posts remain in the original table.
+- The local production CAPTCHA key is not valid for localhost. Contact-form delivery, external archive media/downloads and production load testing remain outside this milestone. Search uses SQL normalization without a new index; production performance still needs measurement.
+
+## Reader and appearance fixes — version 2.2.1
+
+- The obsolete comment-preview toggle invoked textarea.focus() during initialization and scrolled freshly opened posts to the comments. The theme now removes its frontend script hook and provides an opt-in, plain-text native preview. It never focuses or scrolls on load; explicit comment anchors and WordPress replies retain their normal behavior. Plugin activation and saved options are retained.
+- A visible حالت شب / حالت روشن button is available in the header on every page. It shares the article control and saved browser preference. Night colors now cover the homepage, archives, dossiers, cards, sidebar and reader. Controls stay synchronized, including storage events between tabs.
+- assets/appearance.css restores the original family banners and centered Iron Throne in full color, with a restrained bronze frame and a compact readable nameplate. Mobile has a dedicated crop and brand row. The original uploaded image and logo setting are unchanged.
+- The actual stored iframe integration had whitespace around its root-class assignment; the renderer now handles that spacing so delayed initialization cannot remove navigation/night classes.
+- See FIXES-2.2.1.md for reproduction, browser verification and remaining limits.
+
+## Plugin and asset cleanup — version 2.2.2
+
+- 21 audited plugin directories (4,513 files, 71.1 MiB) were deleted; 15 active plugins retain security, spam protection, editing, forms, downloads, statistics, polls, SEO/sitemaps, category exclusions, image optimization and mail logs. The removal manifest and reasons are in CLEANUP-2.2.2.md.
+- inc/assets.php keeps Contact Form 7/CAPTCHA scripts on actual form pages, with late-shortcode/widget support. Download Monitor's XHR dependency chain is requested only for download markup, including the configured endpoint. Native emoji rendering replaces the unused frontend emoji detector.
+- The duplicate hardcoded CAPTCHA loader and unused iframe helper are omitted when rendering saved integration code; existing administrator settings are preserved. Native menus, reader controls and lazy-loaded images do not depend on LiteSpeed. Its generated runtime assets and server blocks were removed from the local Apache copy; existing backup folders and Wordfence/server authorization rules were preserved.
+- inc/legacy-downloads.php maps the two guest-access WPDM packages to the exact existing Download Monitor records: 9734 → 13091 and 9735 → 13001. Native Download Monitor still creates links and enforces access. Stored package records, files, post bodies and URLs were not rewritten. The formerly failing Persian-books page renders through these narrow aliases without the old WPDM stack.
+- Verified: 34 preservation/compatibility checks, 40 search checks, 47 responsive reader/appearance checks, 16 public routes and syntax for all 36 theme PHP files. Homepage external/generated script elements fell from 10 to 2; article pages from 22 to 6. The localhost CAPTCHA-key error remains confined to the two real form pages.

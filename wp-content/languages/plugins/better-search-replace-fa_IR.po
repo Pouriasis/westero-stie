@@ -1,0 +1,247 @@
+# Translation of Plugins - Better Search Replace - Development (trunk) in Persian
+# This file is distributed under the same license as the Plugins - Better Search Replace - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-04-10 12:37:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: fa\n"
+"Project-Id-Version: Plugins - Better Search Replace - Development (trunk)\n"
+
+#: includes/class-bsr-plugin-footer.php:89
+msgid "Feedback"
+msgstr "بازخورد"
+
+#: includes/class-bsr-plugin-footer.php:82
+msgid "Support"
+msgstr "پشتیبانی"
+
+#: includes/class-bsr-plugin-footer.php:79
+msgid "Documentation"
+msgstr "مستندات"
+
+#. translators: %1$s is a link to BSR's website, and %2$s is a link to WP
+#. Engine's website.
+#: includes/class-bsr-plugin-footer.php:51
+msgid "%1$s is developed and maintained by %2$s."
+msgstr "%1$s توسط %2$s توسعه و نگهداری می‌شود."
+
+#. Author of the plugin
+#: better-search-replace.php
+msgid "WP Engine"
+msgstr "WP Engine"
+
+#: templates/sidebar.php:29
+msgid "Upgrade Now"
+msgstr "هم‌اکنون ارتقا دهید"
+
+#: templates/sidebar.php:25
+msgid "Get up to <span>50% off</span> your first year!"
+msgstr "دریافت بیش از <span>50% تخفیف</span> در اولین سال شما!"
+
+#: templates/sidebar.php:21
+msgid "Email support"
+msgstr "ایمیل پشتیبانی"
+
+#: templates/sidebar.php:18
+msgid "Export and import WordPress databases"
+msgstr "درون‌ریزی و برون‌ریزی پایگاه داده وردپرس"
+
+#: templates/sidebar.php:15
+msgid "Migrate full sites including themes, plugins, media, and database"
+msgstr "سایت کامل از جمله پوسته‌ها، افزونه‌ها، رسانه‌ها و پایگاه داده را مهاجرت کنید"
+
+#: templates/sidebar.php:12
+msgid "Use regular expressions for complex string replacements"
+msgstr "از عبارات منظم برای جایگزینی رشته های پیچیده استفاده کنید"
+
+#: templates/sidebar.php:9
+msgid "Preview database changes before they are saved"
+msgstr "پیش نمایش تغییرات پایگاه داده قبل از ذخیره شدن"
+
+#: templates/sidebar.php:5
+msgid "Gain access to more database and migration features"
+msgstr "به ویژگی های پایگاه داده و مهاجرت بیشتر دسترسی پیدا کنید"
+
+#: templates/sidebar.php:4
+msgid "Upgrade"
+msgstr "ارتقا"
+
+#: templates/bsr-settings.php:43
+msgid "If you notice timeouts or are unable to backup/import the database, try decreasing this value."
+msgstr "اگر متوجه وقفه های زمانی شدید یا قادر به پشتیبان گیری/درون ریزی دیتابیس نیستید، سعی کنید این مقدار را کاهش دهید."
+
+#: templates/bsr-search-replace.php:95
+msgid "Replace GUIDs"
+msgstr "جایگزین کردن GUIDs"
+
+#: templates/bsr-search-replace.php:73
+msgid "Additional Settings"
+msgstr "تنظیمات اضافه"
+
+#: templates/bsr-search-replace.php:37
+msgid "Search and replace text in the database, including serialized arrays and objects. Be sure to back up your database before running this process."
+msgstr "جستجو و جایگزینی متن در پایگاه داده، از جمله آرایه های سریال و اشیاء. قبل از اجرای این فرآیند حتما از پایگاه داده خود نسخه پشتیبان تهیه کنید."
+
+#: templates/bsr-help.php:61
+msgid "System Info"
+msgstr "اطلاعات سیستم"
+
+#: templates/bsr-help.php:43
+msgid "<a href=\"%s\" style=\"font-weight:bold;\" target=\"_blank\">Upgrade</a> to gain access to premium features and priority email support."
+msgstr "برای دسترسی به ویژگی‌های ممتاز و پشتیبانی ایمیل اولویت‌دار <a href=\"%s\" style=\"font-weight:bold;\" target=\"_blank\">، ارتقا دهید</a> ."
+
+#: templates/bsr-dashboard.php:53
+msgid "Upgrade now and get 50% off"
+msgstr "اکنون ارتقا دهید و 50% تخفیف بگیرید"
+
+#: includes/class-bsr-admin.php:224
+msgid "<a href=\"%s\" target=\"_blank\">UPGRADE</a> to view details on the exact changes that will be made."
+msgstr "برای مشاهده جزئیات تغییرات دقیقی که ایجاد خواهد شد، <a href=\"%s\" target=\"_blank\">ارتقا دهید</a> ."
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: better-search-replace.php
+msgid "https://bettersearchreplace.com"
+msgstr "https://bettersearchreplace.com"
+
+#: includes/class-bsr-admin.php:235
+msgid " seconds"
+msgstr " ثانیه"
+
+#: includes/class-bsr-ajax.php:157
+msgid "Processing table %d of %d: %s"
+msgstr "در حال پردازش %d از %d جدول: %s"
+
+#: includes/class-bsr-admin.php:75
+msgid "Processing..."
+msgstr "در حال پردازش..."
+
+#. Description of the plugin
+#: better-search-replace.php
+msgid "A small plugin for running a search/replace on your WordPress database."
+msgstr "یک افزونه کوچک برای اجرا جستجو/جایگزینی در پایگاه داده وردپرس شما."
+
+#: templates/bsr-settings.php:39
+msgid "Max Page Size"
+msgstr "حداکثر اندازه صفحه"
+
+#: templates/bsr-search-replace.php:118
+msgid "Run Search/Replace"
+msgstr "اجرای جستجو/جایگزینی"
+
+#: templates/bsr-search-replace.php:107
+msgid "If checked, no changes will be made to the database, allowing you to check the results beforehand."
+msgstr "در صورت بررسی ، هیچ تغییری در بانک اطلاعاتی ایجاد نمی شود و به شما امکان می دهد نتایج را از قبل بررسی کنید."
+
+#: templates/bsr-search-replace.php:106
+msgid "Run as dry run"
+msgstr "اجرا به عنوان آزمایشی"
+
+#: templates/bsr-search-replace.php:96
+msgid "If left unchecked, all database columns titled 'guid' will be skipped."
+msgstr "اگر علامت نگذارید، تمام ستون‌های پایگاه‌داده با عنوان 'guid' نادیده گرفته می‌شوند."
+
+#: templates/bsr-search-replace.php:85
+msgid "Searches are case-sensitive by default."
+msgstr "جستجوها به صورت پیش‌فرض به بزرگی و کوچکی حروف حساس هستند."
+
+#: templates/bsr-search-replace.php:84
+msgid "Case-Insensitive"
+msgstr "حساس نبودن به بزرگی و کوچکی حروف"
+
+#: templates/bsr-search-replace.php:61
+msgid "Select multiple tables with Ctrl-Click for Windows or Cmd-Click for Mac."
+msgstr "انتخاب چندگانه جداول با Ctrl-Click برای ویندوز و Cmd-Click برای مک."
+
+#: templates/bsr-search-replace.php:59
+msgid "Select tables"
+msgstr "انتخاب جداول"
+
+#: templates/bsr-search-replace.php:51
+msgid "Replace with"
+msgstr "جایگزینی با"
+
+#: templates/bsr-search-replace.php:46
+msgid "Search for"
+msgstr "جستجو برای"
+
+#: templates/bsr-help.php:51
+msgid "Found a bug or have a feature request? Please submit an issue on <a href=\"%s\">GitHub</a>!"
+msgstr "یک اشکال پیدا کردید یا درخواست ویژگی دارید؟ لطفاً یک شماره را در <a href=\"%s\">گیت‌هاب</a> ارسال کنید!"
+
+#: templates/bsr-help.php:35
+msgid "Free support is available on the <a href=\"%s\">plugin support forums</a>."
+msgstr "پشتیبانی رایگان در <a href=\"%s\">انجمن پشتیبانی افزونه</a> در دسترس است."
+
+#: templates/bsr-help.php:26
+msgid "Help & Troubleshooting"
+msgstr "راهنما و عیب یابی"
+
+#: templates/bsr-dashboard.php:67
+msgid "Help"
+msgstr "کمک"
+
+#: templates/bsr-dashboard.php:66 templates/bsr-settings.php:30
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: templates/bsr-dashboard.php:65 templates/bsr-search-replace.php:32
+msgid "Search/Replace"
+msgstr "جستجو/جایگزینی"
+
+#: includes/class-bsr-db.php:295
+msgid "Error updating row: %d."
+msgstr "خطا در به‌روزرسانی ردیف: %d."
+
+#: includes/class-bsr-db.php:85
+msgid "(%s MB)"
+msgstr "(%s مگابایت)"
+
+#: includes/class-bsr-admin.php:285
+msgid "Upgrade to Pro"
+msgstr "ارتقا به نسخه پیشرفته"
+
+#: includes/class-bsr-admin.php:213
+msgid "Time"
+msgstr "زمان"
+
+#: includes/class-bsr-admin.php:213
+msgid "Rows Updated"
+msgstr "ردیف به روز شد"
+
+#: includes/class-bsr-admin.php:213
+msgid "Changes Found"
+msgstr "تغییرات یافت شد"
+
+#: includes/class-bsr-admin.php:213
+msgid "Table"
+msgstr "جدول"
+
+#: includes/class-bsr-admin.php:115
+msgid "<p>During the search/replace, <strong>%d</strong> tables were searched, with <strong>%d</strong> cells changed in <strong>%d</strong> updates.</p><p><a href=\"%s\" class=\"thickbox\" title=\"Search/Replace Details\">Click here</a> for more details.</p>"
+msgstr "<p>در طول جستجو/جایگزینی، <strong>%d</strong> جدول جستجو شد، با <strong>%d</strong> سلول در <strong>%d</strong> بروزرسانی تغییر کرد.</p> <p><a href=\"%s\" class=\"thickbox\" title=\"Search/Replace Details\">برای جزئیات بیشتر اینجا کلیک کنید</a>.</p>"
+
+#: includes/class-bsr-admin.php:108
+msgid "<p><strong>DRY RUN:</strong> <strong>%d</strong> tables were searched, <strong>%d</strong> cells were found that need to be updated, and <strong>%d</strong> changes were made.</p><p><a href=\"%s\" class=\"thickbox\" title=\"Dry Run Details\">Click here</a> for more details, or use the form below to run the search/replace.</p>"
+msgstr "<p><strong>اجرای خشک:</strong> <strong>%d</strong> جدول جستجو شد، <strong>%d</strong> سلول یافت شد که باید به‌روزرسانی شود، و <strong>%d </strong> تغییرات ایجاد شد.</p><p><a href=\"%s\" class=\"thickbox\" title=\"Dry Run Details\">برای جزئیات بیشتر اینجا را کلیک کنید</a> یا از فرم استفاده کنید در زیر برای اجرای جستجو/جایگزینی.</p>"
+
+#. Plugin Name of the plugin
+#: better-search-replace.php includes/class-bsr-admin.php:87
+msgid "Better Search Replace"
+msgstr "Better Search Replace"
+
+#: includes/class-bsr-admin.php:74
+msgid "An error occurred processing your request. Try decreasing the \"Max Page Size\", or contact support."
+msgstr "هنگام پردازش درخواست شما خطایی روی داد. سعی کنید \"حداکثر اندازه صفحه\" یا پشتیبانی از تماس را کاهش دهید."
+
+#: includes/class-bsr-admin.php:73
+msgid "Please select the tables that you want to update."
+msgstr "لطفا جداول مورد نظر خود را برای به روزرسانی انتخاب کنید."
+
+#: includes/class-bsr-admin.php:72
+msgid "No search string was defined, please enter a URL or string to search for."
+msgstr "هیچ رشته جستجو تعریف نشده است ، لطفاً URL یا رشته ای را برای جستجو وارد کنید."

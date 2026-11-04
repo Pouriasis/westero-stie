@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'webberzone/top-10',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '8e2809cf3457124392ed639c283c4fb69545345a',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'freemius/wordpress-sdk' => array(
+            'pretty_version' => '2.13.5',
+            'version' => '2.13.5.0',
+            'reference' => null,
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../freemius/wordpress-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'jaybizzle/crawler-detect' => array(
+            'pretty_version' => 'v1.4.1',
+            'version' => '1.4.1.0',
+            'reference' => '770e00e5bcd35054871a6f790f380123cc3b8b0c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jaybizzle/crawler-detect',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'webberzone/top-10' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '8e2809cf3457124392ed639c283c4fb69545345a',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

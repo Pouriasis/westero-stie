@@ -1,0 +1,465 @@
+# Translation of Plugins - Advanced Editor Tools - Stable (latest release) in Persian
+# This file is distributed under the same license as the Plugins - Advanced Editor Tools - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-10-15 06:41:47+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: fa\n"
+"Project-Id-Version: Plugins - Advanced Editor Tools - Stable (latest release)\n"
+
+#: tadv_admin.php:164
+msgid "Disable"
+msgstr "غیرفعال"
+
+#: tadv_admin.php:160
+msgid "Enable"
+msgstr "فعال"
+
+#: tadv_admin.php:154
+msgid "The <b>Clear formatting</b> button will remove text formatting from the selected text, or from the whole paragraph if there is no selection. This includes femoval of most text styling like bold, italic, underline, background and foreground color, etc."
+msgstr "دکمه <b>حذف ساختار و فرمت</b> فرمت و ویژگی‌های اختصاص داده‌شده به متن انتخاب‌شده ( و یا کل پاراگراف در صورت عدم‌انتخاب ) را حذف خواهد کرد . این شامل حذف بیشتر سبک‌های متنی مانند متن برجسته(بولد) ٬ کج(ایتالیک) ٬ زیرخط ٬ رنگ پیش‌زمینه و پس‌زمینه و غیره می‌شود."
+
+#: tadv_admin.php:151
+msgid "The <b>Mark</b> button will wrap the selected text in a plain &lt;mark&gt; HTML element. The appearance would depend on your theme and usually resembles highlighted text."
+msgstr ""
+"دکمه <b>نشان‌دار کردن</b> متن انتخاب‌شده را در یک عنصر(تگ html) مارک‌دار قرار می‌دهد\n"
+"ظاهر آن بستگی به تم و قالب شما دارد و معمولاً شبیه به متن هایلایت‌شده (highlighted text) است."
+
+#: tadv_admin.php:147
+msgid "Additional buttons for the Rich-Text toolbar"
+msgstr "دکمه های اضافی برای نوار ابزار Rich-Text"
+
+#: tadv_admin.php:722
+msgid "Instances of the Classic editor on the front end of the site"
+msgstr "نمایش ویرایشگر کلاسیک در جلو سایت"
+
+#: tadv_admin.php:718
+msgid "Other instances of the Classic (TinyMCE) editor in wp-admin"
+msgstr "نمایش دیگری از ویرایشگر کلاسیک (TinyMCE) در wp-admin"
+
+#: tadv_admin.php:735
+msgid "Please note: This plugin was renamed from \"TinyMCE Advanced\" to \"Advanced Editor Tools\". The plugin functionality remains the same."
+msgstr "لطفا توجه داشته باشید: نام این افزونه از \"TinyMCE Advanced\" به \"Advanced Editor Tools\" تغییر یافت. عملکرد افزونه یکسان باقی می ماند."
+
+#: tadv_admin.php:41
+msgid "Advanced Editor Tools Settings Import"
+msgstr "تنظیمات درون‌ریزی ویرایشگر پیشرفته"
+
+#. Plugin Name of the plugin
+#: tinymce-advanced.php tadv_admin.php:114 tinymce-advanced.php:1158
+#: tinymce-advanced.php:1159
+msgid "Advanced Editor Tools"
+msgstr "ویرایشگر پیشرفته"
+
+#. Author URI of the plugin
+#: tinymce-advanced.php
+msgid "https://automattic.com"
+msgstr "https://automattic.com"
+
+#. Author of the plugin
+#: tinymce-advanced.php
+msgid "Automattic"
+msgstr "اتوماتیک"
+
+#. Plugin URI of the plugin
+#: tinymce-advanced.php
+msgid "https://wordpress.org/plugins/tinymce-advanced/"
+msgstr "https://fa.wordpress.org/plugins/tinymce-advanced/"
+
+#. Description of the plugin
+#: tinymce-advanced.php
+msgid "Extends and enhances the block editor (Gutenberg) and the classic editor (TinyMCE)."
+msgstr "ویرایشگر بلوک (گوتنبرگ) و ویرایشگر کلاسیک (TinyMCE) را گسترش داده و بهبود می بخشد."
+
+#: tadv_admin.php:599
+msgid "Keep paragraph tags in the Classic block and the Classic Editor"
+msgstr "برچسب های پاراگراف را در بلوک کلاسیک و ویرایشگر کلاسیک نگه دارید"
+
+#: tinymce-advanced.php:812
+msgid "Clear formatting"
+msgstr "پاک کردن ساختار"
+
+#: tadv_admin.php:702
+msgid "It is important that the exported file is not edited in any way."
+msgstr "مهم است که فایل صادر شده به هیچ وجه ویرایش نشود."
+
+#: tadv_admin.php:690
+msgid "To keep the table more responsive please use percentage values when setting widths."
+msgstr "برای پاسخگویی بیشتر جدول ، لطفاً هنگام تنظیم عرض از مقادیر درصد استفاده کنید."
+
+#: tadv_admin.php:686
+msgid "The advanced tabs allow setting of inline CSS styles on the table, each row, and each cell. They have fields for easier setting of border, border color and background color styles."
+msgstr "زبانه های پیشرفته امکان تنظیم سبک های CSS درون خطی را در جدول، هر ردیف و هر سلول فراهم می کنند. آنها فیلدهایی برای تنظیم آسان تر حاشیه، رنگ حاشیه و سبک های رنگ پس زمینه دارند."
+
+#: tadv_admin.php:684
+msgid "Show the advanced tabs in the table properties dialogs"
+msgstr "زبانه های پیشرفته را در گفتگوی ویژگی های جدول نشان دهید"
+
+#: tadv_admin.php:679
+msgid "When disabled, pressing the tab key will jump outside the editor area."
+msgstr "هنگام غیرفعال بودن ، با فشار دادن کلید Tab به خارج از منطقه ویرایشگر می رود."
+
+#: tadv_admin.php:677
+msgid "Jump to the next cell when pressing the tab key while editing a table"
+msgstr "در هنگام ویرایش جدول با زدن دکمه Tab به سلول بعد پرش میکند"
+
+#: tadv_admin.php:672
+msgid "If the grid is disabled the number of rows and columns can be typed in the Insert Table dialog."
+msgstr "اگر گرید غیرفعال باشد، می‌توان تعداد سطرها و ستون‌ها را در گفتگوی Insert Table تایپ کرد."
+
+#: tadv_admin.php:670
+msgid "When inserting a table show a grid where the number of rows and columns can be selected by dragging with the mouse"
+msgstr "هنگام درج جدول، شبکه ای را نشان دهید که در آن می توان تعداد سطرها و ستون ها را با کشیدن با ماوس انتخاب کرد."
+
+#: tadv_admin.php:665
+msgid "This will add a border around the table unless it is overriden by your theme."
+msgstr "با این کار یک حاشیه در اطراف جدول اضافه می شود مگر اینکه توسط موضوع شما لغو شود."
+
+#: tadv_admin.php:663
+msgid "When inserting a table set the HTML border attribute to 1"
+msgstr "هنگام درج جدول، ویژگی حاشیه HTML را برابر با 1 قرار دهید"
+
+#: tadv_admin.php:658
+msgid "This option does not affect inline styles on tables in existing posts. To reset table size or remove all formatting for the whole table please see the two buttons at the bottom of the Format menu."
+msgstr "این گزینه روی استایل های درون خطی جداول در پست های موجود تاثیری ندارد. برای بازنشانی اندازه جدول یا حذف همه قالب‌بندی‌ها برای کل جدول، لطفاً دو دکمه در پایین منوی Format را ببینید."
+
+#: tadv_admin.php:654
+msgid "Then the table, the rows and the cells can be resized by typing the size values in the advanced options tabs."
+msgstr "سپس با تایپ مقادیر اندازه در تب گزینه های پیشرفته می توان اندازه جدول، ردیف ها و سلول ها را تغییر داد."
+
+#: tadv_admin.php:653
+msgid "Disabling this option will stop the editor from adding inline CSS styles and will produce cleaner HTML code."
+msgstr "غیرفعال کردن این گزینه، ویرایشگر را از اضافه کردن سبک‌های CSS درون خطی باز می‌دارد و کد HTML پاک‌تری تولید می‌کند."
+
+#: tadv_admin.php:650
+msgid "When a row or a column is resized the inline styles are updated on all table rows and cells."
+msgstr "هنگامی که اندازه یک سطر یا یک ستون تغییر می کند، سبک های درون خطی در تمام ردیف ها و سلول های جدول به روز می شوند."
+
+#: tadv_admin.php:649
+msgid "This may override some styles that are set by your theme and usually makes the table non-responsive when viewed on a small screen like a smartphone."
+msgstr "این ممکن است برخی از سبک‌هایی را که با موضوع شما تنظیم می‌شوند لغو کند و معمولاً وقتی جدول را روی صفحه‌نمایش کوچکی مانند تلفن هوشمند مشاهده می‌کنید، پاسخگو نباشد."
+
+#: tadv_admin.php:648
+msgid "When enabled the whole table, rows, and columns can be resized by dragging but the sizes are set with inline CSS styles."
+msgstr "در صورت فعال بودن کل جدول، ردیف‌ها و ستون‌ها را می‌توان با کشیدن تغییر اندازه داد، اما اندازه‌ها با سبک‌های CSS درون خطی تنظیم می‌شوند."
+
+#: tadv_admin.php:646
+msgid "Enable resizing of tables, rows, and columns by dragging with the mouse"
+msgstr "تغییر اندازه جداول، سطرها و ستون ها را با کشیدن با ماوس فعال کنید"
+
+#: tadv_admin.php:643
+msgid "Advanced options for tables"
+msgstr "گزینه های پیشرفته برای جداول"
+
+#: tadv_admin.php:601
+msgid "Stop removing &lt;p&gt; and &lt;br&gt; tags in the Classic Editor and show them in the Text tab."
+msgstr "جلوگیری از حذف تگ‌های &lt;p&gt;  و &lt;br&gt; در ویرایشگر کلاسیک و نمایش آن‌ها در تب متن."
+
+#. translators: URL to (localised) Classic Editor plugin.
+#: tadv_admin.php:587
+msgid "https://wordpress.org/plugins/classic-editor/"
+msgstr "https://wordpress.org/plugins/classic-editor/"
+
+#: tadv_admin.php:566
+msgid "Selecting this option also adds some improvements and fixes for the Classic block."
+msgstr "با انتخاب این گزینه برخی بهبودها و اصلاحات برای بلوک کلاسیک نیز اضافه می شود."
+
+#: tadv_admin.php:565
+msgid "The default block is inserted on pressing Enter in the title, or clicking under the last block."
+msgstr "بلوک پیش‌فرض با فشار دادن Enter در عنوان یا کلیک کردن زیر آخرین بلوک وارد می‌شود."
+
+#: tadv_admin.php:563
+msgid "Make the Classic Paragraph or Classic block the default block (hybrid mode)"
+msgstr "پاراگراف کلاسیک یا بلوک کلاسیک را به بلوک پیش‌فرض تبدیل کنید (حالت ترکیبی)"
+
+#: tadv_admin.php:548
+msgid "Add Classic Paragraph block"
+msgstr "افزودن بلوک پاراگراف کلاسیک"
+
+#: tadv_admin.php:338
+msgid "Toolbars for the Classic Editor"
+msgstr "نوار ابزار برای ویرایشگر کلاسیک"
+
+#: tadv_admin.php:292
+msgid "Unused Buttons for the Classic Paragraph and Classic blocks toolbars"
+msgstr "دکمه های استفاده نشده برای نوار ابزار پاراگراف کلاسیک و بلوک های کلاسیک"
+
+#: tadv_admin.php:89
+msgid "Importing of settings failed. The imported file is invalid."
+msgstr "درون‌‌ریزی تنظیمات انجام نشد. پرونده وارد شده نامعتبر است."
+
+#: tadv_admin.php:86
+msgid "Importing of settings failed. The imported file is empty."
+msgstr "درون‌‌ریزی تنظیمات انجام نشد. پرونده وارد شده خالی است."
+
+#: tadv_admin.php:83
+msgid "Importing of settings failed. Please import a valid settings file."
+msgstr "درون ‌ریزی تنظیمات انجام نشد. لطفاً یک پرونده تنظیمات معتبر وارد کنید."
+
+#: tadv_admin.php:76 tadv_admin.php:94
+msgid "Settings imported successfully."
+msgstr "درون‌ریزی تنظیمات موفقیت آمیز بود."
+
+#: tadv_admin.php:56
+msgid "Import settings from string"
+msgstr "درون‌ریزی تنظیمات بصورت متن"
+
+#: tadv_admin.php:47
+msgid "Import settings"
+msgstr "درون‌ریزی تنظیمات"
+
+#: tadv_admin.php:45
+msgid "The settings are imported from a previously exported settings file."
+msgstr "درون‌ریزی تنظیمات از پرونده تنظیمات قبلی انجام شده است."
+
+#: tinymce-advanced.php:813
+msgid "Mark"
+msgstr "علامت"
+
+#: tinymce-advanced.php:793
+msgid "For use instead of the Paragraph Block. Supports transforming to and from multiple Paragraph blocks, Image, Table, List, Quote, Custom HTML, and most other blocks."
+msgstr "برای استفاده بجای بلاک پاراگراف. پشتیبانی میشود از تبدیل به و از چند بلوک پاراگراف،تصویر،جدول،فهرست،نقل قول، کدسفارشیی HTML، و بلاک‌های دیگر."
+
+#: tadv_admin.php:556
+msgid "In addition most default blocks can be transformed into classic paragraphs, and a Classic Paragraph can be converted to multiple blocks."
+msgstr "علاوه بر این، بیشتر بخش‌های پیش‌فرض می توانند تبدیل شوند به پاراگراف‌های کلاسیک، و پاراگراف‌های کلاسیک می تواند به بخش های چندگانه تبدیل شود."
+
+#: tadv_admin.php:510
+msgid "Append all buttons to the top toolbar in the Classic Paragraph and Classic blocks."
+msgstr "تمام دکمه ها را به نوار ابزار بالا در بلوک های کلاسیک پاراگراف و کلاسیک اضافه کنید."
+
+#: tadv_admin.php:172
+msgid "The toolbars in the Classic Paragraph and Classic blocks are narrower and show on focus."
+msgstr "نوارابزار در پاراگراف کلاسیک و بلاک‌های کلاسیک باریکتر و در فوکوس نمایش داده میشود."
+
+#: tadv_admin.php:169
+msgid "Toolbars for the Classic Paragraph and Classic blocks"
+msgstr "نوارابزار در پاراگراف کلاسیک و بلاک‌های کلاسیک"
+
+#: tadv_admin.php:142
+msgid "Classic Editor (TinyMCE)"
+msgstr "ویرایشگر کلاسیک (TinyMCE)"
+
+#: tadv_admin.php:137
+msgid "Block Editor (Gutenberg)"
+msgstr "ویرایشگر بلاک( گوتنبرگ)"
+
+#: tadv_admin.php:557
+msgid "It can be used everywhere instead of the Paragraph block including in columns, when creating reusable blocks, etc."
+msgstr "می‌توان از آن در همه جا به جای بلوک پاراگراف، از جمله در ستون‌ها، هنگام ایجاد بلوک‌های قابل استفاده مجدد و غیره استفاده کرد."
+
+#: tadv_admin.php:552
+msgid "Also, like the Classic block, most existing TinyMCE plugins and add-ons will continue to work."
+msgstr "همچنین، مانند بلوک کلاسیک، اکثر افزونه‌ها و افزونه‌های TinyMCE موجود به کار خود ادامه خواهند داد."
+
+#: tadv_admin.php:551
+msgid "You can add multiple paragraphs, tables, galleries, embed video, set fonts and colors, and generally use everything that is available in the Classic Editor."
+msgstr "میتوانید پاراگراف،جدول،گالری،ویدئو،فونت‌های چندگانه و رنگ‌های متنوع استفاده کنید وعموما استفاده کنید از هرچیزی که در ویرایشگر کلاسیک موجود است."
+
+#: tadv_admin.php:550
+msgid "The Classic Paragraph block includes the familiar TinyMCE editor and is an extended and enhanced Classic block."
+msgstr "بلاک کلاسیک پاراگراف شامل ویرایشگر آشنای TinyMCE و بلاک کلاسیک توسعه یافته و پیشرفته است."
+
+#: tinymce-advanced.php:791
+msgid "Classic Paragraph"
+msgstr "پاراگراف کلاسیک"
+
+#: tadv_admin.php:633
+msgid "Disabled:"
+msgstr "غیرفعال شده:"
+
+#: tadv_admin.php:585
+msgid "If you prefer to use both editors side by side, do not enable this option. It is better to install the %1$sClassic Editor plugin%2$s."
+msgstr "اگر ترجیح می‌دهید از هردو ویرایشگر در کنارهم استفاده کنید، این گزینه را فعال نکنید. بهتر است %1$s افزونه ویرایشگر کلاسیک%2$s را نصب کنید."
+
+#: tadv_admin.php:580
+msgid "It will allow you to use other plugins that enhance that editor, add old-style Meta Boxes, or in some way depend on the previous Edit Post screen."
+msgstr "آن به شما اجازه می دهد از افزونه‌های دیگر برای بهبود ویرایشگر استفاده کنید، اضافه کنید استایل قدیمی متا باکس، یا در روشی دیگر براساس صفحه نمایش قبلی."
+
+#: tadv_admin.php:579
+msgid "Selecting this option will restore the previous (&#8220;classic&#8221;) editor and the previous Edit Post screen."
+msgstr "انتخاب این گزینه بازیابی می کند(&#8220;ویرایشگر&#8221;) کلاسیک و صفحه نمایش قبلی."
+
+#: tadv_admin.php:577
+msgid "Replace the Block Editor with the Classic Editor"
+msgstr "ویرایشگر بلاک با ویرایشگر کلاسیک جایگزین میکند"
+
+#: tadv_admin.php:553
+msgid "This makes the Block Editor more familiar, easier to use, easier to get used to, and more compatible with your existing workflow."
+msgstr "این ویرایشگر بلاک را آشناتر می کند، برای استفاده راحت تر می کند، و همچنین هماهنگی اش را برای استفاده کنونی شما بیشتر از قبل می کند."
+
+#: tadv_admin.php:511
+msgid "This affects buttons that are added by other plugins. These buttons will be appended to the top toolbar row instead of forming second, third, and forth rows."
+msgstr "این موثر بر دکمه‌هایی ست که افزونه‌]ای دیگر اضافه می کنند.این دکمه‌ها در بالای نوارابزار بجای ردیف‌های دوم و سوم و چهارم اضافه می شود."
+
+#: tadv_admin.php:179
+msgid "Enable the editor menu (recommended)."
+msgstr "فعال کردن فهرست ویرایشگر (توصیه می شود)."
+
+#: tadv_admin.php:174
+msgid "The buttons will wrap around depending on the width of the toolbar."
+msgstr "دکمه ها بسته به عرض نوار ابزار بسته می شوند."
+
+#: tadv_admin.php:173
+msgid "For best results enable the menu and add only essential buttons."
+msgstr "برای بهترین نتایج، فهرست را فعال کنید و تنها دکمه های ضروری را اضافه کنید."
+
+#: tadv_admin.php:289 tadv_admin.php:457
+msgid "Drop buttons in the toolbars, or drag the buttons to rearrange them."
+msgstr "دکمه ها را در نوار ابزار بکشید، یا دکمه ها را بکشید تا آنها را دوباره مرتب کنید."
+
+#: tadv_admin.php:537
+msgid "Replace the size setting available for fonts with: %s."
+msgstr "جایگزینی تنظیمات اندازه‌ی قلم برای فونت ها با: %s"
+
+#: tadv_admin.php:634
+msgid "A stylesheet file named editor-style.css was not added by your theme."
+msgstr "یک فایل css با نام editor-style.css توسط قالب شما افزوده نشده است."
+
+#: tinymce-advanced.php:1171
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: tadv_admin.php:714
+msgid "The Classic Editor (Add New and Edit posts and pages)"
+msgstr "ویرایشگر کلاسیک (افزودن جدید و ویرایش نوشته‌ها و برگه‌ها)"
+
+#: tadv_admin.php:711
+msgid "Enable the editor enhancements for:"
+msgstr "فعال‌سازی گزینه‌های پیشرفته ویرایشگر برای:"
+
+#: tadv_admin.php:699
+msgid "Settings import and export"
+msgstr "درون‌ریزی و برون‌ریزی تنظیمات"
+
+#: tadv_admin.php:624
+msgid "Create CSS classes menu"
+msgstr "ایجاد منو کلاس‌های CSS"
+
+#: tadv_admin.php:536
+msgid "Font sizes"
+msgstr "اندازه‌های قلم"
+
+#: tadv_admin.php:531
+msgid "Open the TinyMCE link dialog when using the link button on the toolbar or the link menu item."
+msgstr "بازکردن پنجره لینک TinyMCE درهنگام استفاده از دکمه لینک در نوار ابزار یا آیتم منوی لینک"
+
+#: tadv_admin.php:530
+msgid "Alternative link dialog"
+msgstr "پنجره لینک جایگزین"
+
+#: tadv_admin.php:525
+msgid "Replace the browser context (right-click) menu."
+msgstr "جایگزین منوی (کلیک راست) محتوای مرورگر"
+
+#: tadv_admin.php:518
+msgid "Enable more list options: upper or lower case letters for ordered lists, disk or square for unordered lists, etc."
+msgstr "فعال‌سازی گزینه‌های لیست بیشتر: حروف کوچک و بزرگ برای لیست‌های مرتب، دیسک یا مربع برای لیست‌های نامرتب، غیره"
+
+#: tadv_admin.php:506
+msgid "Options"
+msgstr "گزینه‌ها"
+
+#: tinymce-advanced.php:342
+msgid "Please upgrade your WordPress installation or download an <a href=\"%s\">older version of the plugin</a>."
+msgstr "لطفا وردپرس خود را بروزرسانی کنید یا یک <a href=\"%s\">نسخه قدیمی‌تر از افزونه را دانلود نمایید</a>."
+
+#: tinymce-advanced.php:334
+msgid "Advanced Editor Tools requires WordPress version %1$s or newer. It appears that you are running %2$s. This can make the editor unstable."
+msgstr "ویرایشگر پیشرفته tinyMCE به نسخه ی وردپرس %1$s  نیاز دارد. به نظر می رسد شما از نسخه ی %2$s  استفاده می کنید. این موضوع باعث عدم پایداری ویرایشگر میگردد."
+
+#: tadv_admin.php:748
+msgid "The [Toolbar toggle] button shows or hides the second, third, and forth button rows. It will only work when it is in the first row and there are buttons in the second row."
+msgstr "دکمه [Toolbar toggle] دکمه های دوم، سوم و چهار را نشان می دهد یا پنهان می کند. این کار تنها زمانی انجام می شود که در ردیف اول قرار داشته و دکمه هایی در ردیف دوم وجود دارد."
+
+#: tadv_admin.php:742
+msgid "Restore Default Settings"
+msgstr "بازنشانی تنظیمات پیشفرض"
+
+#: tadv_admin.php:707
+msgid "Import Settings"
+msgstr "درون‌ریزی تنظیمات"
+
+#: tadv_admin.php:706
+msgid "Export Settings"
+msgstr "برون‌بری تنظیمات"
+
+#: tadv_admin.php:697
+msgid "Administration"
+msgstr "مدیریت"
+
+#: tadv_admin.php:604
+msgid "Line breaks in the Text tab in the Classic Editor would still affect the output, in particular do not use empty lines, line breaks inside HTML tags or multiple &lt;br&gt; tags."
+msgstr "شکسته‌های خط در برگه متن در ویرایشگر کلاسیک همچنان بر خروجی تأثیر می‌گذارد، به ویژه از خطوط خالی، شکسته‌های خط در تگ‌های HTML یا چندین &lt;br&gt; برچسب ها"
+
+#: tadv_admin.php:603
+msgid "However it may behave unexpectedly in rare cases, so test it thoroughly before enabling it permanently."
+msgstr "با این وجود ممکن است در موارد نادر اتفاق بیفتد، بنابراین قبل از اینکه آن را به طور دائم فعال کنید، آن را کاملا آزمایش کنید."
+
+#: tadv_admin.php:602
+msgid "This will make it possible to use more advanced coding in the Text tab without the back-end filtering affecting it much."
+msgstr "این امکان استفاده از کدنویسی پیشرفته تری را در برگه Text بدون اینکه فیلترینگ پشتیبان تاثیر زیادی بر آن داشته باشد را ممکن می سازد."
+
+#: tadv_admin.php:626
+msgid "Load the CSS classes used in editor-style.css and replace the Formats menu."
+msgstr "بارگذاری کلاس‌های CSS بکاررفته در editor-style.css و جایگزینی فهرست فرمت‌ها."
+
+#: tadv_admin.php:545
+msgid "Advanced Options"
+msgstr "گزینه‌های پیشرفته"
+
+#: tadv_admin.php:524
+msgid "Context Menu"
+msgstr "منوی متن"
+
+#: tadv_admin.php:516
+msgid "List Style Options"
+msgstr "گزینه‌های نگارش لیست"
+
+#: tadv_admin.php:460
+msgid "Unused Buttons"
+msgstr "دکمه‌های استفاده نشده"
+
+#: tadv_admin.php:343
+msgid "Enable the editor menu."
+msgstr "فعال سازی منوی ویرایشگر."
+
+#: tadv_admin.php:132 tadv_admin.php:743
+msgid "Save Changes"
+msgstr "ذخیره تغییرات"
+
+#: tadv_admin.php:120
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شدند."
+
+#: tadv_admin.php:103
+msgid "ERROR: All toolbars are empty. Default settings loaded."
+msgstr "خطا: همه نوارابزارها خالی می‌باشند. تنظیمات پیشفرض بارگذاری شدند."
+
+#: tadv_admin.php:73
+msgid "Importing of settings failed."
+msgstr "درون‌ریزی تنظیمات ناموفق شد."
+
+#: tadv_admin.php:55
+msgid "Verify"
+msgstr "تایید"
+
+#: tadv_admin.php:52
+msgid "Alternatively the settings can be imported from a JSON encoded string. Please paste the exported string in the text area below."
+msgstr "درون‌ریزی تنظیمات از طریق رشته‌ی کدشده JSON صورت می‌گیرند. لطفا رشته‌ی برون‌بری شده را در ناحیه متنی زیر، وارد نمایید."
+
+#: tadv_admin.php:61
+msgid "Back to Editor Settings"
+msgstr "بازگشت به تنظیمات ویرایشگر"
+
+#: tadv_admin.php:701
+msgid "The settings are exported as a JSON encoded file."
+msgstr "تنظیمات به عنوان یک رشته JSON کدگذاری شده برون‌بری می‌شوند."
+
+#: tadv_admin.php:35
+msgid "Default settings restored."
+msgstr "تنظیمات پیشفرض بازیابی شدند."

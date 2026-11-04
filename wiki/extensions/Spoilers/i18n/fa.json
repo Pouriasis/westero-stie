@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tim Aldridge",
+			"Kris Blair"
+		]
+	},
+	"spoilers": "اسپویلر",
+	"spoilers_description": "Spoiler Tag - &lt;spoiler show=\"showMessage\" hide=\"hideMessage\"&gt;Spoiler Text&lt;/spoiler&gt;",
+	"spoilers_show_default": "نمایش اسپویلر",
+	"spoilers_hide_default": "مخفی کردن"
+}

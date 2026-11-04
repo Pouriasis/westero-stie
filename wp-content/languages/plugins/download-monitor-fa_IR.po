@@ -1,0 +1,2664 @@
+# Translation of Plugins - Download Monitor - Stable (latest release) in Persian
+# This file is distributed under the same license as the Plugins - Download Monitor - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-05-25 02:58:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.7\n"
+"Language: fa\n"
+"Project-Id-Version: Plugins - Download Monitor - Stable (latest release)\n"
+
+#: src/Shop/Util/PostType.php:20
+msgid "Add New Product"
+msgstr "اضافه کردن محصول جدید"
+
+#: src/Shop/Util/PostType.php:21
+msgid "Add Product"
+msgstr "افزودن محصول"
+
+#: src/Shop/Util/PostType.php:17
+msgid "All Products"
+msgstr "همه محصولات"
+
+#: src/Shop/Util/PostType.php:23
+msgid "Edit Product"
+msgstr "ویرایش محصول"
+
+#: src/Shop/Util/PostType.php:24
+msgid "New Product"
+msgstr "محصول جدید"
+
+#: src/Shop/Util/PostType.php:28
+msgid "No Products found"
+msgstr "محصولی یافت نشد"
+
+#: src/Shop/Util/PostType.php:30
+msgid "Parent Product"
+msgstr "محصول اصلی"
+
+#: src/Shop/Admin/WritePanels.php:41 src/Shop/Admin/WritePanels.php:49
+msgid "Product Information"
+msgstr "اطلاعات محصول"
+
+#: src/Shop/Shortcode/Buy.php:71
+msgid "Product not found"
+msgstr "محصول یافت نشد"
+
+#: src/Shop/Util/PostType.php:27
+msgid "Search Products"
+msgstr "جستجوی محصولات"
+
+#: src/Shop/Util/PostType.php:25 src/Shop/Util/PostType.php:26
+msgid "View Product"
+msgstr "نمایش محصول"
+
+#: src/Shop/Util/PostType.php:29
+msgid "No Products found in trash"
+msgstr "محصولی در زباله‌دان پیدا نشد"
+
+#: src/Shop/Helper/Country.php:10
+msgid "&#197;land Islands"
+msgstr "ایسلند"
+
+#: src/Shop/Checkout/Field.php:59
+msgid "Address"
+msgstr "آدرس"
+
+#: src/Shop/Helper/Country.php:9
+msgid "Afghanistan"
+msgstr "افغانستان"
+
+#: src/Shop/Helper/Country.php:11
+msgid "Albania"
+msgstr "آلبانی"
+
+#: src/Shop/Helper/Country.php:12
+msgid "Algeria"
+msgstr "الجزایر"
+
+#: src/Shop/Admin/OrderTable.php:200 src/Widgets/Downloads.php:245
+msgid "All"
+msgstr "همه"
+
+#: src/Shop/Helper/Country.php:13
+msgid "American Samoa"
+msgstr "ساموای آمریکایی"
+
+#: assets/views/order/page-order-details.php:70
+msgid "Amount"
+msgstr "مقدار"
+
+#: src/Shop/Helper/Country.php:14
+msgid "Andorra"
+msgstr "آندورا"
+
+#: src/Shop/Helper/Country.php:15
+msgid "Angola"
+msgstr "آنگولا"
+
+#: src/Shop/Helper/Country.php:16
+msgid "Anguilla"
+msgstr "آنگویلا"
+
+#: src/Shop/Helper/Country.php:17
+msgid "Antarctica"
+msgstr "قطب جنوب"
+
+#: src/Shop/Helper/Country.php:18
+msgid "Antigua and Barbuda"
+msgstr "آنتیگوا و باربودا"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:118
+msgid "Application Client ID"
+msgstr "ID برنامه سرویس گیرنده"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:107
+msgid "Application Details"
+msgstr "جزئیات درخواست"
+
+#: src/Shop/Helper/Country.php:19
+msgid "Argentina"
+msgstr "آرژانتین"
+
+#: src/Shop/Helper/Currency.php:16
+msgid "Argentine Peso"
+msgstr "پزوی آرژانتین"
+
+#: src/Shop/Helper/Country.php:20
+msgid "Armenia"
+msgstr "ارمنستان"
+
+#: src/Shop/Helper/Country.php:21
+msgid "Aruba"
+msgstr "آروبا"
+
+#: src/Shop/Helper/Country.php:22
+msgid "Australia"
+msgstr "استرالیا"
+
+#: src/Shop/Helper/Currency.php:17
+msgid "Australian Dollars"
+msgstr "دلار استرالیا"
+
+#: src/Shop/Helper/Country.php:23
+msgid "Austria"
+msgstr "اتریش"
+
+#: src/Shop/Helper/Country.php:24
+msgid "Azerbaijan"
+msgstr "آذربایجان"
+
+#: src/Shop/Helper/Country.php:25
+msgid "Bahamas"
+msgstr "باهاما"
+
+#: src/Shop/Helper/Country.php:26
+msgid "Bahrain"
+msgstr "بحرین"
+
+#: src/Shop/Helper/Country.php:27
+msgid "Bangladesh"
+msgstr "بنگلادش"
+
+#: src/Shop/Helper/Currency.php:18
+msgid "Bangladeshi Taka"
+msgstr "تانگ بنگلادش"
+
+#: src/Shop/Helper/Country.php:28
+msgid "Barbados"
+msgstr "باربادوس"
+
+#: src/Admin/Settings/Settings.php:444
+msgid "Base Country"
+msgstr "کشور پایه"
+
+#: src/Shop/Helper/Country.php:29
+msgid "Belarus"
+msgstr "بلاروس"
+
+#: src/Shop/Helper/Country.php:31
+msgid "Belau"
+msgstr "Belau"
+
+#: src/Shop/Helper/Country.php:30
+msgid "Belgium"
+msgstr "بلژیک"
+
+#: src/Shop/Helper/Country.php:32
+msgid "Belize"
+msgstr "بلیز"
+
+#: src/Shop/Helper/Country.php:33
+msgid "Benin"
+msgstr "بنین"
+
+#: src/Shop/Helper/Country.php:34
+msgid "Bermuda"
+msgstr "برمودا"
+
+#: src/Shop/Helper/Country.php:35
+msgid "Bhutan"
+msgstr "بوتان"
+
+#: templates/shop/checkout.php:37
+msgid "Billing details"
+msgstr "جزئیات صورتحساب"
+
+#: src/Shop/Helper/Country.php:36
+msgid "Bolivia"
+msgstr "بولیوی"
+
+#: src/Shop/Helper/Country.php:37
+msgid "Bonaire, Saint Eustatius and Saba"
+msgstr "بونیر، سنت یوستیشس و سابا"
+
+#: src/Shop/Helper/Country.php:38
+msgid "Bosnia and Herzegovina"
+msgstr "بوسنی و هرزگوین"
+
+#: src/Shop/Helper/Country.php:39
+msgid "Botswana"
+msgstr "بوتسوانا"
+
+#: src/Shop/Helper/Country.php:40
+msgid "Bouvet Island"
+msgstr "جزیره بووت"
+
+#: src/Shop/Helper/Country.php:41
+msgid "Brazil"
+msgstr "برزیل"
+
+#: src/Shop/Helper/Currency.php:19
+msgid "Brazilian Real"
+msgstr "رئال برزیل"
+
+#: src/Shop/Helper/Country.php:42
+msgid "British Indian Ocean Territory"
+msgstr "قلمرو بریتانیا در اقیانوس هند"
+
+#: src/Shop/Helper/Country.php:43
+msgid "British Virgin Islands"
+msgstr "جزایر ویرجین بریتانیا"
+
+#: src/Shop/Helper/Country.php:44
+msgid "Brunei"
+msgstr "برونئی"
+
+#: src/Shop/Helper/Country.php:45
+msgid "Bulgaria"
+msgstr "بلغارستان"
+
+#: src/Shop/Helper/Currency.php:20
+msgid "Bulgarian Lev"
+msgstr "لو بلغارستان"
+
+#: src/Shop/Helper/Country.php:46
+msgid "Burkina Faso"
+msgstr "بورکینافاسو"
+
+#: src/Shop/Helper/Country.php:47
+msgid "Burundi"
+msgstr "بوروندی"
+
+#: src/Shop/Helper/Currency.php:21
+msgid "Burundian Franc"
+msgstr "فرانک بوروندی"
+
+#: src/Shop/Helper/Country.php:48
+msgid "Cambodia"
+msgstr "کامبوج"
+
+#: src/Shop/Helper/Country.php:49
+msgid "Cameroon"
+msgstr "کامرون"
+
+#: src/Shop/Helper/Country.php:50
+msgid "Canada"
+msgstr "کانادا"
+
+#: src/Shop/Helper/Currency.php:22
+msgid "Canadian Dollars"
+msgstr "دلار کانادا"
+
+#: src/Shop/Helper/Country.php:51
+msgid "Cape Verde"
+msgstr "کیپ ورد"
+
+#: src/Util/PageCreator.php:27
+msgid "Cart"
+msgstr "سبد خرید"
+
+#: templates/shop/cart.php:47
+msgid "Cart Totals"
+msgstr "مجموع سبد خرید"
+
+#: src/Admin/Settings/Settings.php:504
+msgid "Cart page"
+msgstr "صفحه سبد خرید"
+
+#: src/Shop/Helper/Country.php:52
+msgid "Cayman Islands"
+msgstr "جزایر کیمن"
+
+#: src/Shop/Helper/Country.php:53
+msgid "Central African Republic"
+msgstr "جمهوری آفریقای مرکزی"
+
+#: src/Shop/Helper/Country.php:54
+msgid "Chad"
+msgstr "چاد"
+
+#: assets/views/order/page-order-details.php:158
+msgid "Change"
+msgstr "تغییر"
+
+#: src/Util/PageCreator.php:40
+msgid "Checkout"
+msgstr "تسویه حساب"
+
+#: src/Admin/Settings/Settings.php:512
+msgid "Checkout page"
+msgstr "صفحه پرداخت"
+
+#: src/Shop/Helper/Country.php:55
+msgid "Chile"
+msgstr "شیلی"
+
+#: src/Shop/Helper/Currency.php:24
+msgid "Chilean Peso"
+msgstr "پزوی شیلی"
+
+#: src/Shop/Helper/Country.php:56
+msgid "China"
+msgstr "چین"
+
+#: src/Shop/Helper/Currency.php:25
+msgid "Chinese Yuan"
+msgstr "یوان چین"
+
+#: src/Shop/Helper/Country.php:57
+msgid "Christmas Island"
+msgstr "جزیره کریسمس"
+
+#: src/Shop/Checkout/Field.php:77
+msgid "City"
+msgstr "شهر"
+
+#: src/Shop/Helper/Country.php:58
+msgid "Cocos (Keeling) Islands"
+msgstr "جزایر کوکوس"
+
+#: src/Shop/Helper/Country.php:59
+msgid "Colombia"
+msgstr "کلمبیا"
+
+#: src/Shop/Helper/Currency.php:26
+msgid "Colombian Peso"
+msgstr "پزوی کلمبیا"
+
+#: src/Shop/Helper/Country.php:60
+msgid "Comoros"
+msgstr "کومور"
+
+#: src/Shop/Checkout/Field.php:41
+msgid "Company name"
+msgstr "نام شرکت"
+
+#: src/Shop/Helper/Country.php:61
+msgid "Congo (Brazzaville)"
+msgstr "کنگو (برازاویل)"
+
+#: src/Shop/Helper/Country.php:62
+msgid "Congo (Kinshasa)"
+msgstr "کنگو (کینشاسا)"
+
+#: src/Shop/Helper/Country.php:63
+msgid "Cook Islands"
+msgstr "جزایر کوک"
+
+#: src/Shop/Helper/Country.php:64
+msgid "Costa Rica"
+msgstr "کاستاریکا"
+
+#: src/Shop/Checkout/Field.php:87
+msgid "Country"
+msgstr "کشور"
+
+#: src/Shop/Helper/Country.php:65
+msgid "Croatia"
+msgstr "کرواسی"
+
+#: src/Shop/Helper/Currency.php:36
+msgid "Croatia kuna"
+msgstr "کونا کرواسی"
+
+#: src/Shop/Helper/Country.php:66
+msgid "Cuba"
+msgstr "کوبا"
+
+#: src/Shop/Helper/Country.php:67
+msgid "Cura&ccedil;ao"
+msgstr "کورا و کدیل"
+
+#: src/Admin/Settings/Settings.php:452
+msgid "Currency"
+msgstr "واحد پول"
+
+#: src/Admin/Settings/Settings.php:460
+msgid "Currency Position"
+msgstr "موقعیت ارز"
+
+#: assets/views/order/page-order-details.php:115
+msgid "Customer"
+msgstr "مشتری"
+
+#: src/Shop/Helper/Country.php:68
+msgid "Cyprus"
+msgstr "قبرس"
+
+#: src/Shop/Helper/Currency.php:27
+msgid "Czech Koruna"
+msgstr "کرونا چک"
+
+#: src/Shop/Helper/Country.php:69
+msgid "Czech Republic"
+msgstr "جمهوری چک"
+
+#: src/Shop/Helper/Currency.php:29
+msgid "Danish Krone"
+msgstr "کرون دانمارک"
+
+#: assets/views/order/page-order-details.php:161
+msgid "Date created"
+msgstr "تاریخ ایجاد"
+
+#: src/Admin/Settings/Settings.php:474
+msgid "Decimal Separator"
+msgstr "جداکننده اعشار"
+
+#: src/Admin/Settings/Settings.php:772
+msgid "Default Gateway"
+msgstr "درگاه پیش فرض"
+
+#: src/Shop/Helper/Country.php:70
+msgid "Denmark"
+msgstr "دانمارک"
+
+#: src/Admin/Settings/Settings.php:488
+msgid "Disable"
+msgstr "غیرفعال"
+
+#: src/Admin/Settings/Settings.php:487
+msgid "Disable Cart"
+msgstr "غیرفعال کردن سبد خرید"
+
+#: src/Shop/Helper/Country.php:71
+msgid "Djibouti"
+msgstr "جیبوتی"
+
+#: src/Shop/Helper/Currency.php:28
+msgid "Djiboutian Franc"
+msgstr "فرانک جیبوتی"
+
+#: src/Shop/Helper/Country.php:72
+msgid "Dominica"
+msgstr "دومینیکا"
+
+#: src/Shop/Helper/Currency.php:30
+msgid "Dominican Peso"
+msgstr "پزوی دومینیکن"
+
+#: src/Shop/Helper/Country.php:73
+msgid "Dominican Republic"
+msgstr "جمهوری دومینیکن"
+
+#: templates/shop/checkout/order-complete.php:106
+#: templates/shop/email/elements/downloads-table.php:15
+msgid "Download name"
+msgstr "نام دانلود"
+
+#: src/Shop/Helper/Country.php:74
+msgid "Ecuador"
+msgstr "اکوادور"
+
+#: src/Shop/Helper/Country.php:75
+msgid "Egypt"
+msgstr "مصر"
+
+#: src/Shop/Helper/Currency.php:32
+msgid "Egyptian Pound"
+msgstr "پوند مصر"
+
+#: src/Shop/Helper/Country.php:76
+msgid "El Salvador"
+msgstr "السالوادور"
+
+#: src/Shop/Checkout/Field.php:50
+msgid "Email address"
+msgstr "آدرس ایمیل"
+
+#: src/Shop/Admin/OrderTable.php:286
+msgid "Empty Trash"
+msgstr "خالی کردن سطل زباله"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:143
+msgid "Enable Sandbox"
+msgstr "فعالسازی Sandbox"
+
+#: src/Admin/Settings/Settings.php:791
+msgid "Enabled"
+msgstr "فعال"
+
+#: src/Admin/Settings/Settings.php:764
+msgid "Enabled Gateways"
+msgstr "درگاه فعال شده "
+
+#: src/Shop/Helper/Country.php:77
+msgid "Equatorial Guinea"
+msgstr "گینه استوایی"
+
+#: src/Shop/Helper/Country.php:78
+msgid "Eritrea"
+msgstr "اریتره"
+
+#: src/Shop/Helper/Country.php:79
+msgid "Estonia"
+msgstr "استونی"
+
+#: src/Shop/Helper/Country.php:80
+msgid "Ethiopia"
+msgstr "اتیوپی"
+
+#: src/Shop/Helper/Currency.php:31
+msgid "Ethiopian Birr"
+msgstr "بیر اتیوپی"
+
+#: src/Shop/Helper/Currency.php:33
+msgid "Euros"
+msgstr "یورو"
+
+#: src/Shop/Helper/Country.php:81
+msgid "Falkland Islands"
+msgstr "جزایر فالکلند"
+
+#: src/Shop/Helper/Country.php:82
+msgid "Faroe Islands"
+msgstr "جزایر فارو"
+
+#: src/Shop/Helper/Country.php:83
+msgid "Fiji"
+msgstr "فیجی"
+
+#: src/Shop/Helper/Country.php:84
+msgid "Finland"
+msgstr "فنلاند"
+
+#: src/Shop/Checkout/Field.php:22
+msgid "First name"
+msgstr "نام"
+
+#: src/Shop/Helper/Country.php:85
+msgid "France"
+msgstr "فرانسه"
+
+#: src/Shop/Helper/Country.php:86
+msgid "French Guiana"
+msgstr "گویان فرانسه"
+
+#: src/Shop/Helper/Country.php:87
+msgid "French Polynesia"
+msgstr "پلینزی فرانسه"
+
+#: src/Shop/Helper/Country.php:88
+msgid "French Southern Territories"
+msgstr "مناطق جنوبی فرانسه"
+
+#: src/Shop/Helper/Country.php:89
+msgid "Gabon"
+msgstr "گابن"
+
+#: src/Shop/Helper/Country.php:90
+msgid "Gambia"
+msgstr "گامبیا"
+
+#: src/Shop/Helper/Country.php:91
+msgid "Georgia"
+msgstr "جورجیا"
+
+#: src/Shop/Helper/Country.php:92
+msgid "Germany"
+msgstr "آلمان"
+
+#: src/Shop/Helper/Country.php:93
+msgid "Ghana"
+msgstr "غنا"
+
+#: src/Shop/Helper/Currency.php:34
+msgid "Ghanaian Cedi"
+msgstr "سدی غنا"
+
+#: src/Shop/Helper/Country.php:94
+msgid "Gibraltar"
+msgstr "جبل الطارق"
+
+#: src/Shop/Helper/Country.php:95
+msgid "Greece"
+msgstr "یونان"
+
+#: src/Shop/Helper/Country.php:96
+msgid "Greenland"
+msgstr "گرینلند"
+
+#: src/Shop/Helper/Country.php:97
+msgid "Grenada"
+msgstr "گرانادا"
+
+#: src/Shop/Helper/Country.php:98
+msgid "Guadeloupe"
+msgstr "گوادلوپ"
+
+#: src/Shop/Helper/Country.php:99
+msgid "Guam"
+msgstr "گوام"
+
+#: src/Shop/Helper/Country.php:100
+msgid "Guatemala"
+msgstr "گواتمالا"
+
+#: src/Shop/Helper/Country.php:101
+msgid "Guernsey"
+msgstr "گورنسی"
+
+#: src/Shop/Helper/Country.php:102
+msgid "Guinea"
+msgstr "گینه"
+
+#: src/Shop/Helper/Country.php:103
+msgid "Guinea-Bissau"
+msgstr "گینه بیسائو"
+
+#: src/Shop/Helper/Country.php:104
+msgid "Guyana"
+msgstr "گایانا"
+
+#: src/Shop/Helper/Country.php:105
+msgid "Haiti"
+msgstr "هائیتی"
+
+#: src/Shop/Helper/Country.php:106
+msgid "Heard Island and McDonald Islands"
+msgstr "جزایر هرد و جزایر مک دونالد"
+
+#: src/Shop/Helper/Country.php:107
+msgid "Honduras"
+msgstr "هندوراس"
+
+#: src/Shop/Helper/Country.php:108
+msgid "Hong Kong"
+msgstr "هنگ کنگ"
+
+#: src/Shop/Helper/Currency.php:35
+msgid "Hong Kong Dollar"
+msgstr "دلار هنگ کنگ"
+
+#: src/Shop/Helper/Currency.php:37
+msgid "Hungarian Forint"
+msgstr "فورینت مجارستان"
+
+#: src/Shop/Helper/Country.php:109
+msgid "Hungary"
+msgstr "مجارستان"
+
+#: src/Shop/Helper/Country.php:110
+msgid "Iceland"
+msgstr "ایسلند"
+
+#: src/Shop/Helper/Currency.php:38
+msgid "Icelandic krona"
+msgstr "کرون ایسلندی"
+
+#: src/Shop/Helper/Country.php:111
+msgid "India"
+msgstr "هند"
+
+#: src/Shop/Helper/Currency.php:40
+msgid "Indian Rupee"
+msgstr "روپیه هند"
+
+#: src/Shop/Helper/Country.php:112
+msgid "Indonesia"
+msgstr "اندونزی"
+
+#: src/Shop/Helper/Currency.php:39
+msgid "Indonesia Rupiah"
+msgstr "روپیه اندونزی"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:101
+msgid "Invoice Prefix"
+msgstr "پیشوند فاکتور"
+
+#: src/Shop/Helper/Country.php:113
+msgid "Iran"
+msgstr "ایران"
+
+#: src/Shop/Helper/Currency.php:42
+msgid "Iranian rial"
+msgstr "ریال ایران"
+
+#: src/Shop/Helper/Country.php:114
+msgid "Iraq"
+msgstr "عراق"
+
+#: src/Shop/Helper/Country.php:115
+msgid "Ireland"
+msgstr "ایرلند"
+
+#: src/Shop/Helper/Country.php:116
+msgid "Isle of Man"
+msgstr "جزیره من"
+
+#: src/Shop/Helper/Country.php:117
+msgid "Israel"
+msgstr "اسرائیل"
+
+#: src/Shop/Helper/Currency.php:41
+msgid "Israeli Shekel"
+msgstr "شکل اسرائیل"
+
+#: src/Shop/Helper/Country.php:118
+msgid "Italy"
+msgstr "ایتالیا"
+
+#: src/Shop/Helper/Country.php:119
+msgid "Ivory Coast"
+msgstr "ساحل عاج"
+
+#: src/Shop/Helper/Country.php:120
+msgid "Jamaica"
+msgstr "جامائیکا"
+
+#: src/Shop/Helper/Country.php:121
+msgid "Japan"
+msgstr "ژاپن"
+
+#: src/Shop/Helper/Currency.php:43
+msgid "Japanese Yen"
+msgstr "ین ژاپن"
+
+#: src/Shop/Helper/Country.php:122
+msgid "Jersey"
+msgstr "جرسی"
+
+#: src/Shop/Helper/Country.php:123
+msgid "Jordan"
+msgstr "اردن"
+
+#: src/Shop/Helper/Country.php:124
+msgid "Kazakhstan"
+msgstr "قزاقستان"
+
+#: src/Shop/Helper/Country.php:125
+msgid "Kenya"
+msgstr "کنیا"
+
+#: src/Shop/Helper/Currency.php:44
+msgid "Kenyan Shilling"
+msgstr "شیلینگ کنیا"
+
+#: src/Shop/Helper/Country.php:126
+msgid "Kiribati"
+msgstr "کیریباتی"
+
+#: src/Shop/Helper/Country.php:127
+msgid "Kuwait"
+msgstr "کویت"
+
+#: src/Shop/Helper/Country.php:128
+msgid "Kyrgyzstan"
+msgstr "قرقیزستان"
+
+#: src/Shop/Helper/Currency.php:45
+msgid "Lao Kip"
+msgstr "کیپ لائوس"
+
+#: src/Shop/Helper/Country.php:129
+msgid "Laos"
+msgstr "لائوس"
+
+#: src/Shop/Checkout/Field.php:32
+msgid "Last name"
+msgstr "نام خانوادگی"
+
+#: src/Shop/Helper/Country.php:130
+msgid "Latvia"
+msgstr "لتونی"
+
+#: src/Shop/Helper/Country.php:131
+msgid "Lebanon"
+msgstr "لبنان"
+
+#: src/Admin/Settings/Settings.php:464
+msgid "Left (%s)"
+msgstr "چپ (%s)"
+
+#: src/Admin/Settings/Settings.php:466
+msgid "Left with space (%s)"
+msgstr "چپ با فاصله (%s)"
+
+#: src/Shop/Helper/Country.php:132
+msgid "Lesotho"
+msgstr "لسوتو"
+
+#: src/Shop/Helper/Country.php:133
+msgid "Liberia"
+msgstr "لیبریا"
+
+#: src/Shop/Helper/Country.php:134
+msgid "Libya"
+msgstr "لیبی"
+
+#: src/Shop/Helper/Country.php:135
+msgid "Liechtenstein"
+msgstr "لیختن اشتاین"
+
+#: src/Shop/Helper/Country.php:136
+msgid "Lithuania"
+msgstr "لیتوانی"
+
+#: src/Shop/Helper/Country.php:137
+msgid "Luxembourg"
+msgstr "لوکزامبورگ"
+
+#: src/Shop/Helper/Country.php:138
+msgid "Macao S.A.R., China"
+msgstr "ماکائو S.A.R.، چین"
+
+#: src/Shop/Helper/Country.php:139
+msgid "Macedonia"
+msgstr "مقدونیه"
+
+#: src/Shop/Helper/Country.php:140
+msgid "Madagascar"
+msgstr "ماداگاسکار"
+
+#: src/Shop/Helper/Country.php:141
+msgid "Malawi"
+msgstr "مالاوی"
+
+#: src/Shop/Helper/Country.php:142
+msgid "Malaysia"
+msgstr "مالزی"
+
+#: src/Shop/Helper/Currency.php:47
+msgid "Malaysian Ringgits"
+msgstr "رینگیت مالزی"
+
+#: src/Shop/Helper/Country.php:143
+msgid "Maldives"
+msgstr "مالدیو"
+
+#: src/Shop/Helper/Country.php:144
+msgid "Mali"
+msgstr "مالی"
+
+#: src/Shop/Helper/Country.php:145
+msgid "Malta"
+msgstr "مالت"
+
+#: src/Shop/Helper/Country.php:146
+msgid "Marshall Islands"
+msgstr "جزایر مارشال"
+
+#: src/Shop/Helper/Country.php:147
+msgid "Martinique"
+msgstr "مارتینیک"
+
+#: src/Shop/Helper/Country.php:148
+msgid "Mauritania"
+msgstr "موریتانی"
+
+#: src/Shop/Helper/Country.php:149
+msgid "Mauritius"
+msgstr "موریس"
+
+#: src/Shop/Helper/Country.php:150
+msgid "Mayotte"
+msgstr "مایوت"
+
+#: src/Shop/Helper/Currency.php:48
+msgid "Mexican Peso"
+msgstr "پزوی مکزیک"
+
+#: src/Shop/Helper/Country.php:151
+msgid "Mexico"
+msgstr "مکزیک"
+
+#: src/Shop/Helper/Country.php:152
+msgid "Micronesia"
+msgstr "میکرونزی"
+
+#: src/Shop/Helper/Country.php:153
+msgid "Moldova"
+msgstr "مولداوی"
+
+#: src/Shop/Helper/Country.php:154
+msgid "Monaco"
+msgstr "موناکو"
+
+#: src/Shop/Helper/Country.php:155
+msgid "Mongolia"
+msgstr "مغولستان"
+
+#: src/Shop/Helper/Country.php:156
+msgid "Montenegro"
+msgstr "مونته نگرو"
+
+#: src/Shop/Helper/Country.php:157
+msgid "Montserrat"
+msgstr "مونتسرات"
+
+#: src/Shop/Helper/Country.php:158
+msgid "Morocco"
+msgstr "مراکش"
+
+#: src/Shop/Helper/Country.php:159
+msgid "Mozambique"
+msgstr "موزامبیک"
+
+#: src/Shop/Helper/Country.php:160
+msgid "Myanmar"
+msgstr "میانمار"
+
+#: templates/shop/cart.php:19
+msgid "Name"
+msgstr "نام"
+
+#: src/Shop/Helper/Country.php:161
+msgid "Namibia"
+msgstr "نامیبیا"
+
+#: src/Shop/Helper/Country.php:162
+msgid "Nauru"
+msgstr "نائورو"
+
+#: src/Shop/Helper/Country.php:163
+msgid "Nepal"
+msgstr "نپال"
+
+#: src/Shop/Helper/Currency.php:51
+msgid "Nepali Rupee"
+msgstr "روپیه نپال"
+
+#: src/Shop/Helper/Country.php:164
+msgid "Netherlands"
+msgstr "هلند"
+
+#: src/Shop/Helper/Country.php:165
+msgid "New Caledonia"
+msgstr "کالدونیای جدید"
+
+#: src/Shop/Helper/Country.php:166
+msgid "New Zealand"
+msgstr "نیوزلند"
+
+#: src/Shop/Helper/Currency.php:52
+msgid "New Zealand Dollar"
+msgstr "دلار نیوزیلند"
+
+#: src/Shop/Helper/Country.php:167
+msgid "Nicaragua"
+msgstr "نیکاراگوئه"
+
+#: src/Shop/Helper/Country.php:168
+msgid "Niger"
+msgstr "نیجر"
+
+#: src/Shop/Helper/Country.php:169
+msgid "Nigeria"
+msgstr "نیجریه"
+
+#: src/Shop/Helper/Currency.php:49
+msgid "Nigerian Naira"
+msgstr "نایرا نیجریه"
+
+#: src/Shop/Helper/Country.php:170
+msgid "Niue"
+msgstr "نیو"
+
+#: assets/views/order/page-order-details.php:105
+msgid "No transactions found"
+msgstr "هیچ تراکنشی یافت نشد"
+
+#: src/Shop/Helper/Country.php:171
+msgid "Norfolk Island"
+msgstr "جزیره نورفولک"
+
+#: src/Shop/Helper/Country.php:173
+msgid "North Korea"
+msgstr "کره شمالی"
+
+#: src/Shop/Helper/Country.php:172
+msgid "Northern Mariana Islands"
+msgstr "جزایر ماریانای شمالی"
+
+#: src/Shop/Helper/Country.php:174
+msgid "Norway"
+msgstr "نروژ"
+
+#: src/Shop/Helper/Currency.php:50
+msgid "Norwegian Krone"
+msgstr "کرون نروژ"
+
+#: src/Shop/Helper/Country.php:175
+msgid "Oman"
+msgstr "عمان"
+
+#: src/Shop/Email/VarParser.php:122
+#: templates/shop/checkout/order-complete.php:33
+msgid "Order Date"
+msgstr "تاریخ سفارش"
+
+#: assets/views/order/page-order-details.php:141
+#: templates/shop/checkout/order-complete.php:21
+msgid "Order Details"
+msgstr "جزئیات سفارش"
+
+#: assets/views/order/page-order-details.php:14
+msgid "Order Details #%s"
+msgstr "جزئیات سفارش #%s"
+
+#: src/Shop/Email/VarParser.php:118
+#: templates/shop/checkout/order-complete.php:25
+msgid "Order ID"
+msgstr "شماره سفارش"
+
+#: assets/views/order/page-order-details.php:19
+msgid "Order Items"
+msgstr "آیتم های سفارش"
+
+#: assets/views/order/page-order-details.php:146
+#: templates/shop/checkout/order-complete.php:29
+msgid "Order Status"
+msgstr "وضعیت سفارش"
+
+#: src/Shop/Email/VarParser.php:126
+msgid "Order Total"
+msgstr "مجموع سفارش"
+
+#: assets/views/order/page-order-overview.php:15
+#: src/Shop/Admin/Pages/Orders.php:23
+msgid "Orders"
+msgstr "سفارشات"
+
+#: src/Admin/Reports/Page.php:46
+msgid "Overview"
+msgstr "بررسی اجمالی"
+
+#: src/Admin/Settings/Settings.php:499
+msgid "Pages"
+msgstr "صفحات"
+
+#: src/Shop/Helper/Country.php:176
+msgid "Pakistan"
+msgstr "پاکستان"
+
+#: src/Shop/Helper/Currency.php:54
+msgid "Pakistani Rupee"
+msgstr "روپیه پاکستان"
+
+#: src/Shop/Helper/Country.php:177
+msgid "Palestinian Territory"
+msgstr "قلمرو فلسطین"
+
+#: src/Shop/Helper/Country.php:178
+msgid "Panama"
+msgstr "پاناما"
+
+#: src/Shop/Helper/Country.php:179
+msgid "Papua New Guinea"
+msgstr "پاپوآ گینه نو"
+
+#: src/Shop/Helper/Country.php:180
+msgid "Paraguay"
+msgstr "پاراگوئه"
+
+#: src/Shop/Helper/Currency.php:56
+msgid "Paraguayan Guaraní"
+msgstr "گوارانی پاراگوئه"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:24
+msgid "Pay with PayPal"
+msgstr "پرداخت با پی‌پال"
+
+#: src/Shop/Email/VarParser.php:133
+msgid "Payment Gateway"
+msgstr "دروازه پرداخت"
+
+#: assets/views/order/page-order-details.php:170
+msgid "Payment Method"
+msgstr "روش پرداخت"
+
+#: src/Shop/Order/Transaction/Factory.php:39
+msgid "Pending"
+msgstr "در انتظار"
+
+#: src/Shop/Order/Status/Factory.php:21
+msgid "Pending Payment"
+msgstr "در انتظار پرداخت"
+
+#: src/Shop/Helper/Country.php:181
+msgid "Peru"
+msgstr "پرو"
+
+#: src/Shop/Helper/Currency.php:53
+msgid "Philippine Pesos"
+msgstr "پزو فیلیپین"
+
+#: src/Shop/Helper/Country.php:182
+msgid "Philippines"
+msgstr "فیلیپین"
+
+#: src/Shop/Helper/Country.php:183
+msgid "Pitcairn"
+msgstr "پیتکرن"
+
+#: src/Shop/Helper/Country.php:184
+msgid "Poland"
+msgstr "لهستان"
+
+#: src/Shop/Helper/Currency.php:55
+msgid "Polish Zloty"
+msgstr "زلوتی لهستان"
+
+#: src/Shop/Helper/Country.php:185
+msgid "Portugal"
+msgstr "پرتغال"
+
+#: src/Shop/Checkout/Field.php:68
+msgid "Postcode / ZIP"
+msgstr "کد پستی"
+
+#: src/Shop/Helper/Currency.php:57
+msgid "Pounds Sterling"
+msgstr "پوند استرلینگ"
+
+#: assets/views/order/page-order-details.php:26
+#: src/Shop/Admin/ProductTableColumns.php:37 templates/shop/cart.php:20
+msgid "Price"
+msgstr "قیمت"
+
+#: assets/views/meta-box/product-information.php:6
+msgid "Price (%s)"
+msgstr "قیمت (%s)"
+
+#: templates/shop/cart.php:56
+msgid "Proceed to checkout"
+msgstr "پرداخت"
+
+#: assets/views/order/page-order-details.php:71
+msgid "Processor"
+msgstr "پردازنده"
+
+#: assets/views/order/page-order-details.php:25 src/Shop/Util/PostType.php:19
+#: templates/shop/checkout/order-review.php:16
+msgid "Product"
+msgstr "محصول"
+
+#: src/Shop/Helper/Country.php:186
+msgid "Puerto Rico"
+msgstr "پورتوریکو"
+
+#: templates/shop/button/add-to-cart-box.php:25
+#: templates/shop/button/add-to-cart-box.php:27
+msgid "Purchase Now"
+msgstr "هم اکنون بخرید"
+
+#: assets/views/order/page-order-details.php:27
+msgid "QTY"
+msgstr "تعداد"
+
+#: src/Shop/Helper/Country.php:187
+msgid "Qatar"
+msgstr "قطر"
+
+#: templates/shop/cart.php:21
+msgid "Quantity"
+msgstr "مقدار"
+
+#: src/Shop/Order/Status/Factory.php:30
+msgid "Refunded"
+msgstr "بازپرداخت"
+
+#: src/Shop/Helper/Country.php:188
+msgid "Reunion"
+msgstr "Reunion"
+
+#: src/Admin/Settings/Settings.php:465
+msgid "Right (%s)"
+msgstr "راست (%s)"
+
+#: src/Admin/Settings/Settings.php:467
+msgid "Right with space (%s)"
+msgstr "راست با فاصله (%s)"
+
+#: src/Shop/Helper/Country.php:189
+msgid "Romania"
+msgstr "رومانی"
+
+#: src/Shop/Helper/Currency.php:58
+msgid "Romanian Leu"
+msgstr "لئوی رومانی"
+
+#: src/Shop/Helper/Country.php:190
+msgid "Russia"
+msgstr "روسیه"
+
+#: src/Shop/Helper/Currency.php:59
+msgid "Russian Ruble"
+msgstr "روبل روسیه"
+
+#: src/Shop/Helper/Country.php:191
+msgid "Rwanda"
+msgstr "رواندا"
+
+#: src/Shop/Helper/Currency.php:60
+msgid "Rwandan Franc"
+msgstr "فرانک رواندا"
+
+#: src/Shop/Helper/Country.php:201
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+
+#: src/Shop/Helper/Country.php:192
+msgid "Saint Barth&eacute;lemy"
+msgstr "اکوا و سنت بارت"
+
+#: src/Shop/Helper/Country.php:193
+msgid "Saint Helena"
+msgstr "سنت هلن"
+
+#: src/Shop/Helper/Country.php:194
+msgid "Saint Kitts and Nevis"
+msgstr "سنت کیتس و نویس"
+
+#: src/Shop/Helper/Country.php:195
+msgid "Saint Lucia"
+msgstr "سنت لوسیا"
+
+#: src/Shop/Helper/Country.php:197
+msgid "Saint Martin (Dutch part)"
+msgstr "سنت مارتین (قسمت هلندی)"
+
+#: src/Shop/Helper/Country.php:196
+msgid "Saint Martin (French part)"
+msgstr "سنت مارتین (قسمت فرانسوی)"
+
+#: src/Shop/Helper/Country.php:198
+msgid "Saint Pierre and Miquelon"
+msgstr "سنت پیر و میکلون"
+
+#: src/Shop/Helper/Country.php:199
+msgid "Saint Vincent and the Grenadines"
+msgstr "سنت وینسنت و گرنادین"
+
+#: src/Shop/Helper/Country.php:254
+msgid "Samoa"
+msgstr "ساموآ"
+
+#: src/Shop/Helper/Country.php:200
+msgid "San Marino"
+msgstr "سان مارینو"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:141
+msgid "Sandbox"
+msgstr "Sandbox"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:150
+msgid "Sandbox Client ID"
+msgstr "شناسه مشتری Sandbox"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:157
+msgid "Sandbox Client Secret"
+msgstr "شناسه امنیتی Sandbox"
+
+#: src/Shop/Helper/Country.php:202
+msgid "Saudi Arabia"
+msgstr "عربستان سعودی"
+
+#: src/Shop/Helper/Country.php:203
+msgid "Senegal"
+msgstr "سنگال"
+
+#: src/Shop/Helper/Country.php:204
+msgid "Serbia"
+msgstr "صربستان"
+
+#: src/Shop/Helper/Country.php:205
+msgid "Seychelles"
+msgstr "سیشل"
+
+#: src/Admin/Settings/Settings.php:436 src/Shop/Util/PostType.php:18
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: src/Shop/Helper/Country.php:206
+msgid "Sierra Leone"
+msgstr "سیرا لئون"
+
+#: src/Shop/Helper/Country.php:207
+msgid "Singapore"
+msgstr "سنگاپور"
+
+#: src/Shop/Helper/Currency.php:61
+msgid "Singapore Dollar"
+msgstr "دلار سنگاپور"
+
+#: src/Shop/Helper/Country.php:208
+msgid "Slovakia"
+msgstr "اسلواکی"
+
+#: src/Shop/Helper/Country.php:209
+msgid "Slovenia"
+msgstr "اسلوونی"
+
+#: src/Shop/Helper/Country.php:210
+msgid "Solomon Islands"
+msgstr "جزایر سلیمان"
+
+#: src/Shop/Helper/Country.php:211
+msgid "Somalia"
+msgstr "سومالی"
+
+#: src/Shop/Helper/Country.php:212
+msgid "South Africa"
+msgstr "آفریقای جنوبی"
+
+#: src/Shop/Helper/Currency.php:62
+msgid "South African rand"
+msgstr "راند آفریقای جنوبی"
+
+#: src/Shop/Helper/Country.php:213
+msgid "South Georgia/Sandwich Islands"
+msgstr "جزایر جنوبی جورجیا / ساندویچ"
+
+#: src/Shop/Helper/Country.php:214
+msgid "South Korea"
+msgstr "کره جنوبی"
+
+#: src/Shop/Helper/Currency.php:46
+msgid "South Korean Won"
+msgstr "وون کره جنوبی"
+
+#: src/Shop/Helper/Country.php:215
+msgid "South Sudan"
+msgstr "سودان جنوبی"
+
+#: src/Shop/Helper/Country.php:216
+msgid "Spain"
+msgstr "اسپانیا"
+
+#: src/Shop/Helper/Country.php:217
+msgid "Sri Lanka"
+msgstr "سری لانکا"
+
+#: templates/shop/cart/totals.php:11
+#: templates/shop/checkout/order-review.php:34
+msgid "Subtotal"
+msgstr "جمع جزء"
+
+#: src/Shop/Order/Transaction/Factory.php:42
+msgid "Success"
+msgstr "موفقیت"
+
+#: src/Shop/Helper/Country.php:218
+msgid "Sudan"
+msgstr "سودان"
+
+#: src/Shop/Helper/Country.php:219
+msgid "Suriname"
+msgstr "سورینام"
+
+#: src/Shop/Helper/Country.php:220
+msgid "Svalbard and Jan Mayen"
+msgstr "اسوالبارد و جان ماین"
+
+#: src/Shop/Helper/Country.php:221
+msgid "Swaziland"
+msgstr "سوازیلند"
+
+#: src/Shop/Helper/Country.php:222
+msgid "Sweden"
+msgstr "سوئد"
+
+#: src/Shop/Helper/Currency.php:63
+msgid "Swedish Krona"
+msgstr "کرون سوئد"
+
+#: src/Shop/Helper/Currency.php:64
+msgid "Swiss Franc"
+msgstr "فرانک سوئیس"
+
+#: src/Shop/Helper/Country.php:223
+msgid "Switzerland"
+msgstr "سوئیس"
+
+#: src/Shop/Helper/Country.php:224
+msgid "Syria"
+msgstr "سوریه"
+
+#: src/Shop/Helper/Country.php:225
+msgid "Taiwan"
+msgstr "تایوان"
+
+#: src/Shop/Helper/Currency.php:68
+msgid "Taiwan New Dollars"
+msgstr "دلار جدید تایوان"
+
+#: src/Shop/Helper/Country.php:226
+msgid "Tajikistan"
+msgstr "تاجیکستان"
+
+#: src/Shop/Helper/Country.php:227
+msgid "Tanzania"
+msgstr "تانزانیا"
+
+#: src/Shop/Helper/Currency.php:69
+msgid "Tanzanian Shilling"
+msgstr "شیلینگ تانزانیا"
+
+#: src/Shop/Checkout/PaymentGateway/PayPal/PayPalGateway.php:131
+msgid "Test Settings"
+msgstr "تنظیمات تست"
+
+#: src/Shop/Helper/Currency.php:65
+msgid "Thai Baht"
+msgstr "بات تایلند"
+
+#: src/Shop/Helper/Country.php:228
+msgid "Thailand"
+msgstr "تایلند"
+
+#: src/Admin/Settings/Settings.php:475
+msgid "The decimal separator of displayed prices."
+msgstr "جداکننده اعشاری از قیمت های نمایش داده شده."
+
+#: src/Admin/Settings/Settings.php:461
+msgid "The position of the currency symbol."
+msgstr "موقعیت نماد ارز"
+
+#: src/Admin/Settings/Settings.php:482
+msgid "The thousand separator of displayed prices."
+msgstr "مبلغ بصورت سه رقم سه رقم(هر هزار تا) جدا شود."
+
+#: src/Admin/Settings/Settings.php:481
+msgid "Thousand Separator"
+msgstr "جداکننده هزارگان"
+
+#: src/Shop/Helper/Country.php:229
+msgid "Timor-Leste"
+msgstr "تیمور لست"
+
+#: src/Shop/Helper/Country.php:230
+msgid "Togo"
+msgstr "توگو"
+
+#: src/Shop/Helper/Country.php:231
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: src/Shop/Helper/Country.php:232
+msgid "Tonga"
+msgstr "تونگا"
+
+#: assets/views/order/page-order-details.php:28
+#: assets/views/order/page-order-details.php:47
+#: src/Admin/Reports/class-dlm-reports.php:99 src/Shop/Admin/OrderTable.php:155
+#: templates/shop/cart.php:22 templates/shop/cart/totals.php:25
+#: templates/shop/checkout/order-review.php:17
+#: templates/shop/checkout/order-review.php:38
+msgid "Total"
+msgstr "جمع"
+
+#: assets/views/order/page-order-details.php:57
+msgid "Transactions"
+msgstr "معاملات"
+
+#: src/Shop/Order/Status/Factory.php:33
+msgid "Trash"
+msgstr "زباله دان"
+
+#: src/Shop/Helper/Country.php:233
+msgid "Trinidad and Tobago"
+msgstr "ترینیداد و توباگو"
+
+#: src/Shop/Helper/Country.php:234
+msgid "Tunisia"
+msgstr "تونس"
+
+#: src/Shop/Helper/Currency.php:66
+msgid "Tunisian Dinar"
+msgstr "دینار تونس"
+
+#: src/Shop/Helper/Country.php:235
+msgid "Turkey"
+msgstr "ترکیه"
+
+#: src/Shop/Helper/Currency.php:67
+msgid "Turkish Lira"
+msgstr "لیره ترکیه"
+
+#: src/Shop/Helper/Country.php:236
+msgid "Turkmenistan"
+msgstr "ترکمنستان"
+
+#: src/Shop/Helper/Country.php:237
+msgid "Turks and Caicos Islands"
+msgstr "جزایر ترکس و کایکوس"
+
+#: src/Shop/Helper/Country.php:238
+msgid "Tuvalu"
+msgstr "تووالو"
+
+#: src/Shop/Helper/Currency.php:73
+msgid "US Dollars"
+msgstr "دلار آمریکا"
+
+#: src/Shop/Helper/Country.php:239
+msgid "Uganda"
+msgstr "اوگاندا"
+
+#: src/Shop/Helper/Currency.php:71
+msgid "Ugandan Shilling"
+msgstr "شیلینگ اوگاندا"
+
+#: src/Shop/Helper/Country.php:240
+msgid "Ukraine"
+msgstr "اوکراین"
+
+#: src/Shop/Helper/Currency.php:70
+msgid "Ukrainian Hryvnia"
+msgstr "گْریونا اوکراین"
+
+#: src/Shop/Helper/Country.php:241
+msgid "United Arab Emirates"
+msgstr "امارات متحده عربی"
+
+#: src/Shop/Helper/Currency.php:72
+msgid "United Arab Emirates Dirham"
+msgstr "درهم امارات متحده عربی"
+
+#: src/Shop/Helper/Country.php:242
+msgid "United Kingdom (UK)"
+msgstr "بریتانیا (انگلستان)"
+
+#: src/Shop/Helper/Country.php:243
+msgid "United States (US)"
+msgstr "ایالات متحده (ایالات متحده)امریکا"
+
+#: src/Shop/Helper/Country.php:244
+msgid "United States (US) Minor Outlying Islands"
+msgstr "ایالات متحده (ایالات متحده) جزایر ناحیه ای کوچک"
+
+#: src/Shop/Helper/Country.php:245
+msgid "United States (US) Virgin Islands"
+msgstr "جزایر ویرجین ایالات متحده آمریکا"
+
+#: src/Shop/Helper/Country.php:246
+msgid "Uruguay"
+msgstr "اروگوئه"
+
+#: src/Shop/Helper/Country.php:247
+msgid "Uzbekistan"
+msgstr "ازبکستان"
+
+#: src/Shop/Helper/Country.php:248
+msgid "Vanuatu"
+msgstr "وانواتو"
+
+#: src/Shop/Helper/Country.php:249
+msgid "Vatican"
+msgstr "واتیکان"
+
+#: src/Shop/Helper/Country.php:250
+msgid "Venezuela"
+msgstr "ونزوئلا"
+
+#: src/Shop/Helper/Country.php:251
+msgid "Vietnam"
+msgstr "ویتنام"
+
+#: src/Shop/Helper/Currency.php:74
+msgid "Vietnamese Dong"
+msgstr "دانگ ویتنام"
+
+#: src/Shop/Helper/Country.php:252
+msgid "Wallis and Futuna"
+msgstr "والیس و فوتونا"
+
+#: src/Shop/Helper/Country.php:253
+msgid "Western Sahara"
+msgstr "صحرای غربی"
+
+#: src/Shop/Helper/Country.php:255
+msgid "Yemen"
+msgstr "یمن"
+
+#: src/Shop/Ajax/AdminChangeOrderStatus.php:28
+msgid "You are not allowed to do this."
+msgstr "شما مجاز به انجام این کار نیستید."
+
+#: templates/shop/cart/empty.php:6 templates/shop/checkout/empty.php:6
+msgid "Your cart is empty."
+msgstr "سبد خرید شما خالی است."
+
+#: templates/shop/checkout.php:41
+msgid "Your order"
+msgstr "سفارش شما"
+
+#: src/Shop/Helper/Country.php:256
+msgid "Zambia"
+msgstr "زامبیا"
+
+#: src/Shop/Helper/Country.php:257
+msgid "Zimbabwe"
+msgstr "زیمبابوه"
+
+#: includes/php-too-low.php:33
+msgid "clicking this link"
+msgstr "روی این لینک کلیک کنید"
+
+#: src/Shop/Util/Page.php:110
+msgid "no page"
+msgstr "بدون صفحه"
+
+#: templates/shop/checkout/submit-button.php:6
+msgid "Complete order"
+msgstr "تکمیل سفارش"
+
+#: src/Admin/Settings/Settings.php:295
+msgid "User Agent Logging"
+msgstr "عامل کاربر در حال ثبت است"
+
+#: src/Admin/Settings/Settings.php:288
+msgid "Store anonymized IP address (remove last 3 digits)"
+msgstr "ذخیره آدرس آی پی ناشناس (حذف 3 رقم آخر)"
+
+#: src/Admin/Settings/Settings.php:297
+msgid "If enabled, the user agent (browser) the user uses to download the file will be stored in your logs."
+msgstr "در صورت فعال کردن، عامل کاربر (مرورگر) که کاربر از آن برای دانلود استفاده می کند، در پرونده های شما ذخیره می شود."
+
+#: src/Admin/Settings/Settings.php:283 src/Admin/Settings/Settings.php:305
+msgid "IP Address Logging"
+msgstr "ثبت آدرس آی پی"
+
+#: src/Admin/Settings/Settings.php:287 src/Admin/Settings/Settings.php:305
+msgid "Store full IP address"
+msgstr "آدرس آی پی را کامل ذخیره کنید"
+
+#: src/Admin/Settings/Settings.php:289
+msgid "Store no IP address"
+msgstr "هیچ آدرس آی پی را ذخیره نکنید"
+
+#: src/Admin/Settings/Settings.php:284
+msgid "Define if and how you like to store IP addresses of users that download your files in your logs."
+msgstr "تعریف کنید که آیا و چگونه دوست دارید آدرس IP های کاربرانی را که فایل های خود را در گزارشات مربوط دانلود می کنند را ذخیره کنید."
+
+#: src/LegacyUpgrader/Page.php:46
+msgid "WARNING: We don't think your database needs upgrading. Only continue if you're 100% sure what you're doing!"
+msgstr "هشدار: ما فکر نمی کنیم که پایگاه داده شما نیاز به ارتقاء دارد. فقط اگر 100% s مطمئن هستید که چیکار می کنید ادامه دهید!"
+
+#: src/LegacyUpgrader/Page.php:48
+msgid "I'm sure I want to run the upgrader anyway"
+msgstr "من مطئمنم که می خواهم هر چیزی را بروزرسانی کنم"
+
+#: src/Admin/Settings/Settings.php:135
+msgid "Include in Search"
+msgstr "شامل در جستجو"
+
+#: src/Admin/Settings/Settings.php:137
+msgid "If enabled, downloads will be included in the site's internal search results."
+msgstr "در صورت فعال کردن، دانلود ها در نتایج جستجوی داخلی سایت قرار می گیرند."
+
+#: assets/views/notice-lu-upgrade.php:8
+msgid "Currently your downloads don't work like they should, we need to %s before they'll work again."
+msgstr "در حال حاضر دانلود های شما آنطور که باید کار نمی کنند، ما باید قبل از اینکه دوباره کار کنند به %s نیاز داریم."
+
+#: assets/views/notice-lu-upgrade.php:8
+msgid "upgrade your downloads"
+msgstr "دانلود های خود را ارتقا کنید"
+
+#: src/Admin/Settings/Page.php:121
+msgid "Download Monitor Transients successfully cleared!"
+msgstr "دانلود مانیتور با موفقیت تمیز شد!"
+
+#: src/LegacyUpgrader/Page.php:41
+msgid "Download Monitor - Legacy Upgrade"
+msgstr "دانلود مانیتور - ارتقاء میراث"
+
+#: src/Admin/Settings/Settings.php:324
+msgid "Clear all transients"
+msgstr "حذف تمام کش های دانلود مانیتور، این مساله می تواند مشکلات حافظه نهان را حل کند."
+
+#: src/Admin/Settings/Settings.php:325
+msgid "Remove all Download Monitor transients, this can solve version caching issues."
+msgstr "حذف تمام کش های دانلود مانیتور، این مساله می تواند مشکلات حافظه نهان را حل کند."
+
+#: src/Admin/MediaInsert.php:174
+msgid "Search download"
+msgstr "جستجو دانلود"
+
+#: src/PostTypeManager.php:92
+msgid "Search Download Versions"
+msgstr "جستجو نسخه های دانلود"
+
+#: src/Admin/Settings/Settings.php:256
+msgid "Generate SHA256 hash for uploaded files"
+msgstr "برای فایل های آپلود شده هش SHA256 را ایجاد کنید"
+
+#: assets/views/notice-lu-upgrade.php:7
+msgid "It looks like you upgraded to the latest version of Download Monitor from a legacy version (3.x)"
+msgstr "به نظر می رسد که شما به آخرین نسخه از دانلود مانیتور از یک نسخه قدیمی (3.x)"
+
+#: src/Admin/WritePanels.php:147
+msgid "No download information for new downloads."
+msgstr "اطلاعات دانلود برای دانلود جدید وجود ندارد."
+
+#: src/LegacyUpgrader/Page.php:42
+msgid "Welcome to the Download Monitor Legacy Upgrader. On this page we will upgrade your old Download Monitor (legacy) data so it will work with the latest version. If you're on this page, it should mean that you updated to this version from Download Monitor %s. If you're unsure if this is correct, or you want to read more about the legacy upgrade, we've setup a page that will explain this process in a lot more detail. %sClick here%s if to view that page."
+msgstr "به دانلود مانیتور میراث خوش آمدید. در این صفحه ما اطلاعات قدیمی دانلود مانیتور (میراث) خود را ارتقا می دهیم تا آخرین نسخه کار کند. اگر شما در این صفحه هستید، این به این معنی است که شما این نسخه %s از دانلود مانیتور را بروزرسانی کرده اید. اگر مطمئن نیستید که آیا این درست است یا خیر، یا می خواهید بیشتر در مورد ارتقاء میراث مطالعه کنید، ما یک صفحه راه اندازی کرده ایم که این فرآیند را با جزئیات بسیار بیشتری توضیح می دهد. برای تماشای این صفحه %s اینجا کلیک کنید %s ."
+
+#: src/LegacyUpgrader/Page.php:17
+msgid "Legacy Upgrader"
+msgstr "ارتقاء میراث"
+
+#: src/PostTypeManager.php:86
+msgid "Add Download Version"
+msgstr "افزودن نسخه دانلود"
+
+#: src/Admin/Reports/Page.php:86 src/Admin/Reports/Page.php:87
+#: src/Admin/Settings/Settings.php:270
+msgid "Reports"
+msgstr "گزارش ها"
+
+#: src/PostTypeManager.php:88
+msgid "Edit Download Version"
+msgstr "ویرایش نسخه دانلود"
+
+#: src/Admin/Settings/Settings.php:254
+msgid "SHA256 hashes"
+msgstr "هش های SHA256"
+
+#: src/PostTypeManager.php:94
+msgid "No Download Versions found in trash"
+msgstr "هیچ نسخه دانلود ای در سطل زباله یافت نشد"
+
+#: src/PostTypeManager.php:93
+msgid "No Download Versions found"
+msgstr "هیچ نسخه دانلود ای یافت نشد"
+
+#: templates/content-download-no-version.php:12
+msgid "has no version set!"
+msgstr "هیچ نسخه ای از آن وجود ندارد!"
+
+#: src/PostTypeManager.php:82
+msgid "All Download Versions"
+msgstr "همه نسخه های دانلود"
+
+#: src/PostTypeManager.php:89
+msgid "New Download Version"
+msgstr "نسخه دانلود جدید"
+
+#: src/PostTypeManager.php:95
+msgid "Parent Download Version"
+msgstr "نسخه دانلود والد"
+
+#: src/PostTypeManager.php:84
+msgid "Download Version"
+msgstr "نسخه دانلود"
+
+#: src/PostTypeManager.php:83
+msgid "Download Versions"
+msgstr "نسخه های دانلود"
+
+#: src/PostTypeManager.php:90 src/PostTypeManager.php:91
+msgid "View Download Version"
+msgstr "نمایش نسخه دانلود"
+
+#: src/Admin/Settings/Page.php:345
+msgid "Documentation"
+msgstr "مستندات"
+
+#: assets/views/notice-lu-upgrade.php:10
+msgid "Take me to the Upgrade Tool"
+msgstr "مرا به ابزار ارتقا دهید"
+
+#: assets/views/notice-lu-upgrade.php:11
+msgid "hide notice"
+msgstr "مخفی کردن اعلانات"
+
+#: assets/views/notice-lu-upgrade.php:9
+msgid "We've created an upgrading tool that will do all the work for you. You can read more about this tool on %sour website (click here)%s or start the upgrade now."
+msgstr "ما یک ابزار ارتقاء ایجاد کرده ایم که تمام کارها را برای شما انجام خواهد داد. شما می توانید بیشتر در مورد این ابزار در %sوبسایت ترش (کلیک کنید)%s بخوانید یا اکنون شروع به ارتقاء کنید."
+
+#: templates/content-download-no-version.php:11
+msgid "Please set a version in your WordPress admin"
+msgstr "لطفا یک نسخه را در مدیریت وردپرس خود قرار دهید"
+
+#: src/Admin/Settings/Settings.php:221
+msgid "List browser user agents to blacklist, 1 per line.  Partial matches are sufficient. Regex matching is allowed by surrounding the pattern with forward slashes, e.g. <code>/^Mozilla.+Googlebot/</code>"
+msgstr "لیست عوامل کاربر را به لیست سیاه اضافه کنید، در هر خط یک عامل. تطابق جزئی کافی است. تطابق Regex با اطراف الگو با اسلاش ، به عنوان مثا <code>/^Mozilla.+Googlebot/</code>"
+
+#: src/TaxonomyManager.php:70
+msgid "Download Tags"
+msgstr "برچسب‌های دانلود"
+
+#: src/TaxonomyManager.php:32
+msgid "Download Categories"
+msgstr "دسته‌های دانلود"
+
+#: src/Admin/Settings/Fields/LazySelect.php:41
+msgid "Loading"
+msgstr "بارگذاری"
+
+#: src/Admin/Settings/Settings.php:126
+msgid "Allow Proxy IP Override"
+msgstr "اجازه تغییر پروکسی آی پی"
+
+#: src/Admin/Settings/Settings.php:128
+msgid "If enabled, Download Monitor will use the X_FORWARDED_FOR HTTP header set by proxies as the IP address. Note that anyone can set this header, making it less secure."
+msgstr "اگر فعال شود، دانلود مانیتور از سرصفحه X_FORWARDED_FOR HTTP که توسط پروکسی ها به عنوان آدرس آی پی استفاده می شود، استفاده خواهد کرد. توجه داشته باشید هر کس می تواند این سرصفحه را تنظیم کند و آن را امن تر کند."
+
+#: src/Admin/Settings/Page.php:35 src/Admin/Settings/Page.php:36
+#: src/Admin/Settings/Settings.php:439 src/DLM.php:329
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: src/Admin/Settings/Page.php:178
+msgid "Settings successfully saved"
+msgstr "تنظیمات با موفقیت ذخیره شد"
+
+#: assets/views/order/page-order-details.php:68
+#: src/Shop/Admin/OrderTable.php:153 src/Shop/Admin/ProductTableColumns.php:38
+msgid "Date"
+msgstr "تاریخ"
+
+#: assets/views/order/page-order-details.php:69
+#: src/Admin/Reports/class-dlm-reports.php:128
+#: src/Shop/Admin/OrderTable.php:154
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/Admin/Reports/class-dlm-reports.php:108
+msgid "User"
+msgstr "کاربر"
+
+#: assets/views/meta-box/version.php:14 assets/views/meta-box/version.php:142
+msgid "n/a"
+msgstr "n/a"
+
+#: assets/views/meta-box/version.php:52 assets/views/meta-box/version.php:105
+#: src/Admin/WritePanels.php:254
+msgid "Upload file"
+msgstr "آپلود فایل"
+
+#: assets/views/meta-box/version.php:158
+msgid "File Date"
+msgstr "تاریخ فایل"
+
+#: assets/views/meta-box/version.php:170
+msgid "m"
+msgstr "m"
+
+#: src/DLM.php:443 src/DownloadHandler.php:688 src/DownloadHandler.php:693
+msgid "File not found."
+msgstr "فایل یافت نشد."
+
+#: src/PostTypeManager.php:33 src/PostTypeManager.php:87
+#: src/Shop/Util/PostType.php:22
+msgid "Edit"
+msgstr "ویرایش"
+
+#: src/PostTypeManager.php:34
+msgid "Edit Download"
+msgstr "ویرایش دانلود"
+
+#: src/PostTypeManager.php:35
+msgid "New Download"
+msgstr "دانلود جدید"
+
+#: src/Shortcodes.php:161 src/Shortcodes.php:283
+msgid "Download not found"
+msgstr "دانلود یافت نشد"
+
+#: src/TaxonomyManager.php:72
+msgid "Download Tag"
+msgstr "برچسب دانلود"
+
+#: src/TaxonomyManager.php:77
+msgid "Edit Download Tag"
+msgstr "ویرایش برچسب دانلود"
+
+#: src/Widgets/Downloads.php:55 src/Widgets/Downloads.php:171
+msgid "Featured Downloads"
+msgstr "دانلود های ویژه"
+
+#: src/Widgets/Downloads.php:215
+msgid "Random"
+msgstr "تصادفی"
+
+#: src/Widgets/Downloads.php:221
+msgid "Date modified"
+msgstr "تاریخ ویرایش"
+
+#: src/Widgets/Downloads.php:233
+msgid "ASC"
+msgstr "صعودی"
+
+#: src/Widgets/Downloads.php:235
+msgid "DESC"
+msgstr "نزولی"
+
+#: templates/content-download-box.php:26
+#: templates/content-download-filename.php:13
+#: templates/content-download-title.php:12 templates/content-download.php:20
+msgid "Version %s"
+msgstr "نسخه %s"
+
+#: src/Shop/Email/VarParser.php:70 templates/content-download-box.php:28
+#: templates/shop/checkout/order-complete.php:121
+msgid "Download File"
+msgstr "دانلود فایل"
+
+#. Plugin URI of the plugin
+msgid "https://www.download-monitor.com"
+msgstr "https://www.download-monitor.com"
+
+#: src/Shop/Admin/OrderTable.php:99
+msgid "Delete"
+msgstr "حذف"
+
+#: assets/views/meta-box/version.php:164
+msgid "h"
+msgstr "ساعت"
+
+#: src/DownloadHandler.php:321
+msgid "Password Required"
+msgstr "رمز عبور ضرور است"
+
+#: src/Admin/Settings/Page.php:274
+msgid "Save Changes"
+msgstr "ذخیره تغییرات"
+
+#: src/TaxonomyManager.php:37 src/TaxonomyManager.php:38
+msgid "Parent Download Category"
+msgstr "دسته دانلود والد"
+
+#: src/TaxonomyManager.php:34
+msgid "Download Category"
+msgstr "دسته دانلود"
+
+#: src/DLM.php:436 src/DownloadHandler.php:274 src/DownloadHandler.php:278
+#: src/DownloadHandler.php:286 src/DownloadHandler.php:290
+#: src/DownloadHandler.php:335 src/DownloadHandler.php:339
+msgid "Download does not exist."
+msgstr "دانلود وجود ندارد"
+
+#: src/PostTypeManager.php:41
+msgid "Parent Download"
+msgstr "دانلود والد"
+
+#. Plugin Name of the plugin
+#: src/Admin/class-dlm-media-library.php:175
+#: src/Admin/class-dlm-media-library.php:498
+msgid "Download Monitor"
+msgstr "دانلود مانیتور"
+
+#: src/DownloadHandler.php:278 src/DownloadHandler.php:290
+#: src/DownloadHandler.php:339 src/DownloadHandler.php:385
+#: src/DownloadHandler.php:401 src/DownloadHandler.php:425
+#: src/DownloadHandler.php:440 src/DownloadHandler.php:509
+#: src/DownloadHandler.php:634 src/DownloadHandler.php:693
+msgid "Download Error"
+msgstr "خطا دانلود"
+
+#: src/TaxonomyManager.php:35
+msgid "Search Download Categories"
+msgstr "جستجو دسته های دانلود"
+
+#: src/TaxonomyManager.php:73
+msgid "Search Download Tags"
+msgstr "جستجو برچسب های دانلود"
+
+#: src/Widgets/Downloads.php:208
+msgid "Order by"
+msgstr "ترتیب براساس"
+
+#: src/Shop/Admin/OrderTable.php:152 src/Widgets/Downloads.php:228
+msgid "Order"
+msgstr "ترتیب"
+
+#: src/Widgets/Downloads.php:219
+msgid "Date added"
+msgstr "تاریخ انتشار"
+
+#: src/Shop/Order/Status/Factory.php:24
+msgid "Completed"
+msgstr "تکمیل شده"
+
+#: assets/views/meta-box/version.php:10
+msgid "Click to toggle"
+msgstr "برای تغییر وضعیت کلیک کنید"
+
+#: src/TaxonomyManager.php:40
+msgid "Update Download Category"
+msgstr "بروزرسانی دسته دانلود"
+
+#: src/TaxonomyManager.php:78
+msgid "Update Download Tag"
+msgstr "بروزرسانی برچسب دانلود"
+
+#: src/DownloadHandler.php:278 src/DownloadHandler.php:290
+#: src/DownloadHandler.php:339 src/DownloadHandler.php:385
+#: src/DownloadHandler.php:401 src/DownloadHandler.php:425
+#: src/DownloadHandler.php:440 src/DownloadHandler.php:634
+#: src/DownloadHandler.php:693
+msgid "Go to homepage &rarr;"
+msgstr "برو به صفحه اصلی &rarr;"
+
+#: src/TaxonomyManager.php:75 src/TaxonomyManager.php:76
+msgid "Parent Download Tag"
+msgstr "برچسب دانلود والد"
+
+#: src/Util/PageCreator.php:14
+msgid "No Access"
+msgstr "بدون دسترسی"
+
+#: src/Admin/Settings/Page.php:303
+msgid "Because your server is running on nginx, our .htaccess file can't protect your downloads."
+msgstr "از آنجا که سرور شما در nginx در حال اجرا است، فایل .htaccess ما نمی تواند از دانلود های شما محافظت کند."
+
+#: src/Admin/Admin.php:275
+msgid "If you like %sDownload Monitor%s please leave us a %s★★★★★%s rating. A huge thank you from us in advance!"
+msgstr "اگر %s دانلود مانیتور %s را دوست دارید لطفا به ما %s ★★★★★ %s بدهید. از شما سپاسگزاریم!"
+
+#: src/PostTypeManager.php:43
+msgid "This is where you can create and manage downloads for your site."
+msgstr "این جایی است که شما می توانید دانلود ها را برای سایت خود ایجاد و مدیریت کنید."
+
+#: assets/views/meta-box/version.php:57 assets/views/meta-box/version.php:110
+#: src/Admin/WritePanels.php:259
+msgid "Choose a file"
+msgstr "انتخاب فایل"
+
+#: src/Admin/Extensions.php:181 src/Admin/Extensions.php:548
+#: src/PostTypeManager.php:183
+msgid "Extensions"
+msgstr "افزودنی ها"
+
+#: src/TaxonomyManager.php:41
+msgid "Add New Download Category"
+msgstr "افزودن دسته جدید دانلود"
+
+#: src/PostTypeManager.php:32
+msgid "Add Download"
+msgstr "افزودن دانلود"
+
+#: src/PostTypeManager.php:31 src/PostTypeManager.php:85
+msgid "Add New"
+msgstr "افزودن جدید"
+
+#: src/TaxonomyManager.php:79
+msgid "Add New Download Tag"
+msgstr "افزودن برچسب جدید دانلود"
+
+#: assets/views/order/page-order-details.php:165
+msgid "IP Address"
+msgstr "آدرس آی پی"
+
+#: assets/views/meta-box/version.php:58 assets/views/meta-box/version.php:111
+#: src/Admin/WritePanels.php:260
+msgid "Insert file URL"
+msgstr "وارد کردن آدرس فایل"
+
+#: src/TaxonomyManager.php:39
+msgid "Edit Download Category"
+msgstr "ویرایش دسته دانلود"
+
+#: src/PostTypeManager.php:40
+msgid "No Downloads found in trash"
+msgstr "هیچ دانلود ای در سطل زباله یافت نشد"
+
+#: src/PostTypeManager.php:39
+msgid "No Downloads found"
+msgstr "هیچ دانلود ای یافت نشد"
+
+#: src/TaxonomyManager.php:36
+msgid "All Download Categories"
+msgstr "همه دسته های دانلود"
+
+#: src/TaxonomyManager.php:74
+msgid "All Download Tags"
+msgstr "همه برچسب های دانلود"
+
+#: src/Shop/Order/Status/Factory.php:27
+#: src/Shop/Order/Transaction/Factory.php:45
+msgid "Failed"
+msgstr "ناموفق"
+
+#: src/TaxonomyManager.php:42
+msgid "New Download Category Name"
+msgstr "نام دسته جدید دانلود"
+
+#: src/TaxonomyManager.php:80
+msgid "New Download Tag Name"
+msgstr "نام برچسب جدید دانلود"
+
+#: src/PostTypeManager.php:36 src/PostTypeManager.php:37
+msgid "View Download"
+msgstr "نمایش دانلود"
+
+#: src/Shop/Admin/OrderTable.php:250
+msgid "Show all dates"
+msgstr "نمایش همه تاریخ ها"
+
+#: src/Shop/Admin/OrderTable.php:275
+msgid "Show All"
+msgstr "نمایش همه"
+
+#: src/Widgets/Downloads.php:28
+msgid "Display a list of your downloads."
+msgstr "نمایش لیستی از دانلود های شما."
+
+#: src/Widgets/Downloads.php:270
+msgid "Show only members only downloads"
+msgstr "نمایش فقط دانلود های برای اعضاء"
+
+#: src/Widgets/Downloads.php:263
+msgid "Show only featured downloads"
+msgstr "نمایش فقط دانلود های ویژه"
+
+#: assets/views/meta-box/version.php:100
+msgid "Enter one file path/URL per line - multiple files will be used as mirrors (chosen at random)."
+msgstr "مسیر/آدرس یک فایل را در هر خط وارد کنید - چندین فایل به عنوان آینه استفاده می شود (انتخاب به صورت تصادفی)."
+
+#: src/DLM.php:438 src/DownloadHandler.php:384 src/DownloadHandler.php:385
+#: src/DownloadHandler.php:401
+msgid "No file paths defined."
+msgstr "مسیر های فایل مشخص نشده است."
+
+#: assets/views/meta-box/version.php:67 assets/views/meta-box/version.php:117
+#: src/Admin/WritePanels.php:269
+msgid "Browse for file"
+msgstr "مرور فایل"
+
+#: src/Widgets/Downloads.php:191
+msgid "Limit"
+msgstr "محدودیت"
+
+#: src/Admin/Settings/Page.php:304 src/Admin/Settings/Page.php:497
+msgid "Please add the following rules to your nginx config to disable direct file access: %s"
+msgstr "لطفا قوانین زیر را به پیکربندی وب سرور nginx خود اضافه کنید برای غیر فعال کردن دسترسی مستقیم فایل: %s"
+
+#: src/Product/Product.php:211
+msgid "License successfully activated."
+msgstr "لایسنس با موفقیت فعال شد."
+
+#: src/Admin/Settings/Settings.php:220
+msgid "Blacklist user agents"
+msgstr "لیست سیاه عوامل کاربر"
+
+#: src/Admin/Settings/Settings.php:213
+msgid "List IP Addresses to blacklist, 1 per line. Use IP/CIDR netmask format for ranges. IPv4 examples: <code>198.51.100.1</code> or <code>198.51.100.0/24</code>. IPv6 examples: <code>2001:db8::1</code> or <code>2001:db8::/32</code>."
+msgstr "لیست آی پی را به لیست سیاه اضافه کنید، هر خط یک آی پی. استفاده از فرمت netmask آی پی/CIDR برای محدود سازی. برای مثال آی پی نسخه 4: <code>198.51.100.1</code> یا <code>198.51.100.0/24</code>. برای مثال آی پی نسخه 6: <code>2001:db8::1</code> یا <code>2001:db8::/32</code>."
+
+#: src/Widgets/Downloads.php:199
+msgid "Output template"
+msgstr "قالب خروجی"
+
+#: src/Widgets/Downloads.php:204
+msgid "Default template"
+msgstr "قالب پیش فرض"
+
+#: src/Shop/Admin/OrderTable.php:280
+msgid "Filter"
+msgstr "فیلتر"
+
+#: templates/content-download-button.php:13
+msgid "Download &ldquo;%s&rdquo;"
+msgstr "Download &ldquo;%s&rdquo;"
+
+#: src/Shop/Admin/OrderTable.php:272
+msgid "50 per page"
+msgstr "50 در هر صفحه"
+
+#: src/Shop/Admin/OrderTable.php:271
+msgid "25 per page"
+msgstr "25 در هر صفحه"
+
+#: src/Shop/Admin/OrderTable.php:274
+msgid "200 per page"
+msgstr "200 در هر صفحه"
+
+#: src/Shop/Admin/OrderTable.php:273
+msgid "100 per page"
+msgstr "100 در هر صفحه"
+
+#: templates/content-download-box.php:17
+#: templates/content-download-filename.php:16 templates/content-download.php:25
+msgid "1 download"
+msgid_plural "%d downloads"
+msgstr[0] "%d دانلود ها"
+
+#: templates/content-download-button.php:15
+#: templates/content-download-version-list.php:22
+msgid "Downloaded 1 time"
+msgid_plural "Downloaded %d times"
+msgstr[0] "%d بار دانلود شده است"
+
+#: src/Shop/Admin/OrderTable.php:263
+msgid "%1$s %2$d"
+msgstr "%1$s %2$d"
+
+#: src/Widgets/Downloads.php:30
+msgid "Downloads List"
+msgstr "فهرست دانلودها"
+
+#: assets/views/meta-box/product-information.php:13 src/Admin/Dashboard.php:78
+#: src/Admin/Extensions.php:542 src/PostTypeManager.php:29
+#: src/PostTypeManager.php:168
+msgid "Downloads"
+msgstr "دانلودها"
+
+#: src/PostTypeManager.php:28
+msgid "All Downloads"
+msgstr "همه دانلودها"
+
+#: src/PostTypeManager.php:38
+msgid "Search Downloads"
+msgstr "جست‌وجوی دانلودها"
+
+#: src/Admin/CustomLabels.php:24
+msgid "Download title"
+msgstr "عنوان دانلود"
+
+#: src/Admin/CustomLabels.php:49
+msgid "Download published."
+msgstr "دانلود منتشر شد."
+
+#: src/Admin/CustomLabels.php:50
+msgid "Download saved."
+msgstr "دانلود ذخیره شد."
+
+#: src/Admin/CustomLabels.php:51
+msgid "Download submitted."
+msgstr "دانلود ثبت شد."
+
+#: src/Shop/Admin/ProductTableColumns.php:34
+msgid "Image"
+msgstr "تصویر"
+
+#: src/Admin/Dashboard.php:75 src/Admin/Reports/class-dlm-reports.php:94
+#: src/Shop/Admin/ProductTableColumns.php:35 src/Widgets/Downloads.php:183
+#: src/Widgets/Downloads.php:213
+msgid "Title"
+msgstr "عنوان"
+
+#: assets/views/order/page-order-details.php:67
+#: src/Admin/Reports/class-dlm-reports.php:89 src/Admin/WritePanels.php:130
+#: src/Shop/Admin/WritePanels.php:205 src/Widgets/Downloads.php:217
+msgid "ID"
+msgstr "شناسه"
+
+#: assets/views/meta-box/version.php:139 src/Admin/CustomColumns.php:48
+#: src/Admin/MediaInsert.php:261
+#: templates/shop/email/elements/downloads-table.php:16
+#: assets/blocks/dist/blocks.js:1 assets/blocks/src/blocks.js:90
+msgid "Version"
+msgstr "نسخه"
+
+#: src/Admin/CustomColumns.php:51 src/TaxonomyManager.php:68
+#: src/TaxonomyManager.php:71
+msgid "Tags"
+msgstr "برچسب ها"
+
+#: src/Admin/CustomColumns.php:53
+msgid "Featured"
+msgstr "ویژه"
+
+#: src/Admin/Reports/class-dlm-reports.php:123
+#: src/Admin/Settings/Settings.php:86 src/PostTypeManager.php:30
+#: assets/blocks/dist/blocks.js:1 assets/blocks/src/blocks.js:78
+msgid "Download"
+msgstr "دانلود"
+
+#: src/Admin/MediaInsert.php:119
+msgid "Error: File was not created."
+msgstr "خطا: فایل ایجاد نشد."
+
+#: src/Admin/MediaInsert.php:145
+msgid "Download successfully created."
+msgstr "دانلود با موفقیت ایجاد شد."
+
+#: src/Admin/MediaInsert.php:207 assets/blocks/dist/blocks.js:1
+#: assets/blocks/src/blocks.js:102 assets/blocks/src/blocks.js:105
+msgid "Template"
+msgstr "قالب"
+
+#: src/Admin/MediaInsert.php:217
+msgid "Template Name"
+msgstr "نام قالب"
+
+#: src/Admin/MediaInsert.php:238
+msgid "Select File"
+msgstr "انتخاب فایل"
+
+#: src/Admin/MediaInsert.php:251
+msgid "Download URL"
+msgstr "آدرس دانلود"
+
+#: src/Admin/MediaInsert.php:252
+msgid "Required URL"
+msgstr "آدرس مورد نیاز"
+
+#: src/Admin/CustomColumns.php:46 src/Admin/MediaInsert.php:256
+msgid "Download Title"
+msgstr "عنوان دانلود"
+
+#: src/Admin/MediaInsert.php:257
+msgid "Required title"
+msgstr "عنوان مورد نیاز"
+
+#: src/Admin/MediaInsert.php:262
+msgid "Optional version number"
+msgstr "شماره نسخه اختیاری"
+
+#: src/Admin/MediaInsert.php:267
+msgid "Save Download"
+msgstr "ذخیره دانلود"
+
+#: src/Admin/MediaInsert.php:338
+msgid "Allowed Files"
+msgstr "فایل های مجاز"
+
+#: src/Admin/WritePanels.php:92
+msgid "Short Description"
+msgstr "توضیحات کوتاه"
+
+#: src/Admin/CustomActions.php:243 src/Admin/WritePanels.php:179
+msgid "Featured download"
+msgstr "دانلود ویژه"
+
+#: src/Admin/Settings/Settings.php:83
+msgid "General"
+msgstr "عمومی"
+
+#: src/Admin/Settings/Settings.php:108
+msgid "X-Accel-Redirect / X-Sendfile"
+msgstr "X-Accel-Redirect / X-Sendfile"
+
+#: src/Admin/Settings/Settings.php:165 assets/blocks/dist/blocks.js:1
+#: assets/blocks/src/blocks.js:21
+msgid "download"
+msgstr "دانلود"
+
+#: src/Admin/Settings/Settings.php:166
+msgid "Download Endpoint"
+msgstr "نقطه پایانی دانلود"
+
+#: src/Admin/Settings/Settings.php:172
+msgid "Endpoint Value"
+msgstr "مقدار نقطه پایانی"
+
+#: src/Admin/Settings/Settings.php:176
+msgid "Download ID"
+msgstr "شناسه دانلود"
+
+#: src/Admin/Settings/Settings.php:177
+msgid "Download slug"
+msgstr "اسلاگ دانلود"
+
+#: src/Admin/Settings/Settings.php:212
+msgid "Blacklist IPs"
+msgstr "لیست سیاه آی پی ها"
+
+#: src/Admin/CustomColumns.php:144 src/Admin/CustomColumns.php:152
+#: src/Admin/CustomColumns.php:159
+msgid "Yes"
+msgstr "بله"
+
+#: src/TemplateHandler.php:20
+msgid "Title - Shows download title only"
+msgstr "عنوان - فقط عنوان دانلود را نشان می دهد"
+
+#: src/Admin/WritePanels.php:180
+msgid "Mark this download as featured. Used by shortcodes and widgets."
+msgstr "علامت گذاری این دانلود به عنوان وِیژه. توسط شورت کوتاه و ابزارک استفاده می شود."
+
+#: src/Admin/Settings/Settings.php:183
+msgid "No Access Page"
+msgstr "صفحه بدون دسترسی"
+
+#: src/Admin/CustomColumns.php:49 src/Admin/WritePanels.php:140
+#: src/Shop/Admin/ProductTableColumns.php:36 src/Shop/Admin/WritePanels.php:210
+msgid "Shortcode"
+msgstr "شورت کد"
+
+#: src/UpgradeManager.php:64
+msgid "You do not have permission to access this download. %sGo to homepage%s"
+msgstr "شما اجازه دسترسی به این دانلود ندارید. %sبازگشت به صفحه اصلی%s"
+
+#: src/Admin/Settings/Settings.php:184
+msgid "Choose what page is displayed when the user has no access to a file. Don't forget to add the <code>[dlm_no_access]</code> shortcode to the page."
+msgstr "زمانی که کاربر به فایل دسترسی ندارد، کدام صفحه نمایش داده می‌شود. فراموش نکنید شورت کد <code>[dlm_no_access]</code> را به صفحه اضافه کنید."
+
+#: src/Admin/Settings/Settings.php:199
+msgid "Access"
+msgstr "دسترسی"
+
+#: src/Admin/CustomColumns.php:47 src/TaxonomyManager.php:30
+#: src/TaxonomyManager.php:33
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: src/Admin/MediaInsert.php:219
+msgid "Leaving this blank will use the default <code>content-download.php</code> template file. If you enter, for example, <code>image</code>, the <code>content-download-image.php</code> template will be used instead."
+msgstr "در صورتی که این فیلد را خالی بگذارید از قالب پیش فرض <code>content-download.php</code> استفاده خواهد کرد. برای مثال اگر <code>image</code> را وارد کنید، به جای آن از قالب <code>content-download-image.php</code> استفاده می شود."
+
+#: src/Admin/WritePanels.php:192
+msgid "Don't force download. If the <code>dlm_uploads</code> folder is protected you may need to move your file."
+msgstr "دانلود را اجباری نکنید. اگر پوشه <code>dlm_uploads</code> محافظت شود، ممکن است لازم باشد فایل خود را منتقل کنید."
+
+#: src/Admin/CustomLabels.php:44 src/Admin/CustomLabels.php:47
+msgid "Download updated."
+msgstr "دانلود بروزرسانی شد."
+
+#: src/Admin/CustomLabels.php:52
+msgid "Download scheduled for: <strong>%1$s</strong>."
+msgstr "دانلود برنامه ریزی شده برای: <strong>%1$s</strong>."
+
+#: src/Admin/CustomLabels.php:48
+msgid "Download restored to revision from %s"
+msgstr "دانلود از %s به بازنویسی بازگشته است"
+
+#: src/TemplateHandler.php:17
+msgid "Button - CSS styled button showing title and count"
+msgstr "دکمه - دکمه سفارشی CSS نشان دهنده عنوان و شمارش"
+
+#: src/Admin/MediaInsert.php:148
+msgid "Error: Download was not created."
+msgstr "خطا: دانلود ایجاد نشد."
+
+#: src/TemplateHandler.php:18
+msgid "Box - Box showing thumbnail, title, count, filename and filesize."
+msgstr "جعبه - جعبه نمایش تصویر بند انگشتی، عنوان، شمارش، نام فایل و حجم فایل."
+
+#: src/Admin/Settings/Settings.php:117
+msgid "Prevent hotlinking"
+msgstr "جلوگیری از استفاده غیر مجاز از پهنای باند"
+
+#: src/Admin/CustomActions.php:245 src/Admin/WritePanels.php:191
+msgid "Redirect to file"
+msgstr "تغییر مسیر به فایل"
+
+#: src/Admin/CustomColumns.php:52 src/Widgets/Downloads.php:223
+msgid "Download count"
+msgstr "تعداد دفعات دانلود"
+
+#: src/Admin/CustomColumns.php:56
+msgid "Date posted"
+msgstr "تاریخ انتشار"
+
+#: src/Admin/Settings/Settings.php:248
+msgid "Generate SHA1 hash for uploaded files"
+msgstr "برای فایل های آپلود شده هش SHA1 را ایجاد کنید"
+
+#: src/Admin/Settings/Settings.php:240
+msgid "Generate MD5 hash for uploaded files"
+msgstr "برای فایل های آپلود شده هش MD5 را ایجاد کنید"
+
+#: src/Admin/Settings/Settings.php:264
+msgid "Generate CRC32B hash for uploaded files"
+msgstr "برای فایل های آپلود شده هش CRC32B را ایجاد کنید"
+
+#: src/Admin/CustomActions.php:242
+msgid "Download Monitor Data"
+msgstr "اطلاعات دانلود مانیتور"
+
+#: src/Admin/WritePanels.php:55 assets/blocks/dist/blocks.js:1
+#: assets/blocks/src/blocks.js:71
+msgid "Download Information"
+msgstr "اطلاعات دانلود"
+
+#: src/Admin/WritePanels.php:186
+msgid "Only logged in users will be able to access the file via a download link if this is enabled."
+msgstr "اگر این فعال شود، تنها کاربران وارد شده می توانند از طریق لینک دانلود به فایل دسترسی داشته باشند."
+
+#: src/Admin/Settings/Settings.php:102
+msgid "Leaving this blank will use the default <code>content-download.php</code> template file. If you enter, for example, <code>button</code>, the <code>content-download-button.php</code> template will be used instead. You can add custom templates inside your theme folder."
+msgstr "اگر این فیلد را خالی بگذارید بطور پیش فرض از قالب فایل <code>content-download.php</code> استفاده می شود. به عنوان مثال اگر <code>button</code> را وارد کنید، به جای آن قالب <code>content-download-button.php</code> استفاده می شود. شما می توانید قالب های سفارشی خود را در پوشه theme اضافه کنید."
+
+#: src/Admin/Settings/Settings.php:119
+msgid "If enabled, the download handler will check the PHP referer to see if it originated from your site and if not, redirect them to the homepage."
+msgstr "اگر فعال شود، متصدی دانلود PHP را چک خواهد کرد تا ببیند از سایت شما آمده است یا نه، آنها را به صفحه اصلی هدایت می کند."
+
+#: src/Admin/Settings/Settings.php:695
+msgid "Select Page"
+msgstr "انتخاب صفحه"
+
+#: src/Admin/Extensions.php:180 src/Admin/Extensions.php:274
+msgid "Download Monitor Extensions"
+msgstr "افزودنی های دانلود مانیتور"
+
+#: src/Admin/MediaInsert.php:71
+msgid "Quick-add download"
+msgstr "افزودن دانلود سریع"
+
+#: src/Admin/WritePanels.php:294
+msgid "Add file"
+msgstr "افزودن فایل"
+
+#: src/Admin/MediaInsert.php:246
+msgid "Enter URL manually"
+msgstr "آدرس را بصورت دستی وارد کنید"
+
+#: src/Admin/WritePanels.php:135
+msgid "URL"
+msgstr "آدرس اینترنتی"
+
+#: src/Admin/AdminScripts.php:309
+msgid "Are you sure you want to delete this file ? "
+msgstr "آیا مطمئن هستید که می خواهید این فایل را حذف کنید ؟"
+
+#: src/Admin/Settings/Settings.php:206
+msgid "The message that will be displayed to visitors when they don't have access to a file."
+msgstr "پیغامی که برای بازدیدکنندگان نمایش داده می شود زمانی که آنها به یک فایل دسترسی ندارد."
+
+#: src/Admin/CustomLabels.php:54
+msgid "Download draft updated."
+msgstr "پیش نویس دانلود بروزرسانی شد."
+
+#: src/TemplateHandler.php:16
+msgid "Default - Title and count"
+msgstr "پیش فرض - عنوان و شمارش"
+
+#: src/Admin/Settings/Settings.php:205
+msgid "No access message"
+msgstr "پیام بدون دسترسی"
+
+#: src/Admin/WritePanels.php:63
+msgid "Download Options"
+msgstr "گزینه های دانلود"
+
+#: src/Admin/Settings/Settings.php:92
+msgid "Choose which template is used for <code>[download]</code> shortcodes by default (this can be overridden by the <code>format</code> argument)."
+msgstr "کدام قالب را بطور پیش فرض برای شورت کد <code>[download]</code> انتخاب می کنید (این می تواند توسط آرگومان <code>format</code> نادیده گرفته شود)."
+
+#: src/Admin/MediaInsert.php:236
+msgctxt "Drop file here *or* select file"
+msgid "or"
+msgstr "یا"
+
+#: src/Admin/CustomActions.php:81
+msgid "Select a category"
+msgstr "یک دسته انتخاب کنید"
+
+#: src/Admin/MediaInsert.php:182
+msgid "Choose a download"
+msgstr "یک دانلود انتخاب کنید"
+
+#: src/Admin/Settings/Settings.php:246
+msgid "SHA1 hashes"
+msgstr "هش های SHA1"
+
+#: src/Admin/Settings/Settings.php:238
+msgid "MD5 hashes"
+msgstr "هش MD5"
+
+#: src/Admin/Settings/Settings.php:262
+msgid "CRC32B hashes"
+msgstr "هش CRC32B"
+
+#: src/Admin/Settings/Settings.php:228
+msgid "Hashes"
+msgstr "هش"
+
+#: src/Admin/Dashboard.php:61
+msgid "There are no stats available yet!"
+msgstr "هیچ آماری در دسترس نیست!"
+
+#: src/TemplateHandler.php:19
+msgid "Filename - Filename and download count"
+msgstr "نام فایل - نام فایل و تعداد دفعات دانلود"
+
+#: src/Admin/AdminScripts.php:310 src/Admin/MediaBrowser.php:34
+msgid "Browse for a file"
+msgstr "مرور یک فایل"
+
+#: src/Admin/MediaInsert.php:241
+msgid "Please wait..."
+msgstr "لطفا صبر کنید..."
+
+#: src/TemplateHandler.php:21
+msgid "Version list - Lists all download versions in an unordered list"
+msgstr "لیست نسخه - لیست همه نسخه های دانلود در یک لیست نامرتب"
+
+#: src/Admin/MediaInsert.php:66 src/Admin/MediaInsert.php:224
+msgid "Insert Shortcode"
+msgstr "قرار دادن شورت کد"
+
+#: src/Admin/AdminScripts.php:304 src/Admin/MediaInsert.php:36
+#: src/Admin/MediaInsert.php:55
+msgid "Insert Download"
+msgstr "قرار دادن دانلود"
+
+#: src/Admin/Settings/Settings.php:101 assets/blocks/dist/blocks.js:1
+#: assets/blocks/src/blocks.js:118
+msgid "Custom Template"
+msgstr "قالب سفارشی"
+
+#: src/TemplateHandler.php:22
+msgid "Custom template"
+msgstr "قالب سفارشی"
+
+#: src/Admin/Settings/Settings.php:91
+msgid "Default Template"
+msgstr "قالب پیش فرض"
+
+#: src/Admin/MediaBrowser.php:108
+msgid "No files found"
+msgstr "فایلی پیدا نشد"
+
+#: src/Admin/WritePanels.php:71
+msgid "Downloadable Files/Versions"
+msgstr "فایل/نسخه دانلود"
+
+#: src/Admin/MediaInsert.php:235
+msgid "Drop file here"
+msgstr "فایل را اینجا رها کن"
+
+#: src/Admin/CustomLabels.php:46
+msgid "Custom field deleted."
+msgstr "فیلد سفارشی حذف شد."
+
+#: src/Admin/CustomLabels.php:45
+msgid "Custom field updated."
+msgstr "فیلد سفارشی به روز شد."
+
+#: src/Admin/CustomColumns.php:55
+msgid "Redirect only"
+msgstr "فقط تغییر مسیر"
+
+#: src/Admin/CustomActions.php:244 src/Admin/WritePanels.php:185
+msgid "Members only"
+msgstr "فقط اعظا"
+
+#: src/Admin/Settings/Settings.php:303
+msgid "Count unique IPs only"
+msgstr "فقط آی پی های منحصر به فرد"
+
+#: src/Admin/CustomLabels.php:53
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"

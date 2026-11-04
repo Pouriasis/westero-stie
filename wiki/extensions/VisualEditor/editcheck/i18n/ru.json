@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stjn",
+			"Okras",
+			"Kareyac",
+			"Vonavy",
+			"Mitte27",
+			"Vlad5250",
+			"Lvova",
+			"Well very well",
+			"Le Loi"
+		]
+	},
+	"editcheck-dialog-action-no": "Нет",
+	"editcheck-dialog-action-yes": "Да",
+	"editcheck-dialog-addref-description": "Информация в Википедии должна быть подтверждена авторитетными источниками. Пожалуйста, помогите добавить внешнюю ссылку, поскольку неподтверждённая информация может быть удалена из статьи. В качестве сноски не следует использовать ссылку на Википедию (на английском или любом другом языке).",
+	"editcheck-dialog-addref-reject-question": "Почему вы не добавили источник?",
+	"editcheck-dialog-addref-reject-description": "Другим редакторам будет полезно узнать, почему вы решили не добавлять источник.",
+	"editcheck-dialog-addref-reject-irrelevant": "Мне не кажется, что источники имеют отношение к совершаемому мной изменению",
+	"editcheck-dialog-addref-reject-common-knowledge": "Добавленная мной информация широко известна",
+	"editcheck-dialog-addref-reject-uncertain": "Не знаю точно, какой источник добавить",
+	"editcheck-dialog-addref-reject-other": "Другое",
+	"editcheck-dialog-addref-success-notify": "Спасибо за добавление источника!",
+	"editcheck-dialog-addref-title": "Добавить источник",
+	"editcheck-dialog-title": "До публикации",
+	"tag-editcheck-reference-decline-common-knowledge": "Проверка правок (источники) отклонена (общеизвестно)",
+	"tag-editcheck-reference-decline-common-knowledge-description": "Источник EditCheck был отклонён как общеизвестный факт",
+	"tag-editcheck-reference-decline-irrelevant": "Проверка правок (источники) отклонена (неуместно)",
+	"tag-editcheck-reference-decline-other": "Проверка правок (источники) отклонена (другое)",
+	"tag-editcheck-reference-decline-uncertain": "Проверка правок (источники) отклонена (неясно)"
+}

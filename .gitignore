@@ -1,0 +1,46 @@
+# --- secrets / per-server config (never commit) ---
+wp-config.php
+wp-config.php.bak
+wp_conf_bak
+wiki/LocalSettings.php
+wiki/LocalSettings.php.bak
+.htaccess
+.user.ini
+php.ini
+wordfence-waf.php
+*.bak
+.env
+
+# --- user content (already on the server, large) ---
+wp-content/uploads/
+wiki/images/
+dl/
+downloads/
+beyondthewall/
+
+# --- forum (being removed) ---
+forums/
+forums_off/
+
+# --- cache, logs, backups ---
+wp-content/cache/
+wp-content/litespeed/
+wp-content/wflogs/
+wp-content/upgrade/
+wp-content/updraft/
+wp-content/ai1wm-backups/
+wp-content/debug.log
+wiki/cache/
+*.log
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
+sitemap.backup.xml*
+error_log
+
+# --- local-only files, must never reach the live site ---
+.westeros-qa/
+i.php
+.htaccess.bk
+test.txt

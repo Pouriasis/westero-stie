@@ -1,0 +1,760 @@
+<?php
+/**
+ * Functions to sanitize settings.
+ *
+ * @link  https://webberzone.com
+ *
+ * @package WebberZone\Top_Ten
+ */
+
+namespace WebberZone\Top_Ten\Admin\Settings;
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+/**
+ * Settings Sanitize Class.
+ *
+ * @since 4.0.0
+ */
+class Settings_Sanitize {
+
+	/**
+	 * Settings Key.
+	 *
+	 * @var string Settings Key.
+	 */
+	public $settings_key;
+
+	/**
+	 * Prefix which is used for creating the unique filters and actions.
+	 *
+	 * @var string Prefix.
+	 */
+	public $prefix;
+
+	/**
+	 * Main constructor class.
+	 *
+	 * @param mixed $args {
+	 *    Array or string of arguments. Default is blank array.
+	 *     @type string  $settings_key          Settings key.
+	 *     @type string  $prefix                Prefix.
+	 * }
+	 */
+	public function __construct( $args ) {
+		$defaults = array(
+			'settings_key' => '',
+			'prefix'       => '',
+		);
+		$args     = wp_parse_args( $args, $defaults );
+
+		foreach ( $args as $name => $value ) {
+			$this->$name = $value;
+		}
+	}
+
+	/**
+	 * Get the value of a settings field.
+	 *
+	 * @param string $option         Settings field name.
+	 * @param mixed  $default_value  Default value if option is not found.
+	 * @return mixed
+	 */
+	public function get_option( $option, $default_value = '' ) {
+		$options = \get_option( $this->settings_key );
+
+		if ( isset( $options[ $option ] ) ) {
+			return $options[ $option ];
+		}
+
+		return $default_value;
+	}
+
+	/**
+	 * Fallback for field types that declare no sanitize callback of their own.
+	 *
+	 * @param mixed $value Setting Value.
+	 * @return mixed Sanitized value.
+	 */
+	public function sanitize_missing( $value ) {
+		if ( is_array( $value ) ) {
+			$sanitized = array();
+
+			foreach ( $value as $key => $item ) {
+				$sanitized[ sanitize_text_field( (string) $key ) ] = $this->sanitize_missing( $item );
+			}
+
+			return $sanitized;
+		}
+
+		if ( is_bool( $value ) || is_int( $value ) || is_float( $value ) ) {
+			return $value;
+		}
+
+		if ( is_object( $value ) || is_null( $value ) ) {
+			return '';
+		}
+
+		return sanitize_text_field( wp_unslash( (string) $value ) );
+	}
+
+	/**
+	 * Sanitize text fields
+	 *
+	 * @param string $value The field value.
+	 * @return string Sanitizied value
+	 */
+	public function sanitize_text_field( $value ) {
+		return $this->sanitize_textarea_field( $value );
+	}
+
+	/**
+	 * Sanitize site-local date/time fields.
+	 *
+	 * @param string $value The date/time value.
+	 * @return string Sanitized date/time, or an empty string when invalid.
+	 */
+	public function sanitize_datetime_field( $value ) {
+		$value  = trim( sanitize_text_field( wp_unslash( (string) $value ) ), " \t\n\r\0\x0B" );
+		$format = '!Y-m-d\\TH:i';
+		$utc    = \DateTimeImmutable::createFromFormat( $format, $value, new \DateTimeZone( 'UTC' ) );
+		$errors = \DateTimeImmutable::getLastErrors();
+
+		if ( false === $utc || ( false !== $errors && ( $errors['warning_count'] > 0 || $errors['error_count'] > 0 ) ) || $utc->format( 'Y-m-d\\TH:i' ) !== $value ) {
+			return '';
+		}
+
+		$local = \DateTimeImmutable::createFromFormat( $format, $value, wp_timezone() );
+		if ( false === $local || $local->format( 'Y-m-d\\TH:i' ) !== $value ) {
+			return '';
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Sanitize number fields
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_number_field( $value ) {
+		return filter_var( $value, FILTER_SANITIZE_NUMBER_INT );
+	}
+
+	/**
+	 * Sanitize CSV fields
+	 *
+	 * @param string $value The field value.
+	 * @return string Sanitizied value
+	 */
+	public function sanitize_csv_field( $value ) {
+		return implode( ',', array_map( 'trim', explode( ',', sanitize_text_field( wp_unslash( $value ) ) ) ) );
+	}
+
+	/**
+	 * Sanitize CSV fields which hold numbers
+	 *
+	 * @param string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_numbercsv_field( $value ) {
+		return implode( ',', array_filter( array_map( 'absint', explode( ',', sanitize_text_field( wp_unslash( $value ) ) ) ) ) );
+	}
+
+	/**
+	 * Sanitize CSV fields which hold post IDs
+	 *
+	 * @param string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_postids_field( $value ) {
+		$ids = array_filter( array_map( 'absint', explode( ',', sanitize_text_field( wp_unslash( $value ) ) ) ) );
+
+		foreach ( $ids as $key => $value ) {
+			if ( false === get_post_status( $value ) ) {
+				unset( $ids[ $key ] );
+			}
+		}
+
+		return implode( ',', $ids );
+	}
+
+	/**
+	 * Sanitize textarea fields
+	 *
+	 * @param string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_textarea_field( $value ) {
+
+		if ( ! current_user_can( 'unfiltered_html' ) ) {
+			return wp_kses_post( wp_unslash( $value ) );
+		}
+
+		global $allowedposttags;
+
+		// We need more tags to allow for script and style.
+		$moretags = array(
+			'script' => array(
+				'type'    => true,
+				'src'     => true,
+				'async'   => true,
+				'defer'   => true,
+				'charset' => true,
+			),
+			'style'  => array(
+				'type'   => true,
+				'media'  => true,
+				'scoped' => true,
+			),
+			'link'   => array(
+				'rel'      => true,
+				'type'     => true,
+				'href'     => true,
+				'media'    => true,
+				'sizes'    => true,
+				'hreflang' => true,
+			),
+		);
+
+		$allowedtags = array_merge( $allowedposttags, $moretags );
+
+		/**
+		 * Filter allowed tags allowed when sanitizing text and textarea fields.
+		 *
+		 * @param array $allowedtags Allowed tags array.
+		 */
+		$allowedtags = apply_filters( $this->prefix . '_sanitize_allowed_tags', $allowedtags ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
+
+		return wp_kses( wp_unslash( $value ), $allowedtags );
+	}
+
+	/**
+	 * Sanitize checkbox fields
+	 *
+	 * @param mixed $value The field value.
+	 * @return int  Sanitized value
+	 */
+	public function sanitize_checkbox_field( $value ) {
+		$value = in_array( (int) $value, array( 0, -1 ), true ) ? 0 : 1;
+
+		return $value;
+	}
+
+	/**
+	 * Sanitize toggle fields
+	 *
+	 * @param mixed $value The field value.
+	 * @return int  Sanitized value
+	 */
+	public function sanitize_toggle_field( $value ) {
+		return $this->sanitize_checkbox_field( $value );
+	}
+
+	/**
+	 * Sanitize multicheck fields
+	 *
+	 * @param  array|int $value The field value.
+	 * @return string  $value  Sanitized value
+	 */
+	public function sanitize_multicheck_field( $value ) {
+		$values = ( -1 === (int) $value ) ? array() : array_map( 'sanitize_text_field', (array) wp_unslash( $value ) );
+
+		return implode( ',', $values );
+	}
+
+	/**
+	 * Sanitize post_types fields
+	 *
+	 * @param  array|int $value The field value.
+	 * @return string  $value  Sanitized value
+	 */
+	public function sanitize_posttypes_field( $value ) {
+		return $this->sanitize_multicheck_field( $value );
+	}
+
+	/**
+	 * Sanitize post_types fields
+	 *
+	 * @param  array|int $value The field value.
+	 * @return string  $value  Sanitized value
+	 */
+	public function sanitize_taxonomies_field( $value ) {
+		return $this->sanitize_multicheck_field( $value );
+	}
+
+	/**
+	 * Sanitize color fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_color_field( $value ) {
+		return sanitize_hex_color( $value );
+	}
+
+	/**
+	 * Sanitize email fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_email_field( $value ) {
+		return sanitize_email( $value );
+	}
+
+	/**
+	 * Sanitize URL fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_url_field( $value ) {
+		return esc_url_raw( $value );
+	}
+
+	/**
+	 * Sanitize file fields, which hold the URL picked in the media browser.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_file_field( $value ) {
+		return esc_url_raw( wp_unslash( $value ) );
+	}
+
+	/**
+	 * Sanitize password fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_password_field( $value ) {
+		return sanitize_text_field( wp_unslash( $value ) );
+	}
+
+	/**
+	 * Sanitize WYSIWYG fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_wysiwyg_field( $value ) {
+		return wp_kses_post( wp_unslash( $value ) );
+	}
+
+	/**
+	 * Sanitize HTML fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_html_field( $value ) {
+		return $this->sanitize_textarea_field( $value );
+	}
+
+	/**
+	 * Sanitize CSS fields.
+	 *
+	 * @param  string $value The field value.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_css_field( $value ) {
+		return wp_strip_all_tags( wp_unslash( $value ) );
+	}
+
+	/**
+	 * Sanitize radio fields against the options the field actually offers.
+	 *
+	 * @param  mixed $value The field value.
+	 * @param  array $field Field configuration array.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_radio_field( $value, $field = array() ) {
+		return $this->sanitize_choice( $value, array_keys( (array) ( $field['options'] ?? array() ) ), $field );
+	}
+
+	/**
+	 * Sanitize select fields against the options the field actually offers.
+	 *
+	 * @param  mixed $value The field value.
+	 * @param  array $field Field configuration array.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_select_field( $value, $field = array() ) {
+		return $this->sanitize_choice( $value, array_keys( (array) ( $field['options'] ?? array() ) ), $field );
+	}
+
+	/**
+	 * Sanitize radio fields that carry a description per option.
+	 *
+	 * @param  mixed $value The field value.
+	 * @param  array $field Field configuration array.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_radiodesc_field( $value, $field = array() ) {
+		$allowed = array();
+
+		foreach ( (array) ( $field['options'] ?? array() ) as $option ) {
+			if ( isset( $option['id'] ) ) {
+				$allowed[] = $option['id'];
+			}
+		}
+
+		return $this->sanitize_choice( $value, $allowed, $field );
+	}
+
+	/**
+	 * Sanitize thumbnail size fields.
+	 *
+	 * @param  mixed $value The field value.
+	 * @param  array $field Field configuration array.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_thumbsizes_field( $value, $field = array() ) {
+		$allowed = array_keys( (array) ( $field['options'] ?? array() ) );
+
+		// The form injects this size at render time, so it is never in the registered options.
+		$allowed[] = $this->prefix . '_thumbnail';
+
+		return $this->sanitize_choice( $value, $allowed, $field );
+	}
+
+	/**
+	 * Restrict a value to a list of allowed choices.
+	 *
+	 * @param  mixed $value   The field value.
+	 * @param  array $allowed Allowed choices.
+	 * @param  array $field   Field configuration array.
+	 * @return string Sanitized value
+	 */
+	protected function sanitize_choice( $value, $allowed, $field = array() ) {
+		$value   = sanitize_text_field( wp_unslash( (string) $value ) );
+		$allowed = array_map( 'strval', (array) $allowed );
+
+		if ( in_array( $value, $allowed, true ) ) {
+			return $value;
+		}
+
+		// The select callback prints option values through sanitize_key().
+		foreach ( $allowed as $choice ) {
+			if ( sanitize_key( $choice ) === $value ) {
+				return $choice;
+			}
+		}
+
+		if ( isset( $field['default'] ) ) {
+			return (string) $field['default'];
+		}
+
+		return empty( $allowed ) ? '' : reset( $allowed );
+	}
+
+	/**
+	 * Sanitize sensitive fields.
+	 *
+	 * @param  string       $value The field value.
+	 * @param  string|array $key   The field key.
+	 * @return string Sanitized value
+	 */
+	public function sanitize_sensitive_field( $value, $key ) {
+		if ( is_array( $key ) ) {
+			if ( isset( $key['id'] ) ) {
+				$key = $key['id'];
+			} else {
+				return $value;
+			}
+		}
+
+		$stored_encrypted_key = $this->get_option( $key );
+
+		// Empty input clears the stored value.
+		if ( '' === (string) $value ) {
+			return '';
+		}
+
+		// If input is masked, return existing encrypted key.
+		if ( strpos( (string) $value, '**' ) !== false ) {
+			return $stored_encrypted_key;
+		}
+
+		return Settings_API::encrypt_api_key( $value );
+	}
+
+	/**
+	 * Sanitize repeater field.
+	 *
+	 * @param mixed $value Array of repeater values (may be non-array from form data).
+	 * @param array $field Field configuration array.
+	 * @return array Sanitized array
+	 */
+	public function sanitize_repeater_field( $value, $field = array() ) {
+		// No usable controls are rendered, so submitted rows are forged.
+		if ( ! empty( $field['disabled'] ) || ! empty( $field['pro'] ) ) {
+			$stored = ! empty( $field['id'] ) ? $this->get_option( $field['id'], array() ) : array();
+			return is_array( $stored ) ? $stored : array();
+		}
+
+		if ( ! is_array( $value ) ) {
+			return array();
+		}
+
+		$sanitized_value = array();
+		$existing_rows   = array();
+
+		// Get the subfields configuration.
+		$subfields = ! empty( $field['fields'] ) ? $field['fields'] : array();
+		if ( ! empty( $field['id'] ) ) {
+			$stored_value  = $this->get_option( $field['id'], array() );
+			$existing_rows = is_array( $stored_value ) ? $stored_value : array();
+		}
+
+		// Create a lookup table for existing rows by row_id.
+		$existing_by_id = array();
+		foreach ( $existing_rows as $existing_row ) {
+			if ( isset( $existing_row['row_id'] ) ) {
+				$existing_by_id[ $existing_row['row_id'] ] = $existing_row;
+			}
+		}
+
+		foreach ( $value as $index => $row ) {
+			// Ensure we have a valid row structure.
+			if ( ! isset( $row['fields'] ) || ! is_array( $row['fields'] ) ) {
+				continue;
+			}
+
+			$sanitized_row = array(
+				'fields' => array(),
+			);
+
+			// Preserve row_id if it exists.
+			if ( isset( $row['row_id'] ) ) {
+				$sanitized_row['row_id'] = sanitize_text_field( $row['row_id'] );
+			}
+
+			// Get the corresponding existing row for sensitive field preservation.
+			$existing_row = null;
+			if ( isset( $row['row_id'] ) && isset( $existing_by_id[ $row['row_id'] ] ) ) {
+				$existing_row = $existing_by_id[ $row['row_id'] ];
+			}
+
+			foreach ( $row['fields'] as $field_key => $field_value ) {
+				$field_key = sanitize_key( $field_key );
+
+				// Skip if field_key is not in our subfields configuration.
+				$field_config = null;
+				foreach ( $subfields as $subfield ) {
+					if ( isset( $subfield['id'] ) && $subfield['id'] === $field_key ) {
+						$field_config = $subfield;
+						break;
+					}
+				}
+
+				if ( null === $field_config ) {
+					continue;
+				}
+
+				// Get the field type from the subfield configuration.
+				$field_type = isset( $field_config['type'] ) ? $field_config['type'] : 'text';
+
+				// For sensitive fields, distinguish empty (clear) from masked (preserve).
+				if ( 'sensitive' === $field_type ) {
+					if ( '' === (string) $field_value ) {
+						$sanitized_row['fields'][ $field_key ] = '';
+						continue;
+					}
+					if ( is_string( $field_value ) && false !== strpos( $field_value, '**' ) ) {
+						if ( $existing_row && isset( $existing_row['fields'][ $field_key ] ) ) {
+							$sanitized_row['fields'][ $field_key ] = $existing_row['fields'][ $field_key ];
+						}
+						continue;
+					}
+				}
+
+				// Call the appropriate sanitization method.
+				$sanitize_method = 'sanitize_' . $field_type . '_field';
+				if ( method_exists( $this, $sanitize_method ) ) {
+					if ( 'sensitive' === $field_type ) {
+						$sanitized_row['fields'][ $field_key ] = $this->$sanitize_method( $field_value, $field_key );
+					} else {
+						$sanitized_row['fields'][ $field_key ] = $this->$sanitize_method( $field_value, $field_config );
+					}
+				} else {
+					$sanitized_row['fields'][ $field_key ] = $this->sanitize_text_field( $field_value );
+				}
+			}
+
+			if ( ! empty( $sanitized_row['fields'] ) ) {
+				$sanitized_value[ $index ] = $sanitized_row;
+			}
+		}
+
+		return $sanitized_value;
+	}
+
+	/**
+	 * Find repeater rows that fail their own required-field rules.
+	 *
+	 * Purely structural - returns what is wrong, not a human message, so it carries no i18n.
+	 *
+	 * @param array $rows  Sanitized repeater rows, as returned by sanitize_repeater_field().
+	 * @param array $field Repeater field configuration.
+	 * @return array Map of row index => issue, where issue may have a 'missing' key
+	 *               (subfield IDs with required => true that are empty) and/or a
+	 *               'missing_one_of' key (the required_one_of group, present only when
+	 *               none of it is filled).
+	 */
+	public static function get_incomplete_repeater_rows( array $rows, array $field ) {
+		$subfields = ! empty( $field['fields'] ) && is_array( $field['fields'] ) ? $field['fields'] : array();
+
+		$required_subfields = array();
+		foreach ( $subfields as $subfield_id => $subfield ) {
+			// Row values are keyed by the subfield's own id; the array key may be numeric.
+			if ( ! empty( $subfield['required'] ) ) {
+				$required_subfields[] = $subfield['id'] ?? $subfield_id;
+			}
+		}
+
+		$required_one_of = ! empty( $field['required_one_of'] ) && is_array( $field['required_one_of'] ) ? $field['required_one_of'] : array();
+
+		if ( empty( $required_subfields ) && empty( $required_one_of ) ) {
+			return array();
+		}
+
+		$is_filled  = static function ( $values, $subfield_id ) {
+			return '' !== trim( (string) ( $values[ $subfield_id ] ?? '' ), " \t\n\r\0\x0B," );
+		};
+		$incomplete = array();
+
+		foreach ( array_values( $rows ) as $index => $row ) {
+			$values = isset( $row['fields'] ) && is_array( $row['fields'] ) ? $row['fields'] : array();
+			$issue  = array();
+
+			$missing = array();
+			foreach ( $required_subfields as $subfield_id ) {
+				if ( ! $is_filled( $values, $subfield_id ) ) {
+					$missing[] = $subfield_id;
+				}
+			}
+			if ( ! empty( $missing ) ) {
+				$issue['missing'] = $missing;
+			}
+
+			if ( ! empty( $required_one_of ) ) {
+				$filled = false;
+				foreach ( $required_one_of as $subfield_id ) {
+					if ( $is_filled( $values, $subfield_id ) ) {
+						$filled = true;
+						break;
+					}
+				}
+				if ( ! $filled ) {
+					$issue['missing_one_of'] = $required_one_of;
+				}
+			}
+
+			if ( ! empty( $issue ) ) {
+				$incomplete[ $index ] = $issue;
+			}
+		}
+
+		return $incomplete;
+	}
+
+	/**
+	 * Convert a string to CSV.
+	 *
+	 * @param array  $input_array Input string.
+	 * @param string $delimiter Delimiter.
+	 * @param string $enclosure Enclosure.
+	 * @param string $terminator Terminating string.
+	 * @return string CSV string.
+	 */
+	public static function str_putcsv( $input_array, $delimiter = ',', $enclosure = '"', $terminator = "\n" ) {
+		// First convert associative array to numeric indexed array.
+		$work_array = array();
+		foreach ( $input_array as $key => $value ) {
+			$work_array[] = $value;
+		}
+
+		$output     = '';
+		$array_size = count( $work_array );
+
+		for ( $i = 0; $i < $array_size; $i++ ) {
+			// Nested array, process nest item.
+			if ( is_array( $work_array[ $i ] ) ) {
+				$output .= self::str_putcsv( $work_array[ $i ], $delimiter, $enclosure, $terminator );
+			} else {
+				switch ( gettype( $work_array[ $i ] ) ) {
+					// Manually set some strings.
+					case 'NULL':
+						$sp_format = '';
+						break;
+					case 'boolean':
+						$sp_format = ( true === $work_array[ $i ] ) ? 'true' : 'false';
+						break;
+					// Make sure sprintf has a good datatype to work with.
+					case 'integer':
+						$sp_format = '%d';
+						break;
+					case 'double':
+						$sp_format = '%0.2f';
+						break;
+					case 'string':
+						$sp_format        = '%s';
+						$work_array[ $i ] = str_replace( "$enclosure", "$enclosure$enclosure", $work_array[ $i ] );
+						break;
+					// Unknown or invalid items for a csv - note: the datatype of array is already handled above, assuming the data is nested.
+					case 'object':
+					case 'resource':
+					default:
+						$sp_format = '';
+						break;
+				}
+				$output .= sprintf( '%2$s' . $sp_format . '%2$s', $work_array[ $i ], $enclosure );
+				$output .= ( $i < ( $array_size - 1 ) ) ? $delimiter : $terminator;
+			}
+		}
+
+		return $output;
+	}
+
+	/**
+	 * Resolve taxonomy slugs to term taxonomy IDs.
+	 *
+	 * @param array  $settings The settings array containing the taxonomy slugs to sanitize.
+	 * @param string $source_key The key in the settings array containing the slugs. Pattern is Name (taxonomy:term_taxonomy_id).
+	 * @param string $target_key The key in the settings array to store the sanitized term taxonomy IDs.
+	 * @return void
+	 */
+	public static function sanitize_tax_slugs( &$settings, $source_key, $target_key ) {
+		if ( isset( $settings[ $source_key ] ) ) {
+			$slugs = array_unique( str_getcsv( $settings[ $source_key ], ',', '"', '' ) );
+
+			$tax_ids   = array();
+			$tax_slugs = array();
+
+			foreach ( $slugs as $slug ) {
+				// Pattern is Name (taxonomy:term_taxonomy_id).
+				preg_match( '/(.*)\((.*):(\d+)\)/i', (string) $slug, $matches );
+				if ( isset( $matches[3] ) ) {
+					$term = get_term_by( 'term_taxonomy_id', $matches[3] );
+				} else {
+					// Fallback to fetching the category as this was the original format.
+					$term = get_term_by( 'name', $slug, 'category' );
+				}
+				if ( isset( $term->term_taxonomy_id ) ) {
+					$tax_ids[]   = $term->term_taxonomy_id;
+					$tax_slugs[] = "{$term->name} ({$term->taxonomy}:{$term->term_taxonomy_id})";
+				}
+			}
+
+			$settings[ $target_key ] = join( ',', $tax_ids );
+			$settings[ $source_key ] = self::str_putcsv( $tax_slugs );
+		}
+	}
+}

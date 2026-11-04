@@ -1,0 +1,20 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/common",
+		"wikimedia/node",
+		"wikimedia/language/es2020",
+		"wikimedia/mediawiki",
+		"wikimedia/qunit"
+	],
+	"rules": {
+		"compat/compat": "off",
+		"computed-property-spacing": "off",
+		"mediawiki/valid-package-file-require": "off",
+		"no-underscore-dangle": "off",
+		"strict": "off"
+	},
+	"env": {
+		"browser": true
+	}
+}

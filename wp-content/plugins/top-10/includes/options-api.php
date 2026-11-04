@@ -1,0 +1,384 @@
+<?php
+/**
+ * Options API functions.
+ *
+ * @package WebberZone\Top_Ten
+ */
+
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+/**
+ * Get Settings.
+ *
+ * Retrieves all plugin settings
+ *
+ * @since  2.5.0
+ * @return array Top 10 settings
+ */
+function tptn_get_settings() {
+
+	$settings = get_option( 'tptn_settings', array() );
+
+	/**
+	 * Settings array
+	 *
+	 * Retrieves all plugin settings
+	 *
+	 * @since 2.5.0
+	 * @param array $settings Settings array
+	 */
+	return apply_filters( 'tptn_get_settings', $settings );
+}
+
+/**
+ * Get an option
+ *
+ * Looks to see if the specified setting exists, returns default if not
+ *
+ * @since 2.5.0
+ *
+ * @param  string $key           Option to fetch.
+ * @param  mixed  $default_value Default option.
+ * @return mixed
+ */
+function tptn_get_option( $key = '', $default_value = null ) {
+	global $tptn_settings;
+
+	$tptn_settings = tptn_get_settings();
+
+	if ( is_null( $default_value ) ) {
+		$default_value = tptn_get_default_option( $key );
+	}
+
+	$value = isset( $tptn_settings[ $key ] ) ? $tptn_settings[ $key ] : $default_value;
+
+	/**
+	 * Filter the value for the option being fetched.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param mixed $value  Value of the option
+	 * @param mixed $key  Name of the option
+	 * @param mixed $default_value Default value
+	 */
+	$value = apply_filters( 'tptn_get_option', $value, $key, $default_value );
+
+	/**
+	 * Key specific filter for the value of the option being fetched.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param mixed $value  Value of the option
+	 * @param mixed $key  Name of the option
+	 * @param mixed $default_value Default value
+	 */
+	return apply_filters( 'tptn_get_option_' . $key, $value, $key, $default_value );
+}
+
+
+/**
+ * Update an option
+ *
+ * Updates an ata setting value in both the db and the global variable.
+ * Warning: Passing a null value will remove
+ *        the key from the tptn_options array.
+ *
+ * @since 2.5.0
+ *
+ * @param  string               $key   The Key to update.
+ * @param  string|bool|int|null $value The value to set the key to.
+ * @return boolean   True if updated, false if not.
+ */
+function tptn_update_option( $key = '', $value = false ) {
+
+	// If no key, exit.
+	if ( empty( $key ) ) {
+		return false;
+	}
+
+	// If no value, delete.
+	if ( is_null( $value ) ) {
+		$remove_option = tptn_delete_option( $key );
+		return $remove_option;
+	}
+
+	// First let's grab the current settings.
+	$options = get_option( 'tptn_settings', array() );
+	$options = is_array( $options ) ? $options : array();
+
+	// Let's let devs alter that value coming in.
+	/**
+	 * Filters a setting value before it is written to the options table.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param mixed  $value The value being saved.
+	 * @param string $key   The settings key being updated.
+	 */
+	$value = apply_filters( 'tptn_update_option', $value, $key );
+
+	// Next let's try to update the value.
+	$options[ $key ] = $value;
+	$did_update      = update_option( 'tptn_settings', $options );
+
+	// If it updated, let's update the global variable.
+	if ( $did_update ) {
+		global $tptn_settings;
+		$tptn_settings[ $key ] = $value;
+	}
+	return $did_update;
+}
+
+
+/**
+ * Remove an option
+ *
+ * Removes an ata setting value in both the db and the global variable.
+ *
+ * @since 2.5.0
+ *
+ * @param  string $key The Key to update.
+ * @return boolean   True if updated, false if not.
+ */
+function tptn_delete_option( $key = '' ) {
+
+	// If no key, exit.
+	if ( empty( $key ) ) {
+		return false;
+	}
+
+	// First let's grab the current settings.
+	$options = get_option( 'tptn_settings', array() );
+	$options = is_array( $options ) ? $options : array();
+
+	// Next let's try to update the value.
+	if ( isset( $options[ $key ] ) ) {
+		unset( $options[ $key ] );
+	}
+
+	$did_update = update_option( 'tptn_settings', $options );
+
+	// If it updated, let's update the global variable.
+	if ( $did_update ) {
+		global $tptn_settings;
+		$tptn_settings = $options;
+	}
+	return $did_update;
+}
+
+
+/**
+ * Default settings.
+ *
+ * @since 2.5.0
+ *
+ * @return array Default settings
+ */
+function tptn_settings_defaults() {
+
+	static $options = null;
+
+	if ( null !== $options ) {
+		return $options;
+	}
+
+	$options       = array();
+	$default_types = array(
+		'color',
+		'css',
+		'csv',
+		'file',
+		'html',
+		'multicheck',
+		'number',
+		'numbercsv',
+		'password',
+		'postids',
+		'posttypes',
+		'radio',
+		'radiodesc',
+		'repeater',
+		'select',
+		'sensitive',
+		'taxonomies',
+		'text',
+		'textarea',
+		'thumbsizes',
+		'url',
+		'wysiwyg',
+	);
+
+	// Populate some default values.
+	foreach ( \WebberZone\Top_Ten\Admin\Settings::get_registered_settings() as $tab => $settings ) {
+		foreach ( $settings as $option ) {
+			if ( ! isset( $option['id'] ) ) {
+				continue;
+			}
+
+			$setting_id    = $option['id'];
+			$setting_type  = $option['type'] ?? '';
+			$default_value = '';
+
+			// When checkbox is set to true, set this to 1.
+			if ( 'checkbox' === $setting_type ) {
+				$default_value = isset( $option['default'] ) ? (int) (bool) $option['default'] : 0;
+			} elseif ( isset( $option['default'] ) && in_array( $setting_type, $default_types, true ) ) {
+				$default_value = $option['default'];
+			}
+
+			$options[ $setting_id ] = $default_value;
+		}
+	}
+
+	/**
+	 * Filters the default settings array.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param array   $options Default settings.
+	 */
+	$options = apply_filters( 'tptn_settings_defaults', $options );
+
+	return $options;
+}
+
+/**
+ * Get the saved settings merged with the default settings, so newly-registered settings
+ * that are not yet present in the saved `tptn_settings` option still resolve to a value.
+ *
+ * @since 4.4.0
+ *
+ * @return array Settings merged with defaults.
+ */
+function tptn_get_settings_with_defaults() {
+	return array_merge( tptn_settings_defaults(), tptn_get_settings() );
+}
+
+
+/**
+ * Get the default option for a specific key
+ *
+ * @since 1.3.0
+ *
+ * @param  string $key Key of the option to fetch.
+ * @return mixed
+ */
+function tptn_get_default_option( $key = '' ) {
+
+	/** This filter is documented in includes/options-api.php */
+	$default_settings = apply_filters( 'tptn_settings_defaults', \WebberZone\Top_Ten\Admin\Settings::get_defaults() );
+
+	if ( array_key_exists( $key, $default_settings ) ) {
+		return $default_settings[ $key ];
+	} else {
+		return false;
+	}
+}
+
+
+/**
+ * Reset settings.
+ *
+ * @since 2.5.0
+ *
+ * @return void
+ */
+function tptn_settings_reset() {
+	delete_option( 'tptn_settings' );
+}
+
+
+/**
+ * Get registered settings types for cache key generation.
+ *
+ * @since 4.2.0
+ *
+ * @return array Array of setting types keyed by setting ID.
+ */
+function tptn_get_registered_settings_types() {
+	$options = array();
+
+	// Populate some default values.
+	foreach ( \WebberZone\Top_Ten\Admin\Settings::get_registered_settings() as $tab => $settings ) {
+		foreach ( $settings as $option ) {
+			$options[ $option['id'] ] = $option['type'];
+		}
+	}
+
+	/**
+	 * Filter the settings types array for cache key generation.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param array $options Array of setting types keyed by setting ID.
+	 */
+	return apply_filters( 'tptn_registered_settings_types', $options );
+}
+
+
+/**
+ * Handles the AJAX request to search for tags in the Top 10 settings.
+ *
+ * @since 1.7.0
+ *
+ * @return void
+ */
+function tptn_tags_search() {
+
+	if ( ! isset( $_REQUEST['tax'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		wp_die();
+	}
+
+	$taxonomy = sanitize_key( $_REQUEST['tax'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$tax      = get_taxonomy( $taxonomy );
+	if ( ! empty( $taxonomy ) ) {
+		$tax = get_taxonomy( $taxonomy );
+		if ( ! $tax ) {
+			wp_die();
+		}
+
+		if ( ! current_user_can( $tax->cap->assign_terms ) ) {
+			wp_die();
+		}
+	}
+
+	$s = isset( $_REQUEST['q'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['q'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+	$comma = _x( ',', 'tag delimiter' );
+	if ( ',' !== $comma ) {
+		$s = str_replace( $comma, ',', $s );
+	}
+	if ( false !== strpos( $s, ',' ) ) {
+		$s = explode( ',', $s );
+		$s = $s[ count( $s ) - 1 ];
+	}
+	$s = trim( $s, " \t\n\r\0\x0B" );
+
+	/**
+ * This filter has been defined in /wp-admin/includes/ajax-actions.php
+*/
+	$term_search_min_chars = (int) apply_filters( 'term_search_min_chars', 2, $tax, $s );
+
+	/*
+	* Require $term_search_min_chars chars for matching (default: 2)
+	* ensure it's a non-negative, non-zero integer.
+	*/
+	if ( ( 0 === $term_search_min_chars ) || ( strlen( $s ) < $term_search_min_chars ) ) {
+		wp_die();
+	}
+
+	$results = get_terms(
+		array(
+			'taxonomy'   => $taxonomy,
+			'name__like' => $s,
+			'fields'     => 'names',
+			'hide_empty' => false,
+		)
+	);
+
+	echo wp_json_encode( $results );
+	wp_die();
+}
+add_action( 'wp_ajax_tptn_tags_search', 'tptn_tags_search' );

@@ -1,0 +1,495 @@
+<?php
+/**
+ * Language Handler class.
+ *
+ * @package WebberZone\Top_Ten\Frontend
+ */
+
+namespace WebberZone\Top_Ten\Frontend;
+
+use WebberZone\Top_Ten\Util\Hook_Registry;
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+/**
+ * Language handler class.
+ *
+ * @since 3.3.3
+ */
+class Language_Handler {
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 3.3.3
+	 */
+	public function __construct() {
+		Hook_Registry::add_filter( 'top_ten_query_the_posts', array( $this, 'translate_ids' ), 999 );
+		Hook_Registry::add_filter( 'top_ten_query_posts_pre_query', array( $this, 'translate_ids' ), 999 );
+		Hook_Registry::add_filter( 'rest_pre_echo_response', array( $this, 'translate_rest_response' ), 10, 3 );
+	}
+
+	/**
+	 * Get the ID of a post in the current language. Works with WPML and PolyLang.
+	 *
+	 * @since 3.3.3
+	 *
+	 * @param int[] $results Arry of Posts.
+	 * @return \WP_Post[] Updated array of WP_Post objects.
+	 */
+	public static function translate_ids( $results ) {
+
+		if ( empty( $results ) ) {
+			return $results;
+		}
+
+		$processed_ids     = array();
+		$processed_results = array();
+
+		foreach ( $results as $result ) {
+
+			$result = self::object_id_cur_lang( $result );
+			if ( ! $result ) {
+				continue;
+			}
+
+			// If this is NULL or already processed ID or matches current post then skip processing this loop.
+			$identity = ( $result->blog_id ?? get_current_blog_id() ) . ':' . $result->ID;
+			if ( ! $result->ID || in_array( $identity, $processed_ids, true ) ) {
+				continue;
+			}
+
+			// Push the current ID into the array to ensure we're not repeating it.
+			array_push( $processed_ids, $identity );
+
+			// Let's get the Post using the ID.
+			$result = get_post( $result );
+			array_push( $processed_results, $result );
+		}
+		return $processed_results;
+	}
+
+	/**
+	 * Returns the object identifier for the current language (WPML).
+	 *
+	 * @since 3.3.3
+	 *
+	 * @param int|string|\WP_Post $post Post object or Post ID.
+	 * @return \WP_Post|array|null Post opbject, updated if needed.
+	 */
+	public static function object_id_cur_lang( $post ) {
+		$blog_id  = is_object( $post ) ? (int) ( $post->blog_id ?? get_current_blog_id() ) : get_current_blog_id();
+		$switched = is_multisite() && get_current_blog_id() !== $blog_id;
+		if ( $switched ) {
+			switch_to_blog( $blog_id );
+		}
+		try {
+			$original = get_post( $post );
+			if ( ! $original ) {
+				return null;
+			}
+			$post = $original;
+			if ( function_exists( 'pll_get_post' ) ) {
+				$id   = \pll_get_post( $post->ID );
+				$post = $id ? get_post( $id ) : null;
+			}
+			if ( ! $post ) {
+				return null;
+			}
+			$current_lang               = apply_filters( 'wpml_current_language', null );
+			$return_original_if_missing = apply_filters( 'tptn_wpml_return_original', false, $post->ID );
+			$id                         = apply_filters( 'wpml_object_id', $post->ID, $post->post_type, $return_original_if_missing, $current_lang );
+			$post                       = $id ? ( (int) $id === (int) $original->ID ? $original : get_post( $id ) ) : null;
+			if ( $post ) {
+				$metadata = array();
+				foreach ( array( 'blog_id', 'visits', 'postnumber' ) as $field ) {
+					if ( isset( $original->$field ) ) {
+						$metadata[ $field ] = $original->$field;
+					}
+				}
+				$post = new \WP_Post( (object) array_merge( $post->to_array(), $metadata ) );
+			}
+			return apply_filters( 'tptn_object_id_cur_lang', $post );
+		} finally {
+			if ( $switched ) {
+				restore_current_blog();
+			}
+		}
+	}
+
+	/**
+	 * Whether TranslatePress is active and exposes the API this integration needs.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @return bool True if TranslatePress can be used.
+	 */
+	public static function is_translatepress_active(): bool {
+		return function_exists( 'trp_translate' ) && class_exists( 'TRP_Translate_Press' );
+	}
+
+	/**
+	 * Fetch a TranslatePress component instance.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  string $component Component name, e.g. `url_converter`.
+	 * @return object|null Component instance or null when unavailable.
+	 */
+	public static function get_trp_component( string $component ) {
+		if ( ! self::is_translatepress_active() ) {
+			return null;
+		}
+
+		$trp = \TRP_Translate_Press::get_trp_instance();
+		if ( ! is_object( $trp ) || ! method_exists( $trp, 'get_component' ) ) {
+			return null;
+		}
+
+		$instance = $trp->get_component( $component );
+
+		return is_object( $instance ) ? $instance : null;
+	}
+
+	/**
+	 * Get the TranslatePress settings array.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @return array TranslatePress settings.
+	 */
+	public static function get_trp_settings(): array {
+		$settings = get_option( 'trp_settings', array() );
+
+		return is_array( $settings ) ? $settings : array();
+	}
+
+	/**
+	 * Get the TranslatePress language the current front-end request is rendering in.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @return string Language code, or an empty string when TranslatePress is inactive
+	 *                or the request is in the default language.
+	 */
+	public static function get_trp_current_language(): string {
+		if ( ! self::is_translatepress_active() ) {
+			return '';
+		}
+
+		global $TRP_LANGUAGE; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase -- TranslatePress global.
+
+		$language = is_string( $TRP_LANGUAGE ) ? $TRP_LANGUAGE : ''; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase -- TranslatePress global.
+		$settings = self::get_trp_settings();
+		$default  = isset( $settings['default-language'] ) ? (string) $settings['default-language'] : '';
+
+		return ( '' === $language || $language === $default ) ? '' : $language;
+	}
+
+	/**
+	 * Get a language identifier for cache keys.
+	 *
+	 * Rendered output is language-specific — TranslatePress filters `home_url()`, and
+	 * WPML/Polylang resolve different post IDs — so cached HTML and post lists must not
+	 * be shared between languages.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @return string Current language code, or an empty string when the site is monolingual.
+	 */
+	public static function get_cache_language(): string {
+		$language = self::get_trp_current_language();
+
+		if ( '' === $language && function_exists( 'pll_current_language' ) ) {
+			$language = (string) \pll_current_language( 'locale' );
+		}
+
+		if ( '' === $language && class_exists( 'SitePress' ) ) {
+			$language = (string) apply_filters( 'wpml_current_language', null );
+		}
+
+		/**
+		 * Filters the language component added to Top 10 cache keys.
+		 *
+		 * @since 4.5.1
+		 *
+		 * @param string $language Current language code, or an empty string.
+		 */
+		return (string) apply_filters( 'tptn_cache_language', $language );
+	}
+
+	/**
+	 * Get the referring URL, but only when it points at this site.
+	 *
+	 * TranslatePress resolves a language from any URL containing a known slug, so an
+	 * off-site referer would otherwise let a cross-site request choose the language.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @return string Referring URL on this host, or an empty string.
+	 */
+	protected static function get_same_origin_referer(): string {
+		$referer = function_exists( 'wp_get_raw_referer' ) ? wp_get_raw_referer() : '';
+
+		if ( ! is_string( $referer ) || '' === $referer ) {
+			return '';
+		}
+
+		$referer_host = wp_parse_url( $referer, PHP_URL_HOST );
+		$home_host    = wp_parse_url( home_url(), PHP_URL_HOST );
+
+		if ( empty( $referer_host ) || empty( $home_host ) || strtolower( (string) $referer_host ) !== strtolower( (string) $home_host ) ) {
+			return '';
+		}
+
+		return $referer;
+	}
+
+	/**
+	 * Resolve the TranslatePress language a REST request should be rendered in.
+	 *
+	 * TranslatePress derives the language from the page URL, but REST routes carry no
+	 * language prefix, so the language is taken from an explicit `lang` parameter and
+	 * falls back to the referring front-end URL.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  \WP_REST_Request|null $request REST request.
+	 * @return string Language code, or an empty string when no translation is needed.
+	 */
+	public static function get_trp_rest_language( $request = null ): string {
+		if ( ! self::is_translatepress_active() ) {
+			return '';
+		}
+
+		$settings = self::get_trp_settings();
+		$default  = isset( $settings['default-language'] ) ? (string) $settings['default-language'] : '';
+
+		// Mirrors TRP_Url_Converter::get_lang_from_url_string(): unpublished languages are for translators only.
+		$available = isset( $settings['publish-languages'] ) ? (array) $settings['publish-languages'] : array();
+
+		if ( current_user_can( (string) apply_filters( 'trp_translating_capability', 'manage_options' ) ) ) {
+			$available = array_merge( $available, isset( $settings['translation-languages'] ) ? (array) $settings['translation-languages'] : array() );
+		}
+		$available = array_values( array_unique( array_map( 'strval', $available ) ) );
+
+		$language = '';
+
+		if ( $request instanceof \WP_REST_Request ) {
+			$raw_language = $request->get_param( 'lang' );
+			$language     = is_string( $raw_language ) ? sanitize_text_field( $raw_language ) : '';
+		}
+
+		// Accept either a TranslatePress locale (fr_FR) or its URL slug (fr).
+		$url_slugs = isset( $settings['url-slugs'] ) && is_array( $settings['url-slugs'] ) ? $settings['url-slugs'] : array();
+		foreach ( $url_slugs as $locale => $slug ) {
+			if ( is_string( $slug ) && $slug === $language ) {
+				$language = (string) $locale;
+				break;
+			}
+		}
+
+		if ( '' === $language ) {
+			$url_converter = self::get_trp_component( 'url_converter' );
+
+			if ( $url_converter && method_exists( $url_converter, 'get_lang_from_url_string' ) ) {
+				// TranslatePress filters home_url(), so rest_url() carries the language prefix of the page that enqueued it.
+				if ( method_exists( $url_converter, 'cur_page_url' ) ) {
+					$language = (string) $url_converter->get_lang_from_url_string( $url_converter->cur_page_url() );
+				}
+
+				if ( '' === $language ) {
+					$referer = self::get_same_origin_referer();
+
+					if ( '' !== $referer ) {
+						$language = (string) $url_converter->get_lang_from_url_string( $referer );
+					}
+				}
+			}
+		}
+
+		/**
+		 * Filters the TranslatePress language used to render Top 10 REST responses.
+		 *
+		 * @since 4.5.1
+		 *
+		 * @param string                $language Language code resolved from the request.
+		 * @param \WP_REST_Request|null $request  REST request.
+		 */
+		$language = (string) apply_filters( 'tptn_trp_rest_language', $language, $request );
+
+		if ( '' === $language || $language === $default || ! in_array( $language, $available, true ) ) {
+			return '';
+		}
+
+		return $language;
+	}
+
+	/**
+	 * Translate a string with TranslatePress.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  string $content  Content in the default language. Text or HTML.
+	 * @param  string $language Target language code.
+	 * @return string Translated content.
+	 */
+	public static function trp_translate_content( string $content, string $language ): string {
+		if ( '' === $content || '' === $language || ! self::is_translatepress_active() ) {
+			return $content;
+		}
+
+		// $prevent_over_translation wraps the return in a span; REST output never passes through TranslatePress's page buffer.
+		return (string) \trp_translate( $content, $language, false );
+	}
+
+	/**
+	 * Convert a URL to its TranslatePress equivalent in the given language.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  string $url      URL in the default language.
+	 * @param  string $language Target language code.
+	 * @return string Converted URL.
+	 */
+	public static function trp_translate_url( string $url, string $language ): string {
+		if ( '' === $url || '' === $language ) {
+			return $url;
+		}
+
+		$url_converter = self::get_trp_component( 'url_converter' );
+
+		if ( ! $url_converter || ! method_exists( $url_converter, 'get_url_for_language' ) ) {
+			return $url;
+		}
+
+		$converted = $url_converter->get_url_for_language( $language, $url, '' );
+
+		return is_string( $converted ) && '' !== $converted ? $converted : $url;
+	}
+
+	/**
+	 * Translate the Top 10 REST API response with TranslatePress.
+	 *
+	 * TranslatePress's own page output buffer never runs for REST requests, so the
+	 * output returned over REST would otherwise always be served in the default
+	 * language.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  mixed $result  Response data to send to the client.
+	 * @param  mixed $server  Server instance.
+	 * @param  mixed $request Request used to generate the response.
+	 * @return mixed Response data, translated where applicable.
+	 */
+	public static function translate_rest_response( $result, $server, $request ) {
+		if ( ! $request instanceof \WP_REST_Request ) {
+			return $result;
+		}
+
+		if ( ! is_array( $result ) && ! is_string( $result ) ) {
+			return $result;
+		}
+
+		$route     = (string) $request->get_route();
+		$namespace = '/' . self::get_rest_namespace();
+		if ( $route !== $namespace && 0 !== strpos( $route, $namespace . '/' ) ) {
+			return $result;
+		}
+
+		$language = self::get_trp_rest_language( $request );
+
+		if ( '' === $language ) {
+			return $result;
+		}
+
+		// Some routes return a bare HTML string rather than a structure of fields.
+		if ( is_string( $result ) ) {
+			return self::trp_translate_content( $result, $language );
+		}
+
+		/**
+		 * Filters the response keys Top 10 translates with TranslatePress.
+		 *
+		 * @since 4.5.1
+		 *
+		 * @param array $keys Associative array of `content` and `url` key names.
+		 */
+		$keys = apply_filters(
+			'tptn_trp_rest_translatable_keys',
+			array(
+				'content' => array( 'html', 'title', 'excerpt', 'content', 'name', 'description' ),
+				// `guid` is deliberately absent: it is an immutable identifier, not a navigable URL.
+				'url'     => array( 'link', 'permalink' ),
+			)
+		);
+		$keys = (array) $keys;
+		$keys = array(
+			'content' => isset( $keys['content'] ) && is_array( $keys['content'] ) ? array_values( array_map( 'strval', array_filter( $keys['content'], 'is_scalar' ) ) ) : array(),
+			'url'     => isset( $keys['url'] ) && is_array( $keys['url'] ) ? array_values( array_map( 'strval', array_filter( $keys['url'], 'is_scalar' ) ) ) : array(),
+		);
+
+		return self::translate_rest_data( $result, $language, $keys );
+	}
+
+	/**
+	 * The REST namespace whose responses this plugin translates.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @return string REST namespace.
+	 */
+	protected static function get_rest_namespace(): string {
+		return 'top-10/v1';
+	}
+
+	/**
+	 * Walk a Top 10 REST payload translating the fields TranslatePress can handle.
+	 *
+	 * @since 4.5.1
+	 *
+	 * @param  array  $data     Response data.
+	 * @param  string $language Target language code.
+	 * @param  array  $keys     Translatable `content` and `url` key names.
+	 * @param  int    $depth    Current recursion depth.
+	 * @return array Translated response data.
+	 */
+	protected static function translate_rest_data( array $data, string $language, array $keys, int $depth = 0 ): array {
+		if ( $depth > 5 ) {
+			return $data;
+		}
+
+		foreach ( $data as $key => $value ) {
+			if ( is_array( $value ) ) {
+				if ( isset( $value['rendered'] ) && is_string( $value['rendered'] ) ) {
+					if ( in_array( (string) $key, $keys['content'], true ) ) {
+						$data[ $key ]['rendered'] = self::trp_translate_content( $value['rendered'], $language );
+						continue;
+					}
+					if ( in_array( (string) $key, $keys['url'], true ) ) {
+						$data[ $key ]['rendered'] = self::trp_translate_url( $value['rendered'], $language );
+						continue;
+					}
+				}
+
+				$data[ $key ] = self::translate_rest_data( $value, $language, $keys, $depth + 1 );
+				continue;
+			}
+
+			if ( ! is_string( $value ) || '' === $value ) {
+				continue;
+			}
+
+			if ( in_array( (string) $key, $keys['content'], true ) ) {
+				$data[ $key ] = self::trp_translate_content( $value, $language );
+			} elseif ( in_array( (string) $key, $keys['url'], true ) ) {
+				$data[ $key ] = self::trp_translate_url( $value, $language );
+			}
+		}
+
+		return $data;
+	}
+}

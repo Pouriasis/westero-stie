@@ -1,0 +1,167 @@
+/**
+ * WP-Polls front end.
+ *
+ * Everything is scoped under the .wp-polls root class the plugin puts on the
+ * outermost element of every block it renders, and nothing here sets a font or
+ * a text colour: a poll is part of the page it sits in, so it inherits.
+ *
+ * The custom properties are the supported way to restyle a poll. Set them in
+ * your own stylesheet rather than copying this file into your theme, and an
+ * upgrade cannot take your changes away:
+ *
+ *   --wp-polls-bar-height        height of the result bar
+ *   --wp-polls-bar-background    its fill colour
+ *   --wp-polls-bar-border        its border colour
+ *   --wp-polls-bar-image         a background-image layered over the fill
+ *   --wp-polls-bar-radius        its corner radius
+ *   --wp-polls-border            colour of the button and paging borders
+ *   --wp-polls-surface           background of the vote button
+ *
+ * The fallback after each var() is what the settings screen ships with, so a
+ * poll still renders if the inline block carrying the settings is filtered out.
+ */
+
+/* Markers cleared: a poll is a form, not prose, and a theme's li::before
+   lands in the middle of an answer. */
+.wp-polls ul,
+.wp-polls-ul,
+.wp-polls-ans ul {
+	text-align: start;
+	list-style: none;
+	float: none;
+}
+.wp-polls ul li,
+.wp-polls-ul li,
+.wp-polls-ans ul li {
+	text-align: start;
+	background-image: none;
+	display: block;
+}
+.wp-polls ul li::before,
+.wp-polls-ans ul li::before {
+	content: '';
+}
+/* The answer text sits beside its control rather than under it. A theme that
+   makes every label a block would otherwise put each answer on its own line,
+   below the radio it belongs to. */
+.wp-polls label {
+	display: inline;
+}
+
+/* The controls are the theme's business: all a poll wants is a gap beside the
+   words. Resetting display or border here erases the radio a theme drew. */
+.wp-polls input[type="radio"],
+.wp-polls input[type="checkbox"] {
+	margin-inline-end: 0.4em;
+}
+.wp-polls-ul {
+	padding: 0;
+	margin-block: 0 10px;
+	margin-inline: 10px 0;
+}
+.wp-polls-ans {
+	width: 100%;
+}
+
+/* The AJAX placeholder, hidden until a request is in flight. */
+.wp-polls-loading {
+	display: none;
+	text-align: center;
+}
+/* The loading indicator. Drawn rather than shipped as a GIF: it inherits the
+   theme's colour through currentColor, scales with the surrounding font size,
+   and costs no request. The ring is three-quarters of a circle - one border
+   side is transparent - spun by a transform. */
+.wp-polls .wp-polls-spinner {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.125em;
+	border: 2px solid currentColor;
+	border-inline-end-color: transparent;
+	border-radius: 50%;
+	animation: wp-polls-spin 0.8s linear infinite;
+}
+@keyframes wp-polls-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+/* Still legible, just not moving: the ring stays as a dimmed circle so the
+   placeholder does not turn into an unexplained gap beside the word. */
+@media (prefers-reduced-motion: reduce) {
+	.wp-polls .wp-polls-spinner {
+		animation: none;
+		border-inline-end-color: currentColor;
+		opacity: 0.4;
+	}
+}
+
+/* The result bar: a track holding a fill, so a unanimous answer can render at
+   a true 100% without its own border overflowing the track. */
+.wp-polls .wp-polls-bar {
+	box-sizing: border-box;
+	width: 100%;
+	height: var(--wp-polls-bar-height, 8px);
+	margin-block: 2px;
+	overflow: hidden;
+	border: 1px solid var(--wp-polls-bar-border, #c8c8c8);
+	border-radius: var(--wp-polls-bar-radius, 3px);
+}
+.wp-polls .wp-polls-bar-fill {
+	height: 100%;
+	border-radius: inherit;
+	background-color: var(--wp-polls-bar-background, #d8e1eb);
+	background-image: var(--wp-polls-bar-image, none);
+	/* The width arrives inline, so there is no state change to transition;
+	   scaling from zero needs no target width here. */
+	transform-origin: left center;
+	animation: wp-polls-bar-grow 0.45s ease-out;
+}
+/* transform-origin takes no logical keywords, so RTL is written out. */
+[dir="rtl"] .wp-polls .wp-polls-bar-fill {
+	transform-origin: right center;
+}
+@keyframes wp-polls-bar-grow {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.wp-polls .wp-polls-bar-fill {
+		animation: none;
+	}
+}
+
+/* Both colours fall back to something derived from the text colour, so the
+   button stays visible on a dark theme. */
+.wp-polls .Buttons {
+	border: 1px solid var(--wp-polls-border, currentColor);
+	background-color: var(--wp-polls-surface, transparent);
+	color: inherit;
+	padding: var(--wp-polls-button-padding, 0.25em 1.25em);
+}
+
+/* Polls archive paging. currentColor throughout: the page decides what colour
+   text is, and these are links in that text. */
+.wp-polls-paging a,
+.wp-polls-paging span {
+	padding: 2px 4px;
+	margin: 2px;
+	border: 1px solid var(--wp-polls-border, currentColor);
+	color: inherit;
+}
+.wp-polls-paging a {
+	text-decoration: none;
+}
+.wp-polls-paging a:hover,
+.wp-polls-paging a:focus {
+	text-decoration: underline;
+}
+.wp-polls-paging span.current {
+	font-weight: bold;
+}

@@ -1,0 +1,61 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "top-10/popular-posts",
+	"version": "2.0.0",
+	"title": "Top 10 Popular Posts",
+	"category": "widgets",
+	"icon": "editor-ol",
+	"keywords": [ "top 10", "popular posts", "popular" ],
+	"description": "Display the Popular Posts",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"className": {
+			"type": "string"
+		},
+		"heading": {
+			"type": "boolean"
+		},
+		"daily": {
+			"type": "boolean"
+		},
+		"daily_range": {
+			"type": "string"
+		},
+		"hour_range": {
+			"type": "string"
+		},
+		"limit": {
+			"type": "string"
+		},
+		"offset": {
+			"type": "string"
+		},
+		"show_excerpt": {
+			"type": "boolean"
+		},
+		"show_author": {
+			"type": "boolean"
+		},
+		"show_date": {
+			"type": "boolean"
+		},
+		"disp_list_count": {
+			"type": "boolean"
+		},
+		"tptn_styles": {
+			"type": "string"
+		},
+		"post_thumb_op": {
+			"type": "string"
+		},
+		"other_attributes": {
+			"type": "string"
+		}
+	},
+	"textdomain": "top-10",
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,1193 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jarida v2.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-10 09:22+0200\n"
+"PO-Revision-Date: 2015-08-10 09:22+0200\n"
+"Last-Translator: Fouad Badawy <support@tielabs.com>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ tie
+#: 404.php:6 bbpress.php:7 includes/breadcrumbs.php:103 loop.php:3 page.php:8
+#: single.php:9 template-authors.php:13 template-best-reviews.php:13
+#: template-blog.php:15 template-login.php:13 template-restrict.php:13
+#: template-sitemap.php:13 template-tags.php:13 template-timeline.php:13
+msgid "Not Found"
+msgstr "Не найдено"
+
+# @ tie
+#: 404.php:9
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr ""
+"Извините, но страница, которую вы запросили, не найдена. Возможно, поиск "
+"поможет."
+
+# @ tie
+#: 404.php:13 template-sitemap.php:43
+msgid "Pages"
+msgstr "Страницы"
+
+# @ tie
+#: 404.php:18 template-sitemap.php:48
+msgid "Categories"
+msgstr "Категории"
+
+# @ tie
+#: 404.php:23 template-sitemap.php:53
+msgid "Tags"
+msgstr "Метки"
+
+# @ tie
+#: 404.php:35 template-sitemap.php:65
+msgid "Authors"
+msgstr "Авторы"
+
+# @ tie
+#: archive.php:10
+#, php-format
+msgid "Daily Archives: <span>%s</span>"
+msgstr "Ежедневные архивы: <span>%s</span>"
+
+# @ tie
+#: archive.php:12
+#, php-format
+msgid "Monthly Archives: <span>%s</span>"
+msgstr "Месячные архивы: <span>%s</span>"
+
+# @ tie
+#: archive.php:14
+#, php-format
+msgid "Yearly Archives: <span>%s</span>"
+msgstr "Годовые архивы: <span>%s</span>"
+
+# @ tie
+#: archive.php:16
+msgid "Blog Archives"
+msgstr "Архив блога"
+
+# @ tie
+#: author.php:10 includes/breadcrumbs.php:98
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Авторские архивы: %s"
+
+# @ tie
+#: author.php:13 category.php:11 tag.php:12
+msgid "Feed Subscription"
+msgstr "Feed подписка"
+
+# @ tie
+#: author.php:28 functions/theme-functions.php:236
+#: functions/theme-functions.php:1281 template-authors.php:66
+msgid " 's site"
+msgstr ""
+
+# @ tie
+#: author.php:31 functions/theme-functions.php:239
+#: functions/theme-functions.php:1284 template-authors.php:69
+msgid "  on Twitter"
+msgstr "  в Twitter"
+
+# @ tie
+#: author.php:34 functions/theme-functions.php:242
+#: functions/theme-functions.php:1287 template-authors.php:72
+msgid "  on Facebook"
+msgstr "  в Facebook"
+
+# @ tie
+#: author.php:37 functions/theme-functions.php:245
+#: functions/theme-functions.php:1290 template-authors.php:75
+msgid "  on Google+"
+msgstr "  в Google+"
+
+# @ tie
+#: author.php:40 functions/theme-functions.php:248
+#: functions/theme-functions.php:1293 template-authors.php:78
+msgid "  on Linkedin"
+msgstr "в Linkedin"
+
+# @ tie
+#: author.php:43 functions/theme-functions.php:251
+#: functions/theme-functions.php:1296 template-authors.php:81
+msgid "  on Flickr"
+msgstr "  в Flickr"
+
+# @ tie
+#: author.php:46 functions/theme-functions.php:254
+#: functions/theme-functions.php:1299 template-authors.php:84
+msgid "  on YouTube"
+msgstr "  на YouTube"
+
+# @ tie
+#: author.php:49 functions/theme-functions.php:257
+#: functions/theme-functions.php:1302 template-authors.php:87
+msgid "  on Pinterest"
+msgstr "  в Pinterest"
+
+# @ tie
+#: author.php:52 functions/theme-functions.php:260
+#: functions/theme-functions.php:1305 template-authors.php:90
+msgid "  on Behance"
+msgstr "  в Behance"
+
+# @ tie
+#: author.php:55 functions/theme-functions.php:263
+#: functions/theme-functions.php:1308 template-authors.php:93
+msgid "  on Instagram"
+msgstr "  в Instagram"
+
+# @ tie
+#: bbpress.php:9 loop.php:5 page.php:10 single.php:11 template-authors.php:15
+#: template-best-reviews.php:15 template-blog.php:17 template-login.php:15
+#: template-restrict.php:15 template-sitemap.php:15 template-tags.php:15
+#: template-timeline.php:15
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr "Извините, но запрошенный вами архив не найден. Возможно поиск поможет."
+
+# @ tie
+#: comments.php:3
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr "Пост закрыт паролем. Введите пароль для просмотра."
+
+# @ tie
+#: comments.php:12
+msgid "No comments"
+msgstr "Нет комментариев"
+
+# @ tie
+#: comments.php:12
+msgid "One comment"
+msgstr "1 комментарий"
+
+# @ tie
+#: comments.php:12
+msgid "comments"
+msgstr "комментарии"
+
+# @ tie
+#: comments.php:17
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> Старые комментарии"
+
+# @ tie
+#: comments.php:18
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Свежие комментарии <span class=\"meta-nav\">&rarr;</span>"
+
+# @ tie
+#: comments.php:45
+msgid "Name"
+msgstr "Имя"
+
+# @ tie
+#: comments.php:47
+msgid "Email"
+msgstr "Email"
+
+# @ tie
+#: comments.php:49
+msgid "Website"
+msgstr "Сайт"
+
+# @ tie
+#: comments.php:52
+msgid " Required fields are marked"
+msgstr "Обязательные для заполнения поля помечены"
+
+# @ tie
+#: comments.php:56
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Вы должны быть <a href=\"%s\">залогинены</a>для комментирования"
+
+# @ tie
+#: comments.php:57
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Вы вошли как <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Выйти из "
+"аккаунта\">Выйти?</a>"
+
+# @ tie
+#: comments.php:58
+msgid "Your email address will not be published."
+msgstr "Ваш email нигде не будет показан"
+
+# @ tie
+#: comments.php:59
+msgid "Leave a Reply"
+msgstr "Оставить комментарий"
+
+# @ tie
+#: comments.php:60
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Оставить комментарий к %s"
+
+# @ tie
+#: comments.php:61
+msgid "Cancel reply"
+msgstr "Отменить написание"
+
+# @ tie
+#: comments.php:62
+msgid "Post Comment"
+msgstr "Комментировать"
+
+# @ tie
+#: footer.php:25
+msgid "Scroll To Top"
+msgstr "На верх"
+
+# @ tie
+#: functions/common-scripts.php:31 functions/theme-functions.php:77
+msgid "Go to..."
+msgstr "Перейти"
+
+# @ tie
+#: functions/common-scripts.php:33 functions/theme-functions.php:1613
+#: functions/theme-functions.php:1619
+msgid "Your Rating:"
+msgstr "Ваш рейтинг:"
+
+# @ tie
+#: functions/home-cats-wide.php:44 functions/home-cats.php:52
+#: functions/home-cats.php:104 functions/home-cats.php:156
+#: functions/home-recent-box.php:60 loop.php:19 loop.php:32 loop.php:53
+msgid "Read More &raquo;"
+msgstr "Читать далее &raquo;"
+
+# @ tie
+#: functions/theme-functions.php:41
+msgid "Top Menu Navigation"
+msgstr "Верхнее меню навигации"
+
+# @ tie
+#: functions/theme-functions.php:42
+msgid "Primary Navigation"
+msgstr "Основная навигация"
+
+# @ tie
+#: functions/theme-functions.php:61
+msgid "You can use WP menu builder to build menus"
+msgstr "Используйте стандартное WP меню"
+
+# @ tie
+#: functions/theme-functions.php:591
+msgid "Social Networking"
+msgstr "Социальные сети"
+
+# @ tie
+#: functions/theme-functions.php:682
+msgid "No items."
+msgstr "Нет элементов."
+
+# @ tie
+#: functions/theme-functions.php:687
+msgid "Posted "
+msgstr "Опубликовано"
+
+# @ tie
+#: functions/theme-functions.php:746 functions/theme-functions.php:770
+#: functions/theme-functions.php:817 functions/theme-functions.php:840
+#: functions/theme-functions.php:874 functions/theme-functions.php:900
+#: includes/post-related.php:38 includes/post-related.php:44
+#: template-timeline.php:61
+#, php-format
+msgid "Permalink to %s"
+msgstr "Постоянная ссылка на %s"
+
+# @ tie
+#: functions/theme-functions.php:1272
+msgid "Welcome"
+msgstr "Приветик"
+
+# @ tie
+#: functions/theme-functions.php:1275
+msgid "Dashboard"
+msgstr "Админка"
+
+# @ tie
+#: functions/theme-functions.php:1276
+msgid "Your Profile"
+msgstr "Твой профиль"
+
+# @ tie
+#: functions/theme-functions.php:1277
+msgid "Logout"
+msgstr "Выйти"
+
+# @ tie
+#: functions/theme-functions.php:1317
+msgid "Username"
+msgstr "Имя пользователя"
+
+# @ tie
+#: functions/theme-functions.php:1318
+msgid "Password"
+msgstr "Пароль"
+
+# @ tie
+#: functions/theme-functions.php:1319
+msgid "Log in"
+msgstr "Войти"
+
+# @ tie
+#: functions/theme-functions.php:1320
+msgid "Remember Me"
+msgstr "Запомнить меня"
+
+# @ tie
+#: functions/theme-functions.php:1325
+msgid "Lost your password?"
+msgstr "Потерял пароль?"
+
+# @ tie
+#: functions/theme-functions.php:1408 includes/widgets/widget-reviews.php:42
+msgid "Review Overview"
+msgstr "Обзор"
+
+# @ tie
+#: functions/theme-functions.php:1463
+msgid "Summary :"
+msgstr "Итог:"
+
+# @ tie
+#: functions/theme-functions.php:1590
+msgid "No Ratings Yet !"
+msgstr "Пока не оценивали !"
+
+# @ tie
+#: functions/theme-functions.php:1594
+msgid "Be the first one !"
+msgstr "Будьте первым !"
+
+# @ tie
+#: functions/theme-functions.php:1613 functions/theme-functions.php:1619
+#: functions/theme-functions.php:1626
+msgid "votes"
+msgstr "голосов"
+
+# @ tie
+#: functions/theme-functions.php:1624 functions/theme-functions.php:1626
+msgid "User Rating:"
+msgstr "Рейтинг пользователей"
+
+# @ default
+#: functions/theme-functions.php:1648
+#, php-format
+msgid "%s min"
+msgid_plural "%s mins"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+# @ tie
+#: functions/theme-functions.php:1648 functions/theme-functions.php:1655
+#: functions/theme-functions.php:1661 functions/theme-functions.php:1667
+msgid "ago"
+msgstr "тому назад"
+
+# @ default
+#: functions/theme-functions.php:1655
+#, php-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+# @ default
+#: functions/theme-functions.php:1661 functions/theme-functions.php:1667
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+# @ tie
+# @ default
+#: functions/tie-views.php:17 functions/tie-views.php:76
+msgid "Views"
+msgstr "Просмотров"
+
+# @ tie
+#: functions/widgetize-theme.php:12
+msgid "Primary Normal Widget Area"
+msgstr "Основная область виджетов"
+
+# @ tie
+#: functions/widgetize-theme.php:14 functions/widgetize-theme.php:30
+#: functions/widgetize-theme.php:37
+msgid "The Primary Normal widget area appears in all pages / archives"
+msgstr "Основная область виджетов для всех страниц и архивов"
+
+# @ tie
+#: functions/widgetize-theme.php:20
+msgid "Primary Narrow Widget Area"
+msgstr "Основная, узкая область виджетов"
+
+# @ tie
+#: functions/widgetize-theme.php:22 functions/widgetize-theme.php:45
+#: functions/widgetize-theme.php:52
+msgid "The Primary Narrow widget area appears in all pages / archives"
+msgstr "Основная, узкая область виджетов для всех страниц и архивов"
+
+# @ tie
+#: functions/widgetize-theme.php:28
+msgid "Homepage - First Normal Widget Area"
+msgstr "Главная - первая основная зона виджетов"
+
+# @ tie
+#: functions/widgetize-theme.php:35
+msgid "Homepage - Second Normal Widget Area"
+msgstr "Главная - вторая основная зона виджетов"
+
+# @ tie
+#: functions/widgetize-theme.php:43
+msgid "Homepage - First Narrow Widget Area"
+msgstr "Главная - первая, узкая область виджетов"
+
+# @ tie
+#: functions/widgetize-theme.php:50
+msgid "Homepage - Second Narrow Widget Area"
+msgstr "Главная - вторая, узкая область виджетов"
+
+# @ tie
+#: functions/widgetize-theme.php:59 panel/category-options.php:16
+#: panel/mpanel-ui.php:2159 panel/post-options.php:184
+#: panel/post-options.php:522
+msgid "Shop - For WooCommerce Pages"
+msgstr "Shop - для страниц магазина на WooCommerce"
+
+# @ tie
+#: functions/widgetize-theme.php:61
+msgid "This widget area uses in the WooCommerce pages ."
+msgstr "Этот виджет использует для WooCommerce страниц ."
+
+# @ tie
+#: functions/widgetize-theme.php:91
+msgid "First Footer Widget Area"
+msgstr "Первая область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:93
+msgid "The first footer widget area"
+msgstr "Это первая область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:99
+msgid "Second Footer Widget Area"
+msgstr "Вторая область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:101
+msgid "The Second footer widget area"
+msgstr "Это вторая область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:108
+msgid "Third Footer Widget Area"
+msgstr "Третья область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:110
+msgid "The Third footer widget area"
+msgstr "Это третья область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:117
+msgid "Fourth Footer Widget Area"
+msgstr "Четвертая область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: functions/widgetize-theme.php:119
+msgid "The Fourth footer widget area"
+msgstr "Это четвертая область виджетов в футере (внизу сайта)"
+
+# @ tie
+#: header.php:22
+msgid "Search"
+msgstr "Поиск"
+
+# @ tie
+#: header.php:23
+msgid "Search..."
+msgstr "Искать..."
+
+# @ tie
+#: includes/archives-meta.php:13 includes/boxes-meta.php:13
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
+
+# @ tie
+#: includes/archives-meta.php:13 includes/boxes-meta.php:13
+#: includes/post-meta.php:15
+msgid "1 Comment"
+msgstr "1 Комментарий"
+
+# @ tie
+#: includes/archives-meta.php:13 includes/boxes-meta.php:13
+#: includes/post-meta.php:15
+msgid "% Comments"
+msgstr "% Высказались"
+
+# @ tie
+#: includes/breadcrumbs.php:15
+msgid "Home"
+msgstr "Главная"
+
+# @ tie
+#: includes/breadcrumbs.php:86 search.php:9
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Результат поиска для: %s"
+
+# @ tie
+#: includes/breadcrumbs.php:91 tag.php:8
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Архив меток: %s"
+
+# @ tie
+#: includes/breadcrumbs.php:109
+msgid "page "
+msgstr "страница "
+
+# @ tie
+#: includes/breaking-news.php:19
+msgid "Don't Miss"
+msgstr "Не пропусти"
+
+#: includes/check-also.php:34
+msgid "Check Also"
+msgstr ""
+
+# @ tie
+#: includes/pagenavi.php:159
+msgid "Page %CURRENT_PAGE% of %TOTAL_PAGES%"
+msgstr "Страница %CURRENT_PAGE% из %TOTAL_PAGES%"
+
+# @ tie
+#: includes/pagenavi.php:162
+msgid "&laquo; First"
+msgstr "&laquo; Первая"
+
+# @ tie
+#: includes/pagenavi.php:163
+msgid "Last &raquo;"
+msgstr "Последняя &raquo;"
+
+# @ tie
+#: includes/pagenavi.php:164
+msgid "&raquo;"
+msgstr ""
+
+# @ tie
+#: includes/pagenavi.php:165
+msgid "&laquo;"
+msgstr ""
+
+# @ tie
+#: includes/pagenavi.php:166 includes/pagenavi.php:167
+msgid "..."
+msgstr ""
+
+# @ tie
+#: includes/post-meta.php:6 template-best-reviews.php:61
+msgid "Posted by: "
+msgstr "Опубликовал: "
+
+# @ tie
+#: includes/post-meta.php:9 template-best-reviews.php:65
+msgid "in "
+msgstr "в "
+
+# @ tie
+#: includes/post-meta.php:12 template-best-reviews.php:63
+msgid "on "
+msgstr "на "
+
+# @ tie
+#: includes/post-meta.php:15
+msgid "0"
+msgstr "0"
+
+# @ tie
+#: includes/post-related.php:29
+msgid "Related Articles"
+msgstr "Похожие"
+
+# @ tie
+#: includes/widgets/widget-ads.php:78 includes/widgets/widget-ads.php:198
+#: includes/widgets/widget-ads.php:320 includes/widgets/widget-ads.php:441
+#: includes/widgets/widget-ads.php:562 includes/widgets/widget-ads.php:677
+#: includes/widgets/widget-ads.php:785 includes/widgets/widget-ads.php:894
+#: includes/widgets/widget-ads.php:1006 includes/widgets/widget-ads.php:1118
+msgid " Advertisement"
+msgstr "Реклама"
+
+# @ tie
+#: includes/widgets/widget-author.php:23
+#, php-format
+msgid "About %s"
+msgstr "О %s"
+
+# @ tie
+#: includes/widgets/widget-author.php:90
+#, php-format
+msgid "By %s"
+msgstr "По %s"
+
+# @ tie
+#: includes/widgets/widget-author.php:98
+msgid "All"
+msgstr "Все"
+
+# @ tie
+#: includes/widgets/widget-authors-posts.php:46
+msgid "Authors Posts"
+msgstr "Автор записей"
+
+# @ tie
+#: includes/widgets/widget-category.php:46
+msgid "Category Posts"
+msgstr "Категория Записи"
+
+# @ tie
+#: includes/widgets/widget-comments-avatar.php:42
+msgid "Recent Comments"
+msgstr "Последние комментарии"
+
+# @ tie
+#: includes/widgets/widget-counter.php:52
+#: includes/widgets/widget-feedburner.php:30
+msgid "Subscribe"
+msgstr "Подписаться"
+
+# @ tie
+#: includes/widgets/widget-counter.php:52
+#: includes/widgets/widget-counter.php:83
+#: includes/widgets/widget-counter.php:93
+msgid "Subscribers"
+msgstr "Подписчиков"
+
+# @ tie
+#: includes/widgets/widget-counter.php:53
+msgid "To RSS Feed"
+msgstr "На RSS канал"
+
+# @ tie
+#: includes/widgets/widget-counter.php:63
+#: includes/widgets/widget-counter.php:103
+#: includes/widgets/widget-counter.php:113
+#: includes/widgets/widget-counter.php:123
+#: includes/widgets/widget-counter.php:133
+msgid "Followers"
+msgstr "Фалловеров"
+
+# @ tie
+#: includes/widgets/widget-counter.php:73
+msgid "Fans"
+msgstr "Фанов"
+
+# @ tie
+#: includes/widgets/widget-custom-author.php:52
+msgid "About Author"
+msgstr "Об авторе"
+
+# @ tie
+#: includes/widgets/widget-facebook.php:41
+msgid "Find us on Facebook"
+msgstr "Найти нас на фейсбуке"
+
+# @ tie
+#: includes/widgets/widget-feedburner.php:27
+msgid "Enter your e-mail address"
+msgstr "Введите ваш e-mail тут"
+
+# @ tie
+#: includes/widgets/widget-feedburner.php:51
+msgid "FeedBurner Widget"
+msgstr "FeedBurner виджет"
+
+# @ tie
+#: includes/widgets/widget-feedburner.php:51
+msgid "Subscribe to our email newsletter."
+msgstr "Подписаться на наш информационный бюллетень."
+
+# @ tie
+#: includes/widgets/widget-flickr.php:44
+msgid "Flickr"
+msgstr "Flickr"
+
+# @ tie
+#: includes/widgets/widget-google.php:53
+msgid "Follow us on Google+"
+msgstr "Следуй за нами на Google+"
+
+# @ tie
+#: includes/widgets/widget-login.php:49
+msgid "Login"
+msgstr "Логин"
+
+# @ tie
+#: includes/widgets/widget-news-pic.php:44
+msgid "News in Pictures"
+msgstr "Новости в картинках"
+
+# @ tie
+#: includes/widgets/widget-posts.php:58
+msgid "Recent Posts"
+msgstr "Последние записи"
+
+# @ tie
+#: includes/widgets/widget-search.php:19
+msgid "to search type and hit enter"
+msgstr "введите слово и нажмите enter"
+
+# @ tie
+#: includes/widgets/widget-social.php:51
+msgid "Social"
+msgstr "Социальные сети"
+
+# @ tie
+#: includes/widgets/widget-tabbed.php:22
+msgid "Popular"
+msgstr "Популярно"
+
+# @ tie
+#: includes/widgets/widget-tabbed.php:23
+msgid "Recent"
+msgstr "Свежие"
+
+# @ tie
+#: includes/widgets/widget-tabbed.php:24
+msgid "Comments"
+msgstr "Комменты"
+
+# @ tie
+#: includes/widgets/widget-text-html.php:62
+msgid "Text"
+msgstr "Текст"
+
+# @ default
+#: includes/widgets/widget-twitter.php:106
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+# @ default
+#: includes/widgets/widget-twitter.php:108
+msgid "Y/m/d"
+msgstr ""
+
+# @ twitter-for-wordpress
+#: includes/widgets/widget-twitter.php:109
+#, php-format
+msgid "%s"
+msgstr ""
+
+# @ default
+#: includes/widgets/widget-twitter.php:109
+msgid "Y/m/d H:i:s"
+msgstr ""
+
+# @ tie
+#: includes/widgets/widget-twitter.php:149
+msgid "@Follow Me"
+msgstr "Текст"
+
+# @ tie
+#: includes/widgets/widget-video.php:63
+msgid " Featured Video"
+msgstr "Избранное видео"
+
+# @ tie
+#: includes/widgets/widget-youtube.php:40
+msgid "Subscribe to our Channel"
+msgstr "Подписка на ваш канал"
+
+# @ tie
+#: includes/wp_list_comments.php:9
+#, php-format
+msgid "%s "
+msgstr ""
+
+# @ tie
+#: includes/wp_list_comments.php:10
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+# @ tie
+#: includes/wp_list_comments.php:10 includes/wp_list_comments.php:30
+msgid "(Edit)"
+msgstr "(Редактировать)"
+
+# @ tie
+#: includes/wp_list_comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации"
+
+# @ tie
+#: includes/wp_list_comments.php:30
+msgid "Pingback:"
+msgstr ""
+
+# @ tie
+#: page.php:50 single.php:51 template-authors.php:39
+#: template-best-reviews.php:38 template-login.php:39 template-restrict.php:42
+#: template-sitemap.php:39 template-tags.php:39 template-timeline.php:38
+msgid "Pages:"
+msgstr "Страницы:"
+
+# @ tie
+#: page.php:54 single.php:55 template-authors.php:102
+#: template-best-reviews.php:73 template-login.php:41 template-restrict.php:47
+#: template-sitemap.php:71 template-tags.php:51 template-timeline.php:76
+msgid "Edit"
+msgstr "Редактировать"
+
+# @ wordpress-importer
+#: panel/importer/parsers.php:42 panel/importer/parsers.php:63
+msgid "There was an error when reading this WXR file"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/parsers.php:43
+msgid ""
+"Details are shown above. The importer will now try again with a different "
+"parser..."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/parsers.php:67 panel/importer/parsers.php:72
+#: panel/importer/parsers.php:262 panel/importer/parsers.php:451
+msgid ""
+"This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:134
+#: panel/importer/wordpress-importer.php:143
+#: panel/importer/wordpress-importer.php:194
+#: panel/importer/wordpress-importer.php:198
+#: panel/importer/wordpress-importer.php:207
+msgid "Sorry, there has been an error."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:135
+msgid "The file does not exist, please try again."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:178
+msgid "All done."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:178
+msgid "Have fun!"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:179
+msgid "Remember to update the passwords and roles of imported users."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:199
+#, php-format
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:215
+#, php-format
+msgid ""
+"This WXR file (version %s) may not be supported by this version of the "
+"importer. Please consider updating."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:240
+#, php-format
+msgid ""
+"Failed to import author %s. Their posts will be attributed to the current "
+"user."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:266
+msgid "Assign Authors"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:267
+msgid ""
+"To make it easier for you to edit and save the imported content, you may "
+"want to reassign the author of the imported item to an existing user of this "
+"site. For example, you may want to import all the entries as <code>admin</"
+"code>s entries."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:269
+#, php-format
+msgid ""
+"If a new user is created by WordPress, a new password will be randomly "
+"generated and the new user&#8217;s role will be set as %s. Manually changing "
+"the new user&#8217;s details will be necessary."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:279
+msgid "Import Attachments"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:282
+msgid "Download and import file attachments"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:299
+msgid "Import author:"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:310
+msgid "or create new user with login name:"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:313
+msgid "as a new user:"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:321
+msgid "assign posts to an existing user:"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:323
+msgid "or assign posts to an existing user:"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:324
+msgid "- Select -"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:374
+#, php-format
+msgid ""
+"Failed to create new user for %s. Their posts will be attributed to the "
+"current user."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:423
+#, php-format
+msgid "Failed to import category %s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:461
+#, php-format
+msgid "Failed to import post tag %s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:505
+#: panel/importer/wordpress-importer.php:631
+#, php-format
+msgid "Failed to import %s %s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:527
+#, php-format
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:548
+#, php-format
+msgid "%s &#8220;%s&#8221; already exists."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:603
+#, php-format
+msgid "Failed to import %s &#8220;%s&#8221;"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:749
+msgid "Menu item skipped due to missing menu slug"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:756
+#, php-format
+msgid "Menu item skipped due to invalid menu slug: %s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:819
+msgid "Fetching attachments is not enabled"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:832
+msgid "Invalid file type"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:876
+msgid "Remote server did not respond"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:882
+#, php-format
+msgid "Remote server returned error response %1$d %2$s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:889
+msgid "Remote file is incorrect size"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:894
+msgid "Zero size file downloaded"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:900
+#, php-format
+msgid "Remote file is too large, limit is %s"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:999
+msgid "Import WordPress"
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:1006
+#, php-format
+msgid ""
+"A new version of this importer is available. Please update to version %s to "
+"ensure compatibility with newer export files."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:1021
+msgid ""
+"Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import "
+"the posts, pages, comments, custom fields, categories, and tags into this "
+"site."
+msgstr ""
+
+# @ wordpress-importer
+#: panel/importer/wordpress-importer.php:1022
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
+
+# @ tie
+#: panel/mpanel-functions.php:106
+msgid "Use this image"
+msgstr "Использовать картинку"
+
+# @ tie
+#: panel/shortcodes/shortcode.php:399
+msgid "About The Author"
+msgstr "Об авторе"
+
+# @ tie
+#: search.php:11
+msgid "Nothing Found"
+msgstr "Ну нет тут такого. Вотте крест!"
+
+# @ tie
+#: search.php:23
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Все облазили, но такого тут нет вообще ни разу! Может попробовать с другими "
+"словами?"
+
+# @ tie
+#: single.php:69
+msgid "Tagged with: "
+msgstr "С тегами: "
+
+# @ tie
+#: single.php:81
+msgid "Previous:"
+msgstr "Предыдущий"
+
+# @ tie
+#: single.php:82
+msgid "Next:"
+msgstr "Следующий"
+
+# @ tie
+#: single.php:89
+msgid "About"
+msgstr "О"
+
+# @ tie
+#: template-restrict.php:44
+msgid "You must be "
+msgstr "Вы должны быть"
+
+# @ tie
+#: template-restrict.php:44
+msgid "logged in"
+msgstr "вошел как"
+
+# @ tie
+#: template-restrict.php:44
+msgid " to view this page."
+msgstr "для просмотра страницы."
+
+# @ woocommerce
+#: woocommerce/single-product/related.php:38
+msgid "Related Products"
+msgstr ""
+
+# @ tie
+#~ msgid "Page %s"
+#~ msgstr "Страница %s"

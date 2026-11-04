@@ -1,0 +1,50 @@
+# Deploy code to westeros.ir over FTP. Runs ONLY when started by hand
+# (GitHub > Actions > "Deploy to westeros.ir" > Run workflow).
+# Secrets needed: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+# The FTP account's home must be /home/wester/public_html, so server-dir is ./
+# Nothing outside what this action uploaded is ever deleted (uploads, configs, wiki images stay safe).
+name: Deploy to westeros.ir
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (only list what would change)"
+        type: boolean
+        default: true
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: FTP deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: ./
+          dry-run: ${{ inputs.dry_run }}
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .cpanel.yml
+            .gitignore
+            wp-config.php
+            wiki/LocalSettings.php
+            .htaccess
+            wp-content/uploads/**
+            wiki/images/**
+            forums/**
+            dl/**
+            downloads/**
+            beyondthewall/**

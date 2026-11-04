@@ -1,0 +1,64 @@
+/* Swatches and preview render the front end markup; these rules size them and
+   undo the inline display a <label> forces on its contents. */
+#wp-polls-pollbar {
+	width: 200px;
+}
+.wp-polls-swatch {
+	display: inline-block;
+	width: 160px;
+	vertical-align: middle;
+	/* Not the configured height: at the 8px default the gradient is one
+	   invisible band. The preview below shows the real height. */
+	--wp-polls-bar-height: 24px;
+	--wp-polls-bar-radius: 4px;
+}
+.wp-polls-swatch .wp-polls-bar,
+.wp-polls-swatch .wp-polls-bar-fill {
+	display: block;
+}
+/* Showing a bar, not measuring one, so the fill is always full width. */
+#wp-polls-pollbar .wp-polls-bar-fill,
+.wp-polls-swatch .wp-polls-bar-fill {
+	width: 100%;
+}
+/* The answers are a real table, so they keep widefat rather than form-table.
+   Sizing here, not in per-cell attributes, so the vote column can follow the
+   text direction. */
+.wp-polls-answers th {
+	width: 20%;
+}
+/* The field takes what is left beside its Delete button. */
+.wp-polls-answers .wp-polls-answer-text {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+.wp-polls-answers .wp-polls-answer-text input[type="text"] {
+	flex: 1;
+}
+.wp-polls-answers .wp-polls-answer-votes {
+	width: 20%;
+	text-align: start;
+}
+input.wp-polls-votes {
+	width: 5em;
+}
+
+/* The poll the site is currently showing, highlighted in the Manage Polls
+   list the way the active row is elsewhere in wp-admin. The fallback is core's
+   own highlight; the property is there so an admin colour scheme can change
+   it. */
+.wp-list-table tr.wp-polls-displayed td,
+.wp-list-table tr.wp-polls-displayed th {
+	background-color: var(--wp-polls-admin-highlight, #f0f6fc);
+}
+
+/* The two poll bar colour fields. Browsers size a colour input like a small
+   text field, which leaves the swatch inside it barely visible. */
+#poll_bar_bg,
+#poll_bar_border {
+	width: 60px;
+	height: 32px;
+	padding: 2px;
+	vertical-align: middle;
+}

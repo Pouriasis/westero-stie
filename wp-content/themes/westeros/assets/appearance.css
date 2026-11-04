@@ -1,0 +1,67 @@
+/* Original family banners and Iron Throne, with a quieter, legible nameplate. */
+.ws-site .ws-masthead{height:auto;min-height:0;aspect-ratio:1440/350;background:#17211f;border-bottom:1px solid #b29562}
+.ws-site .ws-masthead>img{width:100%;height:100%;min-height:0;object-fit:contain;object-position:center;filter:none}
+.ws-site .ws-masthead:after{inset:9px;background:none;border:1px solid #cfb07155;z-index:2}
+.ws-site .ws-brand-lockup{top:auto;bottom:4%;inset-inline-start:3.5%;transform:none;width:32%;max-width:none;padding:10px 20px 12px;background:linear-gradient(100deg,#111b16,#1b2a21);border-inline-start:2px solid #bfa16b;border-radius:2px;box-shadow:0 3px 20px #0003;gap:0;color:#faf0dc}
+.ws-site .ws-brand-emblem{display:none}
+.ws-site .ws-brand-title{font-size:clamp(28px,3.6vw,50px);line-height:1.35;text-shadow:none}
+.ws-site .ws-brand-latin{font-size:9px;letter-spacing:.4em;margin:3px 0 7px;color:#d9bd83}
+.ws-site .ws-brand-description{font-size:10px;line-height:1.9;padding-top:7px;border-color:#bfa16b55;color:#e3dac4}
+
+/* A named, keyboard-operable appearance control on every page. */
+.ws-utility-actions{gap:14px}
+.ws-appearance-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:6px 11px;border:1px solid #bca77888;border-radius:4px;background:#17282355;color:#f0e5cc;font:11px/1.8 var(--ws-font);white-space:nowrap;cursor:pointer}
+.ws-appearance-toggle .ws-icon{width:17px;height:17px}
+.ws-appearance-toggle:hover,.ws-appearance-toggle[aria-pressed=true]{border-color:#d7b879;background:#b99a5d20;color:#fff2cc}
+.ws-appearance-toggle:focus-visible{outline-color:#e4c48a!important}
+.ws-comment-preview-tools{margin:0 0 22px}
+.ws-js .ws-site .ws-comment-preview-tools{display:block}
+.ws-comment-preview{white-space:pre-wrap;overflow-wrap:anywhere;padding:17px;margin:12px 0 0;border:1px solid var(--ws-line);border-inline-start:3px solid var(--ws-bronze);background:var(--ws-surface);color:var(--ws-ink);font-size:14px;line-height:2.2}
+
+/* Night appearance applies to the whole site and keeps article reading colors. */
+html.ws-night-reading{color-scheme:dark;--ws-paper:#1e2925;--ws-surface:#28352f;--ws-ink:#ece6d6;--ws-muted:#bdc6b9;--ws-bronze:#dec18b;--ws-gold:#c4a66f;--ws-line:#4d5e50;--ws-night:#17231f;--ws-red:#d79d8e}
+.ws-night-reading body.ws-site{background:#111c18;background-image:radial-gradient(ellipse at 20% 0,#31473d,transparent 65%)}
+.ws-night-reading .ws-site .wrapper.ws-shell{background:var(--ws-paper);border-color:var(--ws-line);box-shadow:0 18px 65px #0004}
+.ws-night-reading .ws-utility,.ws-night-reading .ws-nav,.ws-night-reading .ws-menu ul,.ws-night-reading .ws-footer{background:#1c2b24}
+.ws-night-reading .ws-site :is(.ws-feature-briefs,.ws-collection-header,.ws-listing-empty,.ws-reading-path){background:#2c3b31;border-color:var(--ws-line)}
+.ws-night-reading .ws-site .sidebar .widget,.ws-night-reading .ws-home .ws-paired-sections>.ws-section,.ws-night-reading .ws-home .ws-section[data-category="652"],.ws-night-reading .ws-site .ws-article-lead{background:var(--ws-surface);border-color:var(--ws-line)}
+.ws-night-reading .ws-site :is(.ws-dossier,.ws-document,.ws-listing-card,.ws-dossier-card,.ws-saved-dialog){background:var(--ws-surface);border-color:var(--ws-line)}
+.ws-night-reading .ws-site :is(.ws-collection-heading>h1,.ws-document-header>h1,.ws-dossier-header>h1,.ws-briefs-heading h2,.ws-listing-empty h2,.widget-top h2,.widget-top h4){color:var(--ws-ink)}
+.ws-night-reading .ws-site :is(.ws-card p,.ws-listing-excerpt,.ws-feature-brief .ws-meta,.ws-collection-info,.ws-collection-description,.ws-listing-empty p,.ws-section-note,.ws-document-header>p){color:var(--ws-muted)}
+.ws-night-reading .ws-site .ws-paired-sections .ws-card p,.ws-night-reading .ws-home .ws-section[data-category="652"] .ws-section-note{color:var(--ws-muted)}
+.ws-night-reading .ws-site :is(.ws-collection-info>a,.ws-briefs-archive,.ws-topic-links>a){color:var(--ws-bronze)!important}
+.ws-night-reading .ws-site :is(.ws-section-heading,.widget-top,.ws-story-row,.ws-feature-brief,.ws-briefs-heading,.ws-listing-footer,.ws-document-header,.ws-path-outline,.ws-path-neighbours>a){border-color:var(--ws-line)}
+.ws-night-reading .ws-site :is(.ws-section-seal,.ws-collection-emblem,.ws-dossier-step,.ws-path-position,.ws-topic-links>a,.ws-listing-pagination .page-numbers){background:#344538;color:var(--ws-bronze);border-color:#687558}
+.ws-night-reading .ws-site .ws-kind-filter>select,.ws-night-reading .ws-site .ws-document .entry :is(input,textarea,select){background:#1c2922;color:var(--ws-ink);border-color:#75816b}
+.ws-night-reading .ws-site .ws-listing-pagination .current,.ws-night-reading .ws-site .ws-topic-links>a[aria-current=page]{background:#c4a66f;color:#18231c;border-color:#c4a66f}
+.ws-night-reading .ws-site :is(.ws-placeholder,.ws-listing-image>.ws-placeholder){background:linear-gradient(135deg,#304338,#384936);color:#d4bd91}
+.ws-night-reading .ws-site .ws-dossier-cover{background:#344538}
+.ws-night-reading .ws-site .ws-reader{--reader-bg:#27372e;--reader-ink:#efe7d4;--reader-muted:#c1cbb9;--reader-line:#61715a;--reader-link:#e3c38b}
+.ws-night-reading .ws-site ::selection{background:#806a42;color:#fff6df}
+
+@media(min-width:768px) and (max-width:1000px){
+  .ws-utility{gap:12px;padding-inline:20px}
+  .ws-utility-note{display:none}
+  .ws-utility-actions{width:100%;justify-content:flex-end}
+  .ws-site .ws-brand-lockup{padding:8px 14px;width:34%}
+  .ws-site .ws-brand-description{font-size:9px}
+}
+@media(max-width:767px){
+  .ws-utility-actions{display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:center}
+  .ws-appearance-toggle{justify-self:start;min-height:36px;font-size:11px}
+  .ws-saved-trigger{justify-self:end;font-size:11px;min-height:36px}
+  .ws-utility-actions .ws-search{grid-column:1/-1;width:100%}
+  .ws-site .ws-search input[type=search]{height:36px;font-size:12px}
+  .ws-site .ws-masthead{aspect-ratio:auto;height:auto}
+  .ws-site .ws-masthead>img{height:164px;object-fit:cover;object-position:24% center}
+  .ws-site .ws-masthead:after{inset:7px 7px auto;height:148px;pointer-events:none}
+  .ws-site .ws-brand-lockup{position:relative;inset:auto;width:auto;max-width:none;display:grid;grid-template-columns:1fr auto;padding:12px 22px 13px;border-inline-start:0;border-top:1px solid #a98f5c88;border-radius:0;box-shadow:none;background:#1c2a23}
+  .ws-site .ws-brand-title{font-size:34px;line-height:1.25}
+  .ws-site .ws-brand-latin{align-self:center;font-size:9px;margin:0;letter-spacing:.35em}
+  .ws-site .ws-brand-description{grid-column:1/-1;width:100%;margin-top:7px;font-size:10px;padding-top:7px}
+}
+@media print{
+  .ws-appearance-toggle,.ws-comment-preview-tools{display:none!important}
+  html.ws-night-reading{color-scheme:light;--ws-paper:#fff;--ws-surface:#fff;--ws-ink:#111;--ws-muted:#444;--ws-bronze:#5a4020;--ws-line:#aaa}
+  .ws-night-reading .ws-site .ws-reader{--reader-bg:white;--reader-ink:black;--reader-muted:#444;--reader-line:#aaa;--reader-link:black}
+}

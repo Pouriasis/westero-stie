@@ -1,0 +1,400 @@
+jQuery(document).ready(function ($) {
+
+	$('button[name="tptn_cache_clear"]').on('click', function () {
+		var $button = $(this);
+		var networkWide = '1' === $button.attr('data-network-wide');
+		var confirmMessage = networkWide && top_ten_admin_data.strings.network_confirm_message
+			? top_ten_admin_data.strings.network_confirm_message
+			: top_ten_admin_data.strings.confirm_message;
+
+		if (confirm(confirmMessage)) {
+			var originalText = $button.text();
+			var clearingText = top_ten_admin_data.strings.clearing_text ? top_ten_admin_data.strings.clearing_text : 'Clearing...';
+			$button.prop('disabled', true).text(clearingText).append(' <span class="spinner is-active"></span>');
+			clearCache($button, originalText, networkWide);
+		}
+	});
+
+	// Function to clear the cache.
+	function clearCache($button, originalText, networkWide) {
+		$.post(ajaxurl, {
+			action: 'tptn_clear_cache',
+			security: top_ten_admin_data.security,
+			network_wide: networkWide ? '1' : '0'
+		}, function (response) {
+			if (response.success) {
+				alert(response.data.message);
+			} else {
+				alert(top_ten_admin_data.strings.fail_message);
+			}
+		}).fail(function (jqXHR, textStatus) {
+			alert(top_ten_admin_data.strings.request_fail_message + textStatus);
+		}).always(function () {
+			if ($button && $button.length) {
+				$button.prop('disabled', false).text(originalText).find('.spinner').remove();
+			}
+		});
+	}
+
+	/**
+	 * Handle style changes and enforce valid thumbnail location settings.
+	 */
+	function tptnHandleThumbnailStyleChange() {
+		var styleSelect = document.querySelector('select[name="tptn_settings[tptn_styles]"]');
+		if (!styleSelect) {
+			return;
+		}
+
+		var strings = top_ten_admin_data.strings || {};
+
+		var messageConfig = {
+			'left_thumbs': 'left_thumbs_message',
+			'grid_thumbs': 'grid_thumbs_message',
+			'text_only': 'text_only_message'
+		};
+
+		function updateMessage(selectedStyle) {
+			var messageKey = messageConfig[selectedStyle];
+			var postThumbOptions = document.querySelectorAll('input[name="tptn_settings[post_thumb_op]"]');
+			if (postThumbOptions.length === 0) {
+				return;
+			}
+
+			var container = postThumbOptions[0].closest('td');
+			if (!container) {
+				return;
+			}
+
+			var existingMessage = container.querySelector('.tptn-js-message');
+			if (!messageKey) {
+				if (existingMessage) {
+					existingMessage.remove();
+				}
+				return;
+			}
+
+			var messageText = strings[messageKey] || '';
+			if (!existingMessage) {
+				var message = document.createElement('p');
+				message.className = 'description tptn-js-message';
+				message.style.color = '#9B0800';
+				message.textContent = messageText;
+				container.appendChild(message);
+			} else if (existingMessage.textContent !== messageText) {
+				existingMessage.textContent = messageText;
+			}
+		}
+
+		function updateFields() {
+			var selectedStyle = styleSelect.value;
+			var postThumbOptions = document.querySelectorAll('input[name="tptn_settings[post_thumb_op]"]');
+
+			// Update the inline message first.
+			updateMessage(selectedStyle);
+
+			// Reset all radios to enabled, then re-disable as needed.
+			postThumbOptions.forEach(function (el) {
+				el.disabled = false;
+			});
+
+			// Special handling for left/grid thumbs: restrict post_thumb_op to inline, after, or thumbs_only.
+			if ('left_thumbs' === selectedStyle || 'grid_thumbs' === selectedStyle) {
+				var allowed = ['inline', 'after', 'thumbs_only'];
+				var currentChecked = document.querySelector('input[name="tptn_settings[post_thumb_op]"]:checked');
+				var needsFallback = !currentChecked || -1 === allowed.indexOf(currentChecked.value);
+
+				postThumbOptions.forEach(function (el) {
+					if (-1 === allowed.indexOf(el.value)) {
+						el.disabled = true;
+					}
+				});
+
+				if (needsFallback) {
+					var inlineRadio = document.querySelector('input[name="tptn_settings[post_thumb_op]"][value="inline"]');
+					if (inlineRadio) {
+						inlineRadio.checked = true;
+					}
+				}
+			}
+
+			// Special handling for text_only: force post_thumb_op to text_only.
+			if ('text_only' === selectedStyle) {
+				postThumbOptions.forEach(function (el) {
+					el.disabled = true;
+				});
+
+				var textOnlyRadio = document.querySelector('input[name="tptn_settings[post_thumb_op]"][value="text_only"]');
+				if (textOnlyRadio) {
+					textOnlyRadio.checked = true;
+				}
+			}
+		}
+
+		updateFields();
+		styleSelect.addEventListener('change', updateFields);
+	}
+
+	tptnHandleThumbnailStyleChange();
+
+	function updateFastConfigUI($button, data) {
+		if (!data) {
+			return;
+		}
+
+		if (data.status_html) {
+			var $status = $button.closest('td').find('.tptn-fast-config-status').first();
+			if (!$status.length) {
+				$status = $('.tptn-fast-config-status').first();
+			}
+			if ($status.length) {
+				$status.replaceWith($(data.status_html));
+			}
+		}
+
+		if (data.generate_nonce) {
+			$('.tptn-generate-fast-config').data('nonce', data.generate_nonce);
+		}
+
+		if (data.delete_nonce) {
+			$('.tptn-delete-fast-config').data('nonce', data.delete_nonce);
+		}
+
+		if (typeof data.has_config !== 'undefined') {
+			var $deleteBtn = $('.tptn-delete-fast-config');
+			if ($deleteBtn.length) {
+				$deleteBtn.prop('disabled', !data.has_config);
+			}
+		}
+
+		if (data.message) {
+			alert(data.message);
+		}
+	}
+
+	// Function to generate fast config.
+	function generateFastConfig(button) {
+		var $button = $(button);
+		var originalText = $button.text();
+		$button.prop('disabled', true).text('Generating...');
+
+		$.post(ajaxurl, {
+			action: 'tptn_generate_fast_config',
+			security: $button.data('nonce')
+		}, function (response) {
+			if (response && response.data) {
+				if (response.data.nonce) {
+					$button.data('nonce', response.data.nonce);
+				}
+				updateFastConfigUI($button, response.data);
+			}
+		}).fail(function (jqXHR, textStatus) {
+			if (window.console && window.console.error) {
+				window.console.error(top_ten_admin_data.strings.request_fail_message + textStatus);
+			}
+		}).always(function () {
+			$button.prop('disabled', false).text(originalText);
+		});
+	}
+
+	// Function to delete fast config.
+	function deleteFastConfig(button) {
+		var $button = $(button);
+		var originalText = $button.text();
+		$button.prop('disabled', true).text('Deleting...');
+
+		$.post(ajaxurl, {
+			action: 'tptn_delete_fast_config',
+			security: $button.data('nonce')
+		}, function (response) {
+			if (response && response.data) {
+				if (response.data.nonce) {
+					$button.data('nonce', response.data.nonce);
+				}
+				updateFastConfigUI($button, response.data);
+			}
+		}).fail(function (jqXHR, textStatus) {
+			if (window.console && window.console.error) {
+				window.console.error(top_ten_admin_data.strings.request_fail_message + textStatus);
+			}
+		}).always(function () {
+			$button.text(originalText);
+			if ($button.data('nonce')) {
+				$button.prop('disabled', false);
+			}
+		});
+	}
+
+	// Handle fast config generation button click.
+	$('body').on('click', '.tptn-generate-fast-config', function () {
+		var confirmMessage = $(this).data('confirm');
+		if (confirm(confirmMessage)) {
+			generateFastConfig(this);
+		}
+	});
+
+	// Handle fast config deletion button click.
+	$('body').on('click', '.tptn-delete-fast-config', function () {
+		var confirmMessage = $(this).data('confirm');
+		if (confirm(confirmMessage)) {
+			deleteFastConfig(this);
+		}
+	});
+
+	$(function () {
+		var $tabsContainer = $("#dashboard-historical-visits");
+		if (!$tabsContainer.length) {
+			return;
+		}
+
+		function loadDashboardTab($panel) {
+			if (!$panel.length || $panel.data('tptn-loaded') || $panel.data('tptn-loading')) {
+				return;
+			}
+			var $content = $panel.find('.tptn-dashboard-tab-content');
+			if (!$content.length) {
+				return;
+			}
+
+			$panel.data('tptn-loading', true).attr('aria-busy', 'true');
+			$.post(
+				tptn_chart_data.tabs_url || ajaxurl,
+				{
+					action: 'tptn_dashboard_tab',
+					security: tptn_chart_data.security,
+					tab: $panel.data('tptn-tab'),
+					network: parseInt($tabsContainer.data('tptn-network'), 10) || 0
+				},
+				function (response) {
+					if (response && response.success && response.data && typeof response.data.html !== 'undefined') {
+						$content.html(response.data.html).data('tptn-loaded', true);
+					} else {
+						$content.html('<p>' + tptn_chart_data.tab_error + '</p>');
+					}
+				},
+				'json'
+			).fail(function () {
+				$content.html('<p>' + tptn_chart_data.tab_error + '</p>');
+			}).always(function () {
+				$panel.data('tptn-loading', false).removeAttr('aria-busy');
+			});
+		}
+
+		$tabsContainer.tabs({
+			create: function (event, ui) {
+				$(ui.tab.find("a")).addClass("nav-tab-active");
+			},
+			activate: function (event, ui) {
+				$(ui.oldTab.find("a")).removeClass("nav-tab-active");
+				$(ui.newTab.find("a")).addClass("nav-tab-active");
+				loadDashboardTab(ui.newPanel);
+			}
+		});
+
+		// Wait for the tabs to be fully initialized
+		setTimeout(function () {
+			// Select Today tab (second tab) by default and add the nav-tab-active class
+			var $tabs = $tabsContainer.tabs();
+
+			// First find the Today tab index (usually 1)
+			var tabIndex = 0;
+			$tabsContainer.find(".nav-tab-wrapper li a").each(function (index) {
+				if ($(this).text().indexOf('Today') >= 0) {
+					tabIndex = index;
+					return false; // Break the loop
+				}
+			});
+
+			// Set the active tab
+			$tabs.tabs("option", "active", tabIndex);
+
+			// Manually add the active class to the Today tab
+			$tabsContainer.find(".nav-tab-wrapper li a").removeClass("nav-tab-active");
+			$tabsContainer.find(".nav-tab-wrapper li").eq(tabIndex).find("a").addClass("nav-tab-active");
+		}, 10);
+	});
+
+	// Datepicker.
+	$(function () {
+		var dateFormat = 'dd M yy',
+			from = $("#datepicker-from")
+				.datepicker({
+					changeMonth: true,
+					maxDate: 0,
+					dateFormat: dateFormat
+				})
+				.on("change", function () {
+					to.datepicker("option", "minDate", getDate(this));
+				}),
+			to = $("#datepicker-to")
+				.datepicker({
+					changeMonth: true,
+					maxDate: 0,
+					dateFormat: dateFormat
+				})
+				.on("change", function () {
+					from.datepicker("option", "maxDate", getDate(this));
+				});
+
+		function getDate(element) {
+			var date;
+			try {
+				date = $.datepicker.parseDate(dateFormat, element.value);
+			} catch (error) {
+				date = null;
+			}
+
+			return date;
+		}
+	});
+
+	// Editable table code.
+	$('.live_edit').on('click', function () {
+		$(this)
+			.addClass('live_edit_mode')
+			.removeClass('live_edit_mode_success live_edit_mode_error');
+	});
+
+	$(".live_edit").on('focusout keypress', function (e) {
+		if (e.type !== "focusout" && e.which !== 13) {
+			return;
+		}
+		if (e.which == 13) {
+			e.preventDefault();
+		}
+		var $element = $(this);
+		var post_id = $element.attr('data-wp-post-id');
+		var blog_id = $element.attr('data-wp-blog-id');
+		var count = $element.attr('data-wp-count');
+		var value = $element.text();
+
+		$element.removeClass("live_edit_mode");
+
+		var ajaxData = {
+			action: 'tptn_edit_count_ajax',
+			post_id: post_id,
+			total_count: value,
+			total_count_original: count,
+			top_ten_admin_nonce: top_ten_admin.nonce
+		};
+
+		// Include blog_id if available (network mode).
+		if (blog_id) {
+			ajaxData.blog_id = blog_id;
+		}
+
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: ajaxurl,
+			data: ajaxData,
+			success: function (response) {
+				if (response === false) {
+					$element.addClass("live_edit_mode_error");
+					$element.html(count);
+				} else if (response > 0) {
+					$element.addClass("live_edit_mode_success");
+				}
+			},
+		});
+	});
+});

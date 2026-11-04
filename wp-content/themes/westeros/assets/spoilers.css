@@ -1,0 +1,24 @@
+/* Explicit labels share the reading room palette, including night mode. */
+.ws-spoiler-badge{display:inline-flex;align-items:flex-start;gap:5px;max-width:100%;margin:5px 0 7px;padding:3px 7px;border:1px solid var(--ws-line);border-radius:3px;background:var(--ws-surface);color:var(--ws-ink);font:10px/1.9 var(--ws-font);overflow-wrap:anywhere}
+.ws-spoiler-badge>.ws-icon{flex:0 0 13px;width:13px;height:13px;margin-top:3px;color:var(--ws-bronze)}
+.ws-spoiler-level-none{border-inline-start:3px solid #617852}
+.ws-spoiler-level-series,.ws-spoiler-level-books,.ws-spoiler-level-both{border-inline-start:3px solid #9f5740}
+.ws-spoiler-level-unknown{border-style:dashed}
+.ws-feature-caption .ws-spoiler-badge{background:#1c2922;color:#f6efde;border-color:#b69b70;max-width:100%}
+.ws-site .ws-reader-header .ws-spoiler-notice{margin:12px 0 20px}
+.ws-comment-spoiler-fields{border:1px solid var(--ws-line);padding:14px 16px;margin:16px 0 24px;min-width:0}
+.ws-comment-spoiler-fields legend{font-size:12px;padding:0 7px;font-weight:700}
+.ws-comment-spoiler-fields p{margin:0 0 12px}
+.ws-native-comments .ws-comment-spoiler-fields select{max-width:100%;width:100%;min-height:42px;padding:7px;background:var(--ws-surface);color:var(--ws-ink);border:1px solid var(--ws-line);border-radius:3px}
+.ws-comment-spoiler-fields .description,.ws-comments-spoiler-note,.ws-spoiler-filter-note{font-size:11px;line-height:2;color:var(--ws-muted)}
+.ws-native-comments .ws-comment-spoiler{margin:0;--reader-link:var(--ws-bronze);--reader-line:var(--ws-line)}
+.ws-native-comments .ws-comment-spoiler>summary{overflow-wrap:anywhere;color:var(--ws-ink);font-size:12px}
+.ws-comment-spoiler-label{font-size:11px;font-weight:700;color:var(--ws-ink);margin-bottom:12px}
+.ws-site .ws-spoiler>summary:focus-visible,.ws-site .ws-comment-spoiler-fields select:focus-visible{outline:3px solid var(--ws-bronze);outline-offset:3px}
+.ws-spoiler-filter-note{flex-basis:100%;margin:6px 0 0}
+.ws-site .ws-kind-filter{flex-wrap:wrap;gap:9px}
+.ws-site .ws-kind-filter select{max-width:100%;min-width:0}
+.ws-night-reading .ws-native-comments .comment-body{background:var(--ws-surface);color:var(--ws-ink)}
+.ws-night-reading .ws-native-comments .comment-form :is(input:not([type=submit]),textarea){background:var(--ws-paper);color:var(--ws-ink);border-color:var(--ws-line)}
+.ws-path-outline .ws-spoiler-badge{margin-inline-start:8px}
+@media(max-width:767px){.ws-site .ws-kind-filter>select{flex:1 1 100%;width:100%}.ws-comment-spoiler-fields{padding:12px}.ws-feature-caption .ws-spoiler-badge{font-size:9px;padding:2px 5px}}

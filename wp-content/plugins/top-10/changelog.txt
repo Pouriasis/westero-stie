@@ -1,0 +1,1102 @@
+This file holds the archive of changelog entries
+
+= 4.5.3 =
+
+Release date: 15 October 2026
+
+**Security**
+
+* Hardened escaping of the popular posts wrapper classes.
+
+= 4.5.2 =
+
+Release date: 7 October 2026
+
+**Added**
+
+* TranslatePress translation for popular post titles, excerpts and links returned through the REST API.
+* REST API endpoints toggle in the Features tab for disabling unused Top 10 API integrations.
+* [Pro] TranslatePress support for lazy-loaded popular posts.
+* [Pro] Independent lazy-loading module toggle in the Features tab. Disabling REST API endpoints also disables lazy loading.
+
+**Changed**
+
+* Updated Freemius SDK to 2.13.5.
+
+**Fixed**
+
+* Cached popular posts were shared across languages on WPML, Polylang and TranslatePress sites.
+* Setup wizard labels were not associated with their input fields.
+* Updating settings before any options had been saved could trigger a PHP deprecation warning.
+
+= 4.5.1 =
+
+Release date: 19 September 2026
+
+**Security**
+
+* Hardened thumbnail dimension handling to prevent stored cross-site scripting through block attributes.
+
+= 4.5.0 =
+
+Release date: 7 September 2026
+Release post: https://webberzone.com/announcements/top-10-v4-5/
+
+**Added**
+
+* [Pro] Popular Posts elements for Elementor, Bricks Builder and WPBakery Page Builder.
+* [Pro] Optional site-wide tracking for front pages, posts pages, archives and searches.
+* [Pro] Reduce Daily Table Size tool to combine older hourly records.
+* [Pro] `wp top10 db rollup` command for CLI and multisite use.
+
+**Changed**
+
+* Reduced admin overhead on large multisite networks by caching table metadata, probing WPP tables directly and using estimated row counts on the Tools page.
+* Sped up the dashboard with index-friendly `dp_date` ranges, optimized network popular-post queries and on-demand loading of historical tabs.
+* Setting defaults are now resolved from a lightweight list instead of building every settings field, so reading an option early in the page load no longer loads translations too early.
+
+**Security**
+
+* Hardened settings sanitization for users without the `unfiltered_html` capability.
+* Hardened referer and array handling in settings sanitization, and renamed the settings JS globals.
+
+**Fixed**
+
+* View tracking was lost during quick navigation or browser back-button restores.
+* View counts were recorded for prerendered or initially hidden pages.
+* Bot views were recorded from cached pages, and views were recorded for browser prefetches, prerenders and direct navigations to tracker URLs.
+* Tracker scripts did not run when loaded asynchronously after `DOMContentLoaded` had fired.
+* Generated output cache keys were not discoverable by the Clear Cache tools or the WP-CLI cache flush command.
+* Settings on a multisite network read another site's values in the same request after a `switch_to_blog()` call, when read via `tptn_get_option()` or the global `$tptn_settings`.
+* `tptn_get_settings()` returned `false` instead of an empty array when no settings had been saved yet.
+* Visit data was silently lost in funnel aggregation, and the Fast Tracker raised an undefined array key warning.
+* Plugin data was deleted when uninstalling one version while its paired free or Pro counterpart was active.
+* Improved compatibility with PHP 8.6.
+* [Pro] Daily counts in the `wp top10 popular` command did not respect the selected custom date range.
+
+= 4.4.3 =
+
+*Release Date - 10 August 2026*
+
+* Fixed:
+	* Renamed `top-10-tracker.min.js` to `top-10.min.js` to avoid ad-blocker false positives triggered by "tracker" in the filename.
+
+= 4.4.2 =
+
+*Release Date - 2 August 2026*
+
+* Fixed:
+	* Fatal errors on servers with `open_basedir` restrictions when the plugin directory uses a symlink.
+	* False-positive WP-Cron rescheduling notices when the cron event remains correctly scheduled.
+	* Restored the previous database error display state after table creation and primary-key operations.
+
+= 4.4.1 =
+
+*Release Date - 25 July 2026*
+
+* Fixed:
+	* "Exclude Front page and Posts page" setting had no effect in the widget/block/shortcode output; the front and posts page IDs were compared as strings against integer post IDs during exclusion filtering.
+	* Settings page sidebar overlapped the tab content; the layout now uses flexbox instead of relying on float ordering.
+
+= 4.4.0 =
+
+*Release Date - 22 July 2026*
+
+* Features:
+	* New "Features" tab under Settings: turn off plugin features that you do not use and their code will not be loaded at all. You can toggle the Popular Posts and Post Count blocks, popular posts feeds, legacy widgets, Query block, Featured Image block, Popular Posts Pro block, Fast and High-traffic trackers, Pro dashboard widgets, and Popular Authors.
+	* New "Tracking method" setting under Settings » Counter/Tracker » Tracker settings: choose between Funnel tracking (default; views are buffered and merged into the count tables every few minutes) and Legacy tracking (views are written directly to the count tables on every visit, as in versions before 4.3). Switch to Legacy tracking if view counts are not updating on your site, e.g. when WP-Cron is disabled or unreliable. Note that Legacy tracking does not populate the visits log table. The Fast and High-traffic trackers respect this setting; regenerate the High-traffic config file after changing it.
+	* New "Number format style" setting under Settings » Counter/Tracker » Counter settings: choose Abbreviated to display large view counts in a compact form, e.g. 1.2k or 3.4M, wherever counts are displayed. The default remains the full locale-formatted number. It can be overridden per instance with the `number_format_style` shortcode/block attribute, and the suffixes and rounding can be customised via the `tptn_number_format_abbreviations` and `tptn_abbreviate_number_decimals` filters.
+	* WP-PostRatings integration: new "Show WP-PostRatings rating" setting under Settings » Posts list displays each post's rating next to it in the popular posts list, either as the star rating rendered using the WP-PostRatings plugin's own templates or as the average score number. Off by default and only takes effect when the free WP-PostRatings plugin is active. It can be overridden per instance with the `show_ratings` shortcode/block attribute (`stars` or `score`), and the markup can be customised via the `tptn_ratings` filter.
+	* [Pro] New "Lazy load popular posts" setting under Settings » General: load popular posts lists via JavaScript only when they are about to enter the viewport instead of rendering them inline, so full-page caching plugins can serve a page without embedding a live popular-posts query. Applies to content, shortcodes, widgets, and the Popular Posts block. Off by default. Override it per instance with the `lazy_load` shortcode/block attribute, e.g. `lazy_load="0"`. Not applied on feeds, admin, AJAX, cron, WP-CLI, or AMP pages.
+
+* Improvements:
+	* The `[tptn_list]` shortcode now accepts all registered settings as attributes, including newly added settings that are not yet present in the saved settings.
+	* Redesigned settings page with vertical tab navigation, which is responsive and reverts to horizontal tabs on smaller screens. The settings page now opens on the Features tab.
+	* New search box above the settings tabs: type to instantly filter settings across all tabs. Matching settings are shown grouped by tab with the search term highlighted in their labels and descriptions, each tab displays a count of its matches, and clicking a tab scrolls to its results. You can also search by the internal setting key, e.g. `cache_time`. A single Save Changes bar replaces the per-tab buttons while searching, and the search is fully keyboard and screen reader accessible.
+	* Checkbox settings now display as toggle switches.
+	* Settings that have been changed from their default value are marked with an indicator dot, with a legend below the buttons. The default value is also displayed below each setting's description.
+	* Admin styles and scripts are now versioned with the plugin version so browsers reliably pick up changes after an update.
+	* Bot/crawler detection (used by the "Do not track bots" tracker setting) now uses the actively maintained Crawler-Detect library for broader, more accurate coverage, alongside the existing built-in pattern list.
+
+* Fixed:
+	* Admin banner no longer causes a horizontal scrollbar on the plugin's admin pages.
+	* Custom period label ("Daily" vs "Custom (N days)") on the Dashboard widget, Popular Posts submenu, and post list Views column now matches the data actually shown, instead of always following the site-wide Custom period setting.
+	* Post list Views column, and its sort order, now counts today only instead of the full Custom period range.
+	* Left thumbnail style no longer stacks the thumbnail above the text in narrow containers such as sidebar widgets; it now stays side by side unless there genuinely isn't room.
+	* New "Fix Cron Schedules" tool under Top 10 » Tools to clear and reschedule the maintenance and aggregation cron jobs if they stop running.
+	* The Tools page and an admin notice now surface WP-Cron scheduling errors (e.g. "The cron event list could not be saved") directly in the dashboard instead of only appearing in the PHP error log.
+	* [Pro] Fast and High-traffic trackers now respect the "Do not track bots" setting; previously they recorded views for bots and other automated user agents regardless of this setting.
+
+= 4.3.2 =
+
+*Release Date - 8 July 2026*
+
+* Improvements:
+	* Dynamic post counts now load more reliably and are faster in modern browsers.
+	* Enhanced time range labeling: Interface now dynamically shows "Daily" for 1-day periods or "Custom (N days)" for longer periods, making the UI more accurate based on actual settings.
+
+= 4.3.1 =
+
+*Release Date - 6 June 2026*
+
+* Improvements:
+	* Aggregation cron now runs every 2 minutes instead of 5 minutes for faster count updates.
+	* Sync Funnel now shows distinct error messages for an empty funnel, a lock conflict, and database failures (including the actual database error).
+	* Dashboard chart now formats large numbers with K/M abbreviations (e.g. 15,437 → 15.4K) and auto-hides overlapping bar labels.
+	* "Recreate Database Tables" in Tools now also recreates the visits funnel and visits log tables.
+	* [Pro] `wp top10 db recreate-tables` now accepts `--table=funnel` and `--table=log` in addition to `overall`, `daily`, and `all`.
+
+* Fixed:
+	* Sync Funnel on WordPress Playground (SQLite) incorrectly reported "another aggregation is in progress" due to unreliable SQLite detection; the `DATABASE_TYPE` constant is now checked first.
+	* Uninstalling the plugin no longer throws a fatal error when attempting to drop database tables; the path to the uninstaller was resolving one level above the plugin directory.
+	* "Recreate Database Tables" silently left the daily table missing due to a stale static cache in the table-installed check; all four tables are now recreated reliably.
+
+= 4.3.0 =
+
+*Release Date - 28 May 2026*
+
+* [Release announcement](https://webberzone.com/announcements/top-10-v4-3-0/)
+
+* New:
+	* Buffered visit tracking: page views are queued in a funnel table and aggregated every 5 minutes, reducing write contention on busy sites.
+	* [Pro] RSS/Atom feed views are now counted. Enable under Counter settings > Track feed views.
+	* [Pro] Dashboard At a Glance widget now shows views for the current hour and today.
+	* [Pro] Full `wp top10` WP-CLI suite: counts, database, cache, settings, cron, and popular posts commands. All destructive commands support `--dry-run` and `--force`; multisite commands support `--network` and `--blog-id`.
+
+* Improvements:
+	* Scheduled maintenance deletes old daily rows in batches to prevent timeouts on large databases.
+	* New index on the daily table speeds up maintenance queries. Apply it to existing installs via Recreate Primary Key under Tools.
+
+* Fixed:
+	* Cache setting was referencing the wrong key, preventing posts from ever being cached.
+	* Database version was recorded before upgrade routines ran, causing upgrades to be silently skipped on re-activation.
+	* Daily queries now work on MySQL servers with ONLY_FULL_GROUP_BY enabled.
+	* Posts with identical counts now display in a consistent order when paginated.
+	* Daily counts now use the site's configured timezone instead of server time.
+	* Dashboard "Total visits" now matches the chart total rather than summing only the top 20 posts.
+	* Popular posts ordering no longer overridden by Post Types Order and similar plugins.
+	* Deactivation now clears both cron jobs and sets the settings option to not autoload.
+	* Removed incorrect `wpmu_drop_tables` filter that tried to drop network-wide tables on site deletion.
+
+= 4.2.3 =
+
+* Security:
+	* Hardened Settings API and metabox output escaping.
+
+* Improvements:
+	* Updated Freemius SDK to version 2.13.1.
+	* Updated Settings API assets and Tom Select handling.
+	* Refreshed translations and generated assets.
+
+* Fixes:
+	* Fixed metabox screen handling when `get_current_screen()` is unavailable.
+	* Fixed admin notices package tags.
+
+= 4.2.2 =
+
+* Modifications:
+	* Taxonomy Suggest script removed from Settings API. Metabox also uses Tom Select for the lookup of the category field in CRP Pro.
+
+* Fixes:
+	* CSS improvements for left-thumbs and grid-thumbs styles.
+
+= 4.2.1 =
+
+* Security:
+	* Fixed REST API permission checks to prevent unauthorized exposure of post passwords in edit context.
+
+* Fixes:
+	* Fixed a bug with the "Clear cache" button in the Tools page.
+	* Fixed thumbnail location restrictions to properly support Grid thumbnails style in addition to Left thumbnails.
+	* Improved JavaScript logic for style-based thumbnail location validation with better error handling and fallback mechanisms.
+
+= 4.2.0 =
+
+Release post: [https://webberzone.com/announcements/top-10-v4-2-0/](https://webberzone.com/announcements/top-10-v4-2-0/)
+
+* New:
+	* Settings wizard to guide initial configuration and review existing settings
+	* Network-wide dashboard with aggregated multisite statistics
+	* [Pro] High-traffic tracking mode with status validation panel
+	* [Pro] Copy settings between multisite network sites
+	* [Pro] Compact “Top 10 Views Overview” dashboard widget
+	* [Pro] Option to disable the Admin Bar menu
+	* [Pro] Maintenance setting to override data retention period
+
+* Improvements:
+	* [Pro] Improved dashboard chart bar click-through to open the Popular Posts screen filtered to that day
+	* Updated Settings API to version 2.7.1
+	* Improved media handler with recursion protection and more robust processing
+	* Media Handler now supports the FIFU WordPress plugin for featured image detection.
+	* Improved Tools page statistics display and caching
+	* Wrapped Import/Export and Tools sections in postbox containers for consistent UI
+
+* Developer / Internal:
+	* Refactored popular posts queries for improved performance and WordPress VIP compatibility
+	* Updated caching behaviour for dynamic exclusions
+	* Refactored database operations into a dedicated Database class
+	* Updated Freemius SDK to version 2.13.0
+
+* Fixes:
+	* Fixed `Top_Ten_Query` handling of the `date_query` argument
+	* Fixed activation redirects on single-site installs within multisite networks
+	* Fixed `exclude_current_post` behaviour when caching is enabled
+	* Fixed live-edit count updates in multisite statistics
+
+= 4.1.1 =
+
+* Bug fixes:
+    * Fixed an issue where shortcode attributes were not properly sanitized.
+
+= 4.1.0 =
+
+Release post: [https://webberzone.com/announcements/top-10-v4-1-0/](https://webberzone.com/announcements/top-10-v4-1-0/)
+
+* Features:
+	* Import data from the WordPress Popular Posts plugin.
+	* [Pro] Query Optimization: Add MySQL MAX_EXECUTION_TIME directive to prevent long-running queries from consuming excessive server resources. Configurable via settings and the `top_ten_query_max_execution_time` filter.
+    * [Pro] Enhanced Popular Posts RSS feeds with category and post type filtering, available via URL parameters and configurable via dedicated settings.
+	* Admin Dashboard:
+		* Smart chart visualization: Automatically switches to an area chart for datasets with more than 100 data points.
+		* [Pro] Clicking on a column in the Popular Posts chart will display the most popular posts for the selected day.
+
+* Modifications:
+	* Updated ChartJS and replaced Moment adapter with Luxon.
+	* When any of the Top 10 tables is missing, an admin notice is displayed. The plugin also automatically recreates the missing tables.
+	* Introduced the `wz_top_ten()` function to return the Main instance of Top 10.
+
+* Bug fixes:
+	* Resolved issue where tables were not automatically created during plugin activation.
+	* Fixed issue where the popular posts feed always displayed the post's full content even when Excerpt was selected under Reading settings.
+	* Fixed "Not found" error when accessing the Daily Popular Posts feed.
+
+= 4.0.4 =
+
+* Modifications:
+	* Updated Freemius SDK to v2.11.0.
+
+* Bug fixes:
+	* Set correct type for `$settings_api` variable to `Settings_API`.
+
+= 4.0.3 =
+
+* Modifications:
+	* Support plugin dependencies tag.
+	* Updated Freemius SDK to v2.10.1.
+	* Optimized Numbered List format.
+
+= 4.0.2 =
+
+* Updated Freemius SDK to 2.9.0.
+* Fixed: Set `widget_id` if it is not set in the widget instance.
+
+= 4.0.1 =
+
+* Modifications:
+	* Renamed filter to: `top_ten_posts_post_types`.
+	* Updated filter `tptn_query_args_before` to be the queried object instead of just the post.
+
+* Bug fix:
+	* Fixed issue where admin columns setting didn't work.
+	* Fixed: meta_query was not set.
+
+= 4.0.0 =
+
+Release post: [https://webberzone.com/announcements/top-10-v4-0-0/](https://webberzone.com/announcements/top-10-v4-0-0/)
+
+* Features:
+	* Added a new REST API route (`counter`) to fetch the post count for individual posts.
+	* Introduced the Top 10 Post Count Block for displaying post counts.
+	* Added filters `top_ten_query_exclude_terms_include_parents` and `top_ten_query_include_terms_include_parents` to include parent terms in post queries. Pro users can enable this in settings.
+	* New `get_tptn_short_circuit` filter to bypass the plugin’s output.
+	* New filter `tptn_dashboard_setup` to disable Top 10 widgets being displayed on the admin dashboard.
+	* [Pro] New Top 10 Query Block for querying popular posts directly from the block or site editor.
+	* [Pro] Enhanced Top 10 Featured Image Block now supports multiple image sources.
+	* [Pro] Popular Posts block now includes:
+		* Buttons to save and clear default block settings.
+		* Auto-insertion of default and global settings attributes, with an option to disable this in the **Posts List** settings.
+	* [Pro] Added a new admin bar menu item to view daily, total, and overall post counts, access Top 10 admin pages, and clear the Top 10 cache.
+	* [Pro] Added `display_only_on_tax_ids` parameter to restrict popular posts display to specific taxonomy terms.
+	* [Pro] New Fast Tracker improves post view tracking speed. Select it from your settings page.
+	* [Pro] "Display columns on post types" setting to choose which post type screens display admin columns.
+	* [Pro] "Also show dashboard to" setting to select user roles that can view the dashboard screen.
+    * [Pro] New option added to the Edit Post meta box mapped to `include_cat_ids` to include popular posts from specific categories only.
+
+* Enhancements:
+	* Direct support for `WP_Query` if `top_ten_query` is used in query arguments.
+	* Optimised media handler to reduce queries.
+	* New filter: `tptn_shortcode_defaults` for default shortcode arguments.
+	* Media Handler improvements:
+		* Added `use_site_icon` and `style` parameters.
+		* `get_image_html()` now uses `wp_get_attachment_image()` with a valid attachment ID.
+		* Support for `decoding`, `loading`, and `fetchpriority` attributes.
+		* `get_attachment_id_from_url()` now strips size suffixes before locating the attachment ID.
+	* Updated top-10/popular-posts block to API version 3.
+	* Added `$more_link_text` parameter for `get_the_excerpt()`.
+	
+= 3.3.4 =
+
+* Enhancements:
+	* Exporting and importing the post tables now supports post URLs. This will allow you to import the post tables into a different site and have the correct counts. Note: This will only work if the URLs are the same on both sites. If you have changed the URL structure, you will need to manually update the URLs in the exported CSV file
+	* Cache is enabled by default
+
+* Bug fixes:
+	* Fixed a bug where the cron job would not run
+
+= 3.3.3 =
+
+Release post: [https://webberzone.com/announcements/top-10-v3-3-0/](https://webberzone.com/announcements/top-10-v3-3-0/)
+
+* Enhancements:
+	* Media Handler checks the title of the image if the alt tag is empty
+
+* Bug fixes:
+	* Check if `$wp_filters['the_content']` is set. Fixes a PHP warning for users running WordPress before 6.1
+	* `Import_Export` Class: Fix unnecessary check for `network_admin_menu` filter; Minor code fixes to set headers before outputting data
+	* Number fields in the block were not saved.
+
+* Security fix:
+	* Check nonce before editing post counts in the Admin area
+
+= 3.3.2 =
+
+* Enhancements:
+	* Shortcode `tptn_views` takes two new parameters: `format_number` to apply `number_format_i18n` and `post_id` which takes a post ID. Default is the post being viewed
+
+* Bug fixes:
+	* Plugin activator function didn't run on activation - Top 10's database tables were not created
+
+= 3.3.1 =
+
+* Enhancements/Modifications:
+	* When displaying the post thumbnail, the Media Handler will first use the image's alt tag set in the Media editor. If alt tag is empty, then it will use the post title as a fallback. Filter `tptn_thumb_use_image_alt` and set it to false to not use the alt tag. Filter `tptn_thumb_alt_fallback_post_title` and set it to false to disable the alt tag
+	* Orderby clause modified to ensure compatibility if any other plugin rewrites the WP_Query fields
+	* Media Handler will check if the meta field contains a valid URL
+	* When saving settings, the thumbnail width and height is forced if either the width or height of the thumbnail setting is set to 0
+
+* Bug fixes:
+	* Function `wp_img_tag_add_loading_attr` is deprecated since version 6.3.0
+	* Bug in `the_content` filter detection which sometimes caused the counter not to display
+	* `tptn_thumbnail` settings size disappeared from Settings page if this was deselected
+    * `meta_query` argument was ignored
+
+= 3.3.0 =
+
+* Features:
+	* Added new setting to stop tracking bots. Top 10 now includes a comprehensive set of bot user agents via https://github.com/janusman/robot-user-agents
+
+* Enhancements/Modifications:
+	* Complete rewrite of Top 10 plugin to use Classes and autoloading
+	* `get_tptn_post_count_only()` and `get_tptn_post_count` can also take a `WP_Post` object and returns an integer only without the count being number formatted
+	* `tptn_list` shortcode now accepts `WP_Query` parameters. You can also pass typical array only parameters as a comma-separated list
+	* Tracker script no longer require jQuery
+	* Widget styles are handled properly with the block editor
+
+* Bug fixes:
+	* Post count should only display once within the content within the main loop
+	* Fixed data labels in the Dashboard graphs
+	* Custom Post Type labels could cause an issue in Network view of popular posts
+
+= 3.2.5 =
+
+Release post: [https://webberzone.com/blog/top-10-v3-2-0/](https://webberzone.com/blog/top-10-v3-2-0/)
+
+* Two minor security fixes
+
+= 3.2.4 =
+
+* Security fix when clearing the cache
+
+= 3.2.3 =
+
+* Security fix in block
+
+= 3.2.2 =
+
+* Enhancements/Modifications:
+	* Dashboard widget will display the number of posts set in the Top 10 Settings page
+
+* Bug fixes:
+	* Tax query parameter was not set in `Top_Ten_Query`
+	* `post_type` parameter was not set in `Top_Ten_Query`
+	* Parse error in some PHP installs prevented the plugin from being activated
+	* Fixed missing stylesheet error when text_only style is selected
+	* Only from categories option in the Widget now takes a comma-separated ID list only as the autocomplete was not compatible with the new widget interface
+
+= 3.2.1 =
+
+* Enhancements/Modifications:
+	* Modified behaviour of Popular Posts page and Admin Dashboard widgets to limit to public post types
+
+* Bug fixes:
+	* Fixed: `Fatal error: Uncaught Error: Call to undefined function restore_current_blog()`
+
+= 3.2.0 =
+
+* Features:
+	* New setting in the Popular Posts block to select the style by block type
+
+* Multisite improvements:
+	* Retrieve the popular posts across multiple blogs by passing multiple blog IDs to Top_Ten_Query
+	* New Tools page and Import/Export page in Network Admin - you can find this in the Top 10 menu
+	* Resetting the Popular Posts or Daily Popular Posts will apply to the current site in the Admin screen and across the network in the Network Admin screen
+	* Exporting/Importing tables will apply to the current site in the Admin screen and across the network in the Network Admin screen
+
+* Top_Ten_Query improvements:
+	* WP_Query's arguments `posts_per_page`, `post_type` are prioritised
+	* New filters: `top_ten_query_date_query`, `top_ten_query_meta_query`, `top_ten_query_meta_query_relation`, `top_ten_query_tax_query_relation`, `top_ten_query_posts_fields`, `top_ten_query_posts_join`, `top_ten_query_posts_where`, `top_ten_query_posts_orderby`, `top_ten_query_posts_groupby`
+	* Cache key is generated from the `query_args` instead of just the `input_query_args`
+
+* Other Enhancements/Modifications:
+	* New function: `get_tptn_table()`; Code has been refactored to use this function
+	* Popular Posts page in Admin or Network Admin use the same class `Top_Ten_Statistics_Table`. Deleted `Top_Ten_Network_Statistics_Table`
+	* Selecting "Text only" thumbnail setting or style will not display a thumbnail
+	* Use moment.js bundled with WordPress
+	* Updated ChartJS and ChartJS Data Labels plugin scripts to latest versions
+
+* Bug fix:
+	* Scripts/styles didn't load in Network posts page
+
+= 3.1.3 =
+
+Release post: [https://webberzone.com/blog/top-10-v3-1-0/](https://webberzone.com/blog/top-10-v3-1-0/)
+
+* Bug fixes:
+	* Updated moment.min.js
+	* Fixed PHP errors when editing a post in Gutenberg
+
+= 3.1.2 =
+
+* Features:
+	* New filter `tptn_show_meta_box` that can be set to false to disable the Top 10 meta box on Edit screens
+	* New option to exclude the current post from the list
+	* New option "Exclude on Categories" to disable the display of the popular posts on selected categories
+
+* Enhancements/Modifications:
+	* Optimised import of tables particularly for larger imports
+	* Added wpml-config.xml file that will allow settings to be translated with WPML and PolyLang
+	* Upgraded block to the latest API
+	* Upgraded thumbnail display. If default image is disabled, then the site icon will be displayed if available
+	* Admin dashboard counts match with the Popular posts listings
+	* Updated chartjs to the latest version
+
+* Bug fixes:
+	* Fixed PHP notice on widgets.php page due to the block
+	* Widget checkboxes are not saved in WordPress 5.8
+	* `post__in` argument will now remove any false/0 values
+	* Disabling/enabling author tracking didn't always work
+	* WP Multisite: Creating a new blog with automatically configure the plugin
+	* Widget incorrectly included all post types when no post types were selected instead of using the global settings
+	* Current post was incorrectly excluded when translation functions were run
+
+= 3.0.0 =
+
+Release post: [https://webberzone.com/blog/top-10-v3-0-0/](https://webberzone.com/blog/top-10-v3-0-0/)
+
+* Features:
+    * New Top_Ten_Query class for fetching popular posts. Adds the function `get_tptn_posts()` which replaces `get_tptn_pop_posts()` which will be deprecated in a future version
+	* New option to exclude the Front page and Posts page if these are set in Settings > Reading or via Customizer
+	* New option in the Widget to include specific post IDs in the top lists. You can also use them in the shortcode using `include_post_ids`
+	* New block for Gutenberg aka the block editor. The block is called **Popular Posts [Top 10]** and you can find it under the widgets category
+	* Top 10 now supports the WP REST API. The plugin adds a new tracker type called *REST API based* which you can find under Counter/Tracker settings. Additionally, you can now receive the popular posts via a REST Request to `top-10/v1/popular-posts`
+
+* Enhancements/Modifications:
+	* No popular posts feed will be added if the corresponding slug is set to blank
+	* Changed `sum_count` to `visits`
+
+* Bug fixes:
+	* PHP notices when displaying Network Wide Popular Posts in WordPress Multisite
+	* Query based tracker gave an ajax error
+	
+= 2.9.5 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-9-0/](https://webberzone.com/blog/top-10-v2-9-0/)
+
+* Bug fixes:
+	* Security fix: Nonces were not always checked in import module
+
+= 2.9.4 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-9-0/](https://webberzone.com/blog/top-10-v2-9-0/)
+
+* Bug fixes:
+	* .json file error when trying to import tables in the Tools page
+
+= 2.9.3 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-9-0/](https://webberzone.com/blog/top-10-v2-9-0/)
+
+* Enhancements:
+	* Cache now uses MD5 generated keys based on the Top 10 parameters being passed. This means the cache should now work with shortcodes and manual implementations
+	* Database creation now uses the correct collation
+
+* Bug fixes:
+	* `include_cat_ids` didn't work with the shortcode
+    * Password protected posts will no longer show the excerpt
+
+= 2.9.2 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-9-0/](https://webberzone.com/blog/top-10-v2-9-0/)
+
+* Bug fixes:
+	* Custom CSS box would not save
+
+= 2.9.1 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-9-0/](https://webberzone.com/blog/top-10-v2-9-0/)
+
+* Bug fixes:
+	* Published age of posts parameter was no longer working
+	* Importing settings should now work properly - previously checkboxes all ended up being enabled
+	* In rare cases, the tracker would throw PHP errors e.g. on search results page where no posts were loaded and tracker was enabled to load on all pages
+
+= 2.9.0 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-9-0/](https://webberzone.com/blog/top-10-v2-9-0/)
+
+* Features:
+	* Edit the total visits from the Top 10 > Popular Posts page
+	* New shortcode setting `include_cat_ids` to limit top posts to selected categories/taxonomies. Use a comma separated list of [term_taxonomy_id](https://codex.wordpress.org/WordPress_Taxonomy#wp_term_taxonomy)
+	* New setting in widget to only include certain categories. Doesn't work with custom taxonomies
+
+* Enhancements:
+	* Implemented CodeMirror to format custom styles box
+	* Admin scripts are no longer loaded into the head - but using a separate JavaScript file
+
+* Bug fixes:
+	* Fixed media lookup returning PHP errors/warnings in rare cases
+	* Use `current_time` and `gmdate` as per latest WordPress Coding Standards
+	* No more unnecessary form modified errors in the popular posts tables in Admin area
+	* Fixed notices in PHP 7.4 when viewing popular posts listings
+	* When editing posts, the count from the metabox will only be used if it is modified
+
+= 2.8.0 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-8-0/](https://webberzone.com/blog/top-10-v2-8-0/)
+
+* Features:
+	* Custom feed for popular posts: Find new options under a new tab called Feed in the settings page where you can set the URL for the overall and daily feeds
+	* New page in the network admin menu to view the popular posts across the network
+	* Also delete transients and other settings on uninstall
+
+= 2.7.0 =
+
+Release post: [https://webberzone.com/blog/top-10-v2-7-0/](https://webberzone.com/blog/top-10-v2-7-0/)
+
+* Features:
+	* Recreate the Top 10 database tables. You can find the button in the Tools page. Backup your database first
+	* New export/import interface to export and import the Top 10 tables and settings
+
+* Enhancements:
+	* `tptn_views` shortcode adds a new parameter 'count' to explicitly set the count type. Choose from daily, total or overall. This is overridden if daily is set to 0 (backwards compatibility)
+
+= 2.6.3 =
+
+* Enhancements:
+	* `tptn_get_first_image` filter has additional attributes `$image_attributes[0], $postid, $thumb_width, $thumb_height`
+
+* Bug fixes:
+	* Reverted PolyLang implementation that was broken in v2.6.2
+	* Delete deprecated settings on save
+	* Fix settings link in plugins listing page
+	* Fix exclude categories setting on save
+
+= 2.6.2 =
+
+* Enhancements:
+	* Select a date range in the Popular Posts listing page in the admin
+
+* Bug fixes:
+	* Fixed "Published post date" setting was not working. Thanks [@jherrerai](https://github.com/jherrerai)
+	* Modified PolyLang and WPML function implementations
+
+= 2.6.1 =
+
+* Bug fixes:
+	* Fixed widget daily and hourly range not working which was broken in v2.6.0
+
+= 2.6.0 =
+
+* Features:
+	* New option to disable creation of image thumbnails. Find this under Thumbnail options
+	* Thumbnail HTML markup includes `srcset` and `sizes` attributes when available. Read [Responsive Images in WordPress 4.4](https://make.wordpress.org/core/2015/11/10/responsive-images-in-wordpress-4-4/)
+	* New option to turn on debug mode. You can turn this on when requesting support. Find it under the Counter/Tracker tab
+	* New option to add the tracker js file on all pages, not just singular pages. Helps with minification/concatenation
+	* New date filter in the Popular posts listing page to see the views on a particular date
+	* New option to turn ON/OFF the number formatting of the post counts. ON by default
+
+* Enhancements:
+	* Load tracker in footer
+	* Renamed top-10-tracker.js to top-10-tracker.min.js
+
+* Bug fixes:
+	* Only delete option if null value is passed to tptn_update_option
+	* "Exclude display on these post IDs" moved under Counter section
+
+= 2.5.7 =
+
+* Enhancements:
+	* Tools page now has the code to Recreate the PRIMARY KEY in case the button gives an error. You will need to run this in phpMyAdmin or Adminer
+
+* Bug fixes:
+	* Fixed translation of " by " which had the incorrect text domain
+	* Post types to includes selects "post" in case no option is selected
+	* Unchecking all boxes of a "Display number of views on" setting would sometimes pick the default value
+
+= 2.5.6 =
+
+* Features:
+	* Added new button under Tools to recreate the PRIMARY KEYs
+
+= 2.5.5 =
+
+* Bug fixes:
+	* Fixed missing semi-colon in tracker code
+	* Multi-site tracking failed in old installs where the PRIMARY KEY was not properly updated in the database. DB version has been updated to 6.0 to initiate primary key across all installs
+
+= 2.5.4 =
+
+* Features:
+	* New button in the Tools page to delete the pre-2.5.x settings
+
+* Enhancements:
+	* New function `tptn_trim_char` replaces `tptn_max_formatted_content` which should now support non-English characters as well
+	* Counts in the "Popular Posts" page are now number formatted
+
+* Bug fixes:
+	* Fixed PHP Illegal string offset error
+
+= 2.5.3 =
+
+* Bug fixes:
+	* Fixed number of posts displayed in the popular posts list
+
+= 2.5.2 =
+
+* Bug fixes:
+	* Settings / Thumbnail / Thumbnail size did not display the correct option even though the admin had this correctly saved
+
+= 2.5.1 =
+
+* Bug fixes:
+	* Custom CSS did not get upgraded or saved properly
+	* Uninstalling the plugin will delete the settings properly
+
+= 2.5.0 =
+
+* Features:
+	* Upgrade old options to Settings API
+	* New widget to display the overall count i.e. visits across all your site posts
+	* Added a filter to override the number of days that maintenance considers to delete the database entries
+	* New option to disable tracking for logged in users. Find "Track logged-in users" under the "Counter/Tracker" tab in the settings screen
+
+* Enhancements:
+	* Make $ajax_tptn_tracker global. Contributed by [@pkirk](https://github.com/pkirk)
+
+* Bug fixes:
+	* Make sure that $post object is available in `tptn_pc_content` filter. Contributed by [@mtws](https://github.com/mtws)
+	* When editing Attachment post types, metabox should now save correctly
+	* Disable `top_ten_nonce` as it wasn't needed for front-end users and conflicted with caching plugins
+
+* Deprecated:
+	* `tptn_default_options` (no replacement) and `tptn_read_options` (Use `tptn_get_settings` instead)
+
+= 2.4.4 =
+
+* Enhancements:
+	* Changed tracker type to Query based for better compatibility
+
+* Bug fixes:
+	* Security fix: Potential SQL injection vulnerability. Reported by [DefenseCode ThunderScan](http://www.defensecode.com/)
+	* Revisions no longer displayed in the "View Popular Posts" screen in admin area
+
+= 2.4.3 =
+
+* Bug fixes:
+	* Fatal error when running PHP 7.1.x
+
+= 2.4.2 =
+
+* Bug fixes:
+	* The plugin will no longer generate any notices if post author is missing
+	* Fixed T_FUNCTION error in admin area on blogs running on PHP versions before 5.3
+	* Fixed bug where any special characters in the post title would break the output
+
+= 2.4.1 =
+
+* Bug fixes:
+	* Fixes fatal error caused on installs which have versions below PHP5.6
+
+= 2.4.0 =
+
+* Features:
+	* New tracker using a properly enqueued `.js` file. Two inbuilt options to use query variables or ajaxurl to process the counts
+	* Shortcode and the widget now have an added parameter for 'offset'. This is useful if you would like to display different widgets/shortcodes but not always start from the first post
+
+* Bug fixes:
+	* Attachments now work with the widget and elsewhere
+	* New tracker now works when jQuery is loaded in the footer
+	* Don't add tracker code when previewing in customizer
+	* Doesn't report an error if no author is assigned to a post
+
+* Deprecated:
+	* `tptn_add_tracker` and `tptn_add_viewed_count` have been deprecated. These should no longer be needed with the new tracker option.
+	* wick script in Settings page which was used for fetching category slugs. You should now use the category name (prompted automatically). Slugs will be automatically converted into names.
+
+= 2.3.2 =
+
+* Bug fixes:
+	* Sanitized several unsanitized post and get requests
+
+* Deprecated:
+	* External PHP file tracking option introduced in v2.3.0 in line with wordpress.org plugin repository listing requirements.
+
+= 2.3.1 =
+
+* Bug fixes:
+	* Potential CSRF issue fixed in admin area
+
+= 2.3.0 =
+
+* Features:
+	* Preliminary support for PolyLang
+	* Search box and post type filter added in Admin &raquo; View Popular Posts screen
+	* Link to Daily Popular posts screen under Top 10 menu in admin area
+	* `post_types` parameter now supports comma-separated list of post types. To fetch all built-in post types use 'all'
+	* New option to use the external and more efficient javascript file for tracking
+	* New function `tptn_add_tracker` to manually include the tracking code. This is useful if your theme doesn't have `the_content` function that Top 10 filters to add the tracker code
+
+* Enhancements:
+	* Viewing drafts will no longer increment the counter
+	* When using the Left Thumbs style, each widget instance includes the CSS code to display the correct thumbnail size
+
+* Bug fixes:
+	* Missing `DISTINCT` keyword in query resulting in duplicate entries in some cases
+	* PHP Notice in Widget on empty search and 404 pages
+	* Incorrect notice that Contextual Related Posts is installed on Edit Posts pages
+	* `tptn_show_daily_pop_posts()` without arguments did not display daily posts
+	* Using Exclude categories returned incorrect counts and excluded non-posts
+	* Incorrect count on the Admin &raquo; View Popular Posts screen causing incorrect pagination
+	* Incorrect thumbnail size being pulled out in some instances
+	* Multiple widget instances incorrectly used the same cache
+	* Incorrect text domain was initialised
+
+= 2.2.4 =
+
+* Enhancements:
+	* Changed text domain to `top-10` in advance of translate.wordpress.org translation system
+	* Improved support for WPML. If available, same language posts will be pulled by default. To restrict to the same language [add this code](https://gist.github.com/ajaydsouza/9b1bc56cec79295e784c) to your theme's functions.php file
+
+= 2.2.3 =
+
+* Bug fixes:
+	* Shortcode with "exclude_categories" argument works again
+
+= 2.2.2 =
+
+* Bug fixes:
+	* Fixed array declaration to support PHP < 5.4
+
+= 2.2.0 =
+
+* Features:
+	* Caching system using the Transients API. By default the cache is refreshed every hour
+	* Styles interface lets you select between No styles, Left Thumbs (previously the default style) and Text Only
+	* Option to limit posts only with a specified date range
+	* Option in Top 10 meta box to exclude display of popular posts in widget if needed
+	* Option in Top 10 meta box to exclude post from popular posts list
+	* Cleaner interface to view popular posts in the admin area
+
+* Enhancements:
+	* `strict_limit` is true by default for `get_tptn_pop_posts()`
+	* Option to turn off the meta box for everyone or just non-admins
+	* Contributors & above can also update the visit count in the meta box if this is enabled for them
+	* Category exclusion now works via a filter function vs. multiple lookups, thereby reducing the number of database queries
+
+* Bug fixes:
+	* Potential bug when the $wp variable was not detected in rare situations
+	* In rare cases category exclusion failed when `term_id` didn't match `term_taxonomy_id`
+
+* Deprecated:
+	* `ald_tptn_rss`: Use `tptn_rss_filter` instead
+	* `ald_tptn_hook` deprecated and renamed to `tptn_cron_hook`
+	* `tptn_manage` and `tptn_manage_daily` which were used to render the admin popular posts screens
+
+= 2.1.0 =
+
+* Features:
+	* New: Button in Top 10 settings page to merge posts across blog ID 0 and 1
+	* New: Function & filter `get_tptn_pop_posts` that can be used to fetch the popular posts as an object or array. Perfect if you want to write custom code in your theme
+	* New: Support for WPML to return the correct language ID. Thanks to Tony Flags' <a href="https://wordpress.org/support/topic/top-10-and-languages-in-wpml?replies=11#post-6622085">code snippet</a>.
+	* New: Filter `tptn_list_count` to modify the formatted list count. See a <a href="https://gist.github.com/ajaydsouza/9f04c26814414a57fab4">working example</a>
+	* New: Post types can now be selected in the widget. This allows you to select top posts by post type
+
+* Enhancements:
+	* Modified: Plugin will attempt to pull the correct size image when fetching the first image in a post
+	* Modified: Deprecated "Always display latest post count in the daily lists"
+	* Modified: timthumb has been deprecated. The script is no longer packaged within Top 10
+
+* Bug fixes:
+	* Fixed: Bug in tracking code when not using Ajax
+	* Fixed: Bug in admin column did not check for the blog_id
+	* Fixed: Bug where default thumbnail location was not correctly saved
+	* Fixed: Incorrect thumbnail was pulled on attachment pages
+	* Fixed: blog_id column of the database is correctly initialised as `DEFAULT '1'`
+
+= 2.0.3 =
+
+* Features:
+	* New: Options to choose if you want to delete the Top 10 options and/or data when deleting the plugin
+
+* Bug fixes:
+	* Fixed: Metabox update did not work properly in v2.0
+	* Fixed: Duplicate include files
+	* Modified: In the mySQL tables, the blog_id default value is set to 1
+
+= 2.0.2 =
+
+* Features:
+	* New: Option to display the daily posts count from midnight. This is enabled by default and mimics the original behaviour of the counter in Top 10 v1.x
+
+* Enhancements:
+	* Modified: Posts are tracked hourly based on the time of the blog and not GMT. This was also the default behaviour of the counter in Top 10 v1.x
+
+* Bug fixes:
+	* Fixed: Default thumbnail location saved correctly on the Settings page.
+
+= 2.0.1 =
+
+* Bug fixes
+	* 500/503 errors caused by 2.0.0
+
+= 2.0.0 =
+
+* Features:
+	* New: Multisite support. If you're using multisite and have previously activated Top 10 on individual blogs in the network, then head over to **Top 10 Settings** and import the counts from the old Top 10 1.x tables to the new Top 10 v2.0 tables
+	* New: Fully extendable lookup query for the top lists. Now you can create your own functions in functions.php or in addon plugins to modify the mySQL query
+	* New: Option to use any of the inbuilt thumbnail sizes or create your own custom image size. If a custom size is chosen, then the plugin uses `add_image_size` to register the custom size. You will need to resize your thumbnails after activating this option
+	* New: Actions and filters in the Top 10 Settings page and in the widget which allows for addons to add more settings
+
+* Enhancements:
+	* Modified: Post tracking is now done on an hourly basis. Date limiting is also on an hourly basis. So, 1 day is actually the last 24 hours and not from midnight anymore!
+	* Modified: Update and View counts now use query variables instead of external JavaScript files. Check http://goo.gl/yemvyM for sample functions to restore the old method
+	* Modified: Activating the default styles option will automatically set the thumbnail width and height to 65px, disable author and excerpt and enable crop mode for the thumbnails
+
+* Bug fixes:
+	* Fixed: Fix schedule overwrite for the cron job
+	* Fixed: Incorrect permission lookup in the metabox
+
+= 1.9.10.2 =
+* Fixed: Schedules were overwritten when activating the maintenance cron job
+
+= 1.9.10.1 =
+* Fixed: Initialisation error for new installs
+
+= 1.9.10 =
+* New: Meta box on Edit post / page and similar screens that allow you to set the Top 10 (and my other plugins) specific thumbnail for the current post (different from the Featured thumb)
+* New: Admins can edit the number of total views (find it in the same meta box as above)
+* New: Turn of tracking for Editors
+* New: Added w.org and github.com to list of allowed sites for timthumb
+* New: Option to add quality settings for thumbnails created by timthumb
+* Modified: Shortcode now accepts all the parameters that `tptn_pop_posts()` can take. For a full list of parameters, please check out the FAQ.
+* Modified: Widget initialisation to latest standards
+* Fixed: Localisation initialisation
+* Fixed: Validation for hour and minute settings for the cron job
+* New: Several new filters allowing you to hook in an modify the output without editting plugin files
+* Modified: Reformatted code
+
+= 1.9.9.2 =
+* Fixed: Show count in widget was always checked
+* Fixed: "List of post or page IDs to exclude from the results" did not work for more than one post
+* Fixed: First image in the post was not detected in some cases. First image attached is now prioritised over image detection to speed things up
+
+= 1.9.9.1 =
+* Fixed: Maintenance cron wasn't running properly
+
+= 1.9.9 =
+* New: Default style to make those popular posts a little pretty. Choose **Thumbnails inline, before title** under 'Thumbnail options'
+* New: Option to disable display of counts to non-admins. Check out the option 'Show number of views to non-admins'
+* New: Option to display different text when there are no hits on the post on non single posts e.g. home page, archives, etc.
+* New: Class `tptn_posts_widget` for the widgets
+* Modified: Brought back the old columns "Views" in the Admin Posts and Pages which contains both the Overall and Daily counts
+* Modified: New admin interface keeping mobile first in mind
+* Modified: Optimised widgets loading
+* Modified: Cron job will now delete entries from the daily table older than 90 days
+* Fixed: mySQL error messages due to improper escaping
+* Fixed: Plugin no longer overwrites cron schedules
+* Modified: Lot's of code optimisation and cleanup
+
+= 1.9.8.5 =
+* Modified: Including the author in the list will now use the Display Name which is set under “Display name publicly as” in the User Profile page
+* Fixed: If the Thumbnail meta field is omitted under Output Options, the plugin will automatically revert to its default value i.e. "post-image"
+* Modified: Cleaner pagination when viewing the Top posts in the Admin section
+* New: Function `get_tptn_post_count_only` to get just the post count. Use it by passing the Post ID and the type of count (total, daily or overall): `get_tptn_post_count_only($id = FALSE, $count = 'total')`
+* New: Class `tptn_after_thumb` that wraps around all items of the list after the post thumbnail. This allows you to cleanly style all items to float to the right of the thumbnail
+* Modified: Updated timthumb
+
+= 1.9.8.4 =
+* Fixed PHP notices on Admin pages
+
+= 1.9.8.3 =
+* Fixed: Daily count was selecting an extra date when using the widget
+* Fixed: Default settings for the widget weren't initiated correctly in some cases
+* Modified: Admin columns of Total and Daily views will be sorted by descending order by default. Click again to sort in ascending order
+* Modified: Admin columns are fixed to 100px width by default instead of `auto`.
+
+= 1.9.8.2 =
+* New: Option to add author
+* New: More options for the Widgets to configure the post lists
+* Modified: Shortcodes are now stripped from excerpts
+* New: Added *s3.amazonaws.com* to list of allowed sites that timthumb can fetch images from
+* Fixed: Counter was not always displayed on posts
+* New: All Posts / All Pages have separate *sortable* columns for total and daily counts
+* Fixed: Warning messages with WP_DEBUG mode ON
+
+= 1.9.8.1 =
+* Fixed: Correct numbers of posts were not being fetched
+
+= 1.9.8 =
+* New: Custom post support. Choose which custom post types to display in the top posts
+* New: More display options. Select which archives you want to display the post count
+* New: Option to open links in new window
+* New: Option to add nofollow attribute to links
+* New: Option to exclude posts by ID in the list of top posts being displayed
+* New: Option to prevent display of the Visit Count on posts by ID
+* New: Option to choose between using CSS styles or HTML attributes for thumbnail width and height. *HTML width and height attributes are default*
+* New: Option to restrict the title to fixed number of characters
+* New: Option to add the date to the list
+* Modified: Numbers are now formatted based on the locale
+* Fixed: Plugin will now create thumbnails from the first image in gallery custom posts
+
+= 1.9.7 =
+* New: Option to toggle using jQuery ON to track counts. Potential fix for counters not working.
+
+= 1.9.6 =
+* Fixed: Daily count was not updated
+
+= 1.9.5 =
+* New: CSS class `tptn_title` that can be used to style the title of the posts
+* New: Option to disable Daily or Overall counters
+* Fixed: Counter to work with different directory structures. *Thanks Nathan for the fix*
+* Fixed: To make it work with W3 Total Cache. *Thanks Angelo for the fix*
+* Modified: timthumb will now work if you have JetPack Proton activated
+
+= 1.9.4 =
+* Fixes a bug in the widget introduces in 1.9.3
+
+= 1.9.3 =
+* Important security update: Fixed possible XSS vulnerability
+* Fixed: Exclude categories was not excluding posts correctly
+* New: Classes `tptn_posts` and `tptn_posts_daily` for the widgets that let you easily style the lists
+
+= 1.9.2 =
+* New: Top 10 now has its own menu in the administration area. Access settings and view your top posts directly under the new menu: "Top 10"
+* New: New classes **tptn_counter** and **tptn_list_count** to style the displayed count
+* New: New option "Always display latest count for the post" to not use JavaScript to display the counts for a post. This speeds up since no external JS file is used to display the count. Ideal for those not using caching plugins or are not particularly worried if the counts are slightly older.
+* Fixed: PHP notices when WP_DEBUG is turned on
+* Modified: Updated timthumb.php
+
+= 1.9.1 =
+* Fixed: Plugin will now only reschedule the cron job if there any settings are changed related to it
+* Modified: If timthumb is disabled, WordPress post thumbnails are no longer resized using timthumb
+* Modified: Extra check for post featured thumbnails to ensure that the src is not missed
+
+= 1.9 =
+* New: Option to use timthumb to resize thumbnails
+* New: New variable **%overallcount%** that will display the total pageviews on the blog across all posts
+* New: Post thumbnails are now properly resized based on width and height settings in the Top 10 settings page
+* New: Customise what to display when there are no top posts detected
+* New: New scheduled maintenance to clear up daily tables and optimise performance
+* New: Custom CSS code to style the output. Check out the available styles in the <a href="http://wordpress.org/extend/plugins/top-10/faq/">FAQ</a>.
+* Modified: New "default.png" file based on from KDE’s <a href="http://www.oxygen-icons.org/">Oxygen icon set</a>
+* Modified: Dashboard list of posts now displays all the top posts and pages instead of the filtered list based on Settings.
+* Modified: Dashboard widget now has options to customise the widget. Old widgets have been deleted
+* Modified: When fetching the first image, plugin ignores external images
+* Modified: Minor performance tweaks
+
+= 1.8.1 =
+* Fixed: Dashboard widgets linking
+
+= 1.8 =
+* New: Support for <a href="https://wordpress.org/extend/plugins/video-thumbnails/">Video Thumbnails</a> plugin
+* New: Thumbnail settings now reflect max width and max height instead of fixed width and height
+* New: Option to display thumbnails before or after the title
+* New: Option to not display thumbnails instead of the default thumbnail
+* New: Counts are now neatly formatted with commas
+* Modified: Minor tweaks to improve performance
+
+= 1.7.6 =
+* Fixed: Bug with Daily posts widget created an extra header tag in certain themes
+
+= 1.7.5 =
+* New: Now supports multiple WordPress widgets
+
+= 1.7 =
+* New: Exclude posts in the top lists from select categories
+* Modified: Performance improvements
+* Modified: Better compatibility with the latest versions of WordPress. If you are using the sidebar widgets, please readd them to your theme under Appearance > Widgets
+
+= 1.6.3 =
+* Fixed: PHP errors on certain installs
+* New: Dutch language
+
+= 1.6.2 =
+* Fixed: Multiple rows being created for same ID
+* Fixed: Counter display
+* New: New button to clear the duplicate rows in the tables
+* Fixed: Top 10 should be lighter on the server now
+
+= 1.6.1 =
+* Turned the credit option to false by default. This setting won't effect current users.
+* Turned off borders on post thumbnails. You can customise the CSS class "tptn_thumb" to style the post thumbnail.
+* The plugin will now display a list of changes in the WordPress Admin > Plugins area whenever an update is available
+* Fixed: Display of caching plugin compliant daily top posts lists
+
+= 1.6 =
+* New: Added support for excerpts and detection of first image in the post
+* New: Daily posts are tracked using the blog time instead of server time
+* Fixed: On the first visit, display 1 instead of 0
+* Fixed: Fixed uninstall script
+
+= 1.5.3 =
+* New: You can now use HTML in the counter display
+
+= 1.5.2 =
+* Fixed: Fixed display of post thumbnails using postmeta field
+
+= 1.5.1 =
+* Fixed some compatibility issues with WordPress 2.9 and YARPP
+
+= 1.5 =
+* Added support for post thumbnails feature of WordPress 2.9
+
+= 1.4.1 =
+* Fixed compatibility with WordPress 2.9
+* Fixed XHTML validation errors in output code
+* Added buttons to reset post count of overall and daily posts
+
+= 1.4 =
+* Added localisation support
+* Separate options to display number of views on posts and pages
+
+= 1.3 =
+* "Daily Popular" can now be selected over user selectable number of days.
+* Option to turn off display of number of pageviews in popular posts list
+* Option to make "Daily Popular" list compatible with caching plugins
+* Posts > Top 10 page to view detailed list of popular posts
+
+= 1.2 =
+* Do not display Drafts in Related Posts anymore
+* Option to disable tracking author visits on their own posts
+* Display top posts for the current day
+
+= 1.1 =
+* Added the Popular Posts sidebar widget in your theme. Find it under <strong>Appearance > Widgets</strong>
+* Uses JavaScript by default to count. Hence, better support for different caching plugins
+* Change format to display count. Now, a single textarea instead of two text boxes.
+* Added WordPress 2.7 Dashboard widget to display popular posts on your Dashboard
+
+= 1.0.1 =
+* Release
+
+
