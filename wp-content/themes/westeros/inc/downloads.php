@@ -99,7 +99,12 @@ function westeros_download_catalogue() {
         $terms = get_the_terms($post->ID, 'dlm_download_category');
         $terms = $terms && !is_wp_error($terms) ? $terms : array();
         $version = $latest[$post->ID] ?? null;
-        $files = $version ? get_post_meta($version->ID, '_files', true) : array();
+        // Read the stored version fields together. The delivery aliases above resolve
+        // _files and _filesize separately; using those getters here would probe every
+        // mirror three times before rendering a catalogue row. Delivery still uses
+        // the plugin getters and its access checks, while this view probes once.
+        $version_meta = $version ? get_post_meta($version->ID) : array();
+        $files = maybe_unserialize($version_meta['_files'][0] ?? array());
         if (is_string($files)) { $files = json_decode($files, true); }
         $files = is_array($files) ? array_filter($files, 'is_string') : array();
         $sources = array_map('westeros_download_source', $files);
@@ -108,7 +113,9 @@ function westeros_download_catalogue() {
         $state = $states && count(array_unique($states)) === 1 ? reset($states) : (in_array('remote', $states, true) ? 'remote' : 'missing');
         $formats = array_values(array_unique(array_filter(array_column($sources, 'format'))));
         $size = count($sources) === 1 && $state === 'local' ? reset($sources)['size'] : 0;
-        $recorded_size = $version ? (int)get_post_meta($version->ID, '_filesize', true) : 0;
+        $recorded_size = (int)maybe_unserialize($version_meta['_filesize'][0] ?? 0);
+        // Preserve the frontend alias's existing single-local-file size semantics.
+        if (!is_admin() && count($sources) === 1 && $state === 'local') { $recorded_size = $size; }
         $legacy_size = get_post_meta($post->ID,'filesize',true);
         $legacy_size = is_string($legacy_size) && preg_match('/^[0-9]+(?:\.[0-9]+)?\s*(?:B|kB|KB|MB|GB|TB)$/i',trim($legacy_size)) ? trim($legacy_size) : '';
         $rows[] = array('id'=>$post->ID,'title'=>$post->post_title,'description'=>wp_strip_all_tags(strip_shortcodes($post->post_excerpt ?: $post->post_content)), 'terms'=>$terms,'language'=>westeros_download_language($post->ID,$terms),'formats'=>$formats,'size'=>$size,'recorded_size'=>max(0,$recorded_size),'legacy_size'=>$legacy_size,'state'=>$state,'members'=>get_post_meta($post->ID,'_members_only',true)==='yes','purchasable'=>get_post_meta($post->ID,'_is_purchasable',true)==='1');

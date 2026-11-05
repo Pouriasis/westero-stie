@@ -1,6 +1,12 @@
-# Westeros — standalone WordPress theme 2.6.1
+# Westeros — standalone WordPress theme 2.6.2
 
 Persian editorial theme for the Library of Westeros direction. No parent theme is required. The existing stone/sage palette, blue-green masthead, bronze details, magazine order and responsive panel alignment are retained.
+
+## Download response performance — version 2.6.2
+
+- Catalogue rendering reads stored version metadata together and resolves each mirror once, avoiding the repeated filesystem work of the frontend delivery aliases. File availability and sizes are checked on every catalogue render. Download Monitor's delivery aliases and access checks keep their existing behavior; no persistent catalogue cache was added.
+- In five sequential local samples per route, median download TTFB fell from 3,124 to 1,983 ms; PDF/available filtering from 3,030 to 1,998 ms; empty results from 2,951 to 1,824 ms. The complete 320-row catalogue hash matched the baseline, including 203 local, 115 missing and 2 external records. These local measurements include startup outliers and do not establish production performance.
+- The 31 existing catalogue checks, 11 new parity/freshness/multiple-mirror checks, 17 access/admin checks and 75 HTTP checks passed. PHP syntax and whitespace were checked. See [STAGE-9-PERFORMANCE.md](STAGE-9-PERFORMANCE.md) for evidence and remaining cold-start/production work.
 
 ## Browser polish — version 2.6.1
 
