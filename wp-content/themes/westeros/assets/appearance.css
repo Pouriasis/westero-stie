@@ -39,6 +39,8 @@ html.ws-night-reading{color-scheme:dark;--ws-paper:#1e2925;--ws-surface:#28352f;
 .ws-night-reading .ws-site :is(.ws-section-heading,.widget-top,.ws-story-row,.ws-feature-brief,.ws-briefs-heading,.ws-listing-footer,.ws-document-header,.ws-path-outline,.ws-path-neighbours>a){border-color:var(--ws-line)}
 .ws-night-reading .ws-site :is(.ws-section-seal,.ws-collection-emblem,.ws-dossier-step,.ws-path-position,.ws-topic-links>a,.ws-listing-pagination .page-numbers){background:#344538;color:var(--ws-bronze);border-color:#687558}
 .ws-night-reading .ws-site .ws-kind-filter>select,.ws-night-reading .ws-site .ws-document .entry :is(input,textarea,select){background:#1c2922;color:var(--ws-ink);border-color:#75816b}
+.ws-night-reading .ws-site .ws-document .entry .wpcf7-form input:not([type=checkbox]):not([type=radio]):not([type=submit]){background:#1c2922;color:var(--ws-ink);border-color:#75816b}
+.ws-night-reading .ws-site #main-content .ws-document .entry .wpcf7-form input[type=submit]{background:#c4a66f;color:#18231c;border-color:#c4a66f}
 .ws-night-reading .ws-site .ws-listing-pagination .current,.ws-night-reading .ws-site .ws-topic-links>a[aria-current=page]{background:#c4a66f;color:#18231c;border-color:#c4a66f}
 .ws-night-reading .ws-site :is(.ws-placeholder,.ws-listing-image>.ws-placeholder){background:linear-gradient(135deg,#304338,#384936);color:#d4bd91}
 .ws-night-reading .ws-site .ws-dossier-cover{background:#344538}

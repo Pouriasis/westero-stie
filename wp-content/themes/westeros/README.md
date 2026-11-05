@@ -1,6 +1,18 @@
-# Westeros — standalone WordPress theme 2.6.2
+# Westeros — standalone WordPress theme 2.6.4
 
 Persian editorial theme for the Library of Westeros direction. No parent theme is required. The existing stone/sage palette, blue-green masthead, bronze details, magazine order and responsive panel alignment are retained.
+
+## Persian contact forms — version 2.6.4
+
+- `inc/forms.php` repairs presentation of the existing Contact Form 7 forms 165 and 9494 at `/contactus/` and `/join-us/`. Their Persian wrapper language/direction and accessible form names now match the content. Plain label paragraphs are linked to their four controls; native CF7 tag IDs let validation-summary links target those same inputs. Per-instance IDs keep repeated forms distinct, existing authored IDs/labels are retained, and name/email autocomplete is supplied when absent.
+- Night-mode text fields now use the dark form surface and the submit control has dark text on bronze. Control text contrast was checked in both modes at 390/768/1366 pixels. Stored forms, locale, required/optional rules, recipients, mail templates, CAPTCHA credentials and plugin versions are unchanged.
+- All 73 server checks, 98 browser checks and 75 existing HTTP checks passed. Local verification covers the real CF7 controller with mocked CAPTCHA responses and mail captured before transport: success and autoreply composition, missing name, invalid email, optional empty fields, absent/low-score/failed CAPTCHA and mail failure. Browser feedback uses intercepted response fixtures. The production CAPTCHA key remains invalid on localhost; actual CAPTCHA service acceptance and inbox delivery still need checking on the real domain. See [STAGE-9-FORMS.md](STAGE-9-FORMS.md) for evidence and the separate bootstrap diagnosis.
+
+## Background podcast refresh — version 2.6.3
+
+- Expired podcast data no longer causes the homepage, podcast archive or episode document request to wait for Acast. These pages render the last good feed. The existing site script requests an update after the window load event only when the feed is due; the next visit shows the refreshed data. No reload, polling or extra JavaScript bundle is added.
+- Both signed-in and guest requests use a POST-only, nonce-checked AJAX handler for the fixed feed. The existing one-hour freshness gate, 15-minute error backoff, atomic lock, feed validation and identity preservation apply; public requests cannot force a refresh or choose another URL. Hourly WP-Cron and the protected manual admin update remain available. With JavaScript or fetch unavailable and WP-Cron disabled, the last good data remains readable and an administrator can refresh manually.
+- A controlled 1,500 ms slow-feed simulation added 1,502 ms to the old template-redirect path. After the change the same path made no feed request and took 0.34 ms. This isolates the removed wait; it is not a whole-page TTFB, cold-start or production-speed claim. The 33 PHP background checks, 10 client checks, 24 browser/endpoint checks, 52 previous podcast checks, 20 existing interaction checks and 75 HTTP checks passed. See [STAGE-9-BACKGROUND.md](STAGE-9-BACKGROUND.md).
 
 ## Download response performance — version 2.6.2
 

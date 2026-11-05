@@ -103,9 +103,14 @@ function westeros_sync_podcast_data($data) {
     return $data;
 }
 
-function westeros_refresh_podcast_feed($force=false) {
+function westeros_podcast_refresh_due() {
     $cache=westeros_podcast_cache();$status=(array)get_option('westeros_podcast_feed_status',array());
-    if (!$force && max((int)($cache['fetched_at']??0)+HOUR_IN_SECONDS,(int)($status['retry_after']??0))>time()) { return $cache; }
+    return max((int)($cache['fetched_at']??0)+HOUR_IN_SECONDS,(int)($status['retry_after']??0))<=time();
+}
+
+function westeros_refresh_podcast_feed($force=false) {
+    $cache=westeros_podcast_cache();
+    if (!$force && !westeros_podcast_refresh_due()) { return $cache; }
     $lock=westeros_podcast_acquire_lock();
     if (!$lock) { return $cache; }
     try {
@@ -121,10 +126,25 @@ function westeros_refresh_podcast_feed($force=false) {
 }
 add_action('westeros_podcast_refresh', 'westeros_refresh_podcast_feed');
 add_action('init',function(){ if (!wp_next_scheduled('westeros_podcast_refresh')) { wp_schedule_event(time()+HOUR_IN_SECONDS,'hourly','westeros_podcast_refresh'); } });
-add_action('template_redirect',function(){
-    if (is_feed() || is_embed() || is_preview()) { return; }
-    if (is_home() || is_category(westeros_podcast_category_id()) || is_singular('post') && has_category(westeros_podcast_category_id(),get_queried_object_id())) { westeros_refresh_podcast_feed(); }
-}, 5);
+/** Refresh after page load, including local installations with WP-Cron disabled. */
+add_action('wp_enqueue_scripts',function(){
+    if (is_admin() || is_feed() || is_embed() || is_preview()) { return; }
+    if (!(is_home() || is_category(westeros_podcast_category_id()) || is_singular('post') && has_category(westeros_podcast_category_id(),get_queried_object_id()))) { return; }
+    if (!westeros_podcast_refresh_due()) { return; }
+    wp_add_inline_script('westeros','window.westerosPodcastRefresh='.wp_json_encode(array('url'=>admin_url('admin-ajax.php'),'nonce'=>wp_create_nonce('westeros_podcast_background_refresh'))).';','before');
+}, 30);
+
+/** Public visitors may request only the fixed feed, with the normal expiry/backoff and lock. */
+function westeros_podcast_background_refresh() {
+    if (($_SERVER['REQUEST_METHOD']??'') !== 'POST') { wp_send_json_error(null,405); }
+    $nonce=$_POST['nonce']??'';
+    if (!is_string($nonce) || !wp_verify_nonce(sanitize_text_field(wp_unslash($nonce)),'westeros_podcast_background_refresh')) { wp_send_json_error(null,403); }
+    $result=westeros_refresh_podcast_feed(); // Never accepts a public force flag or source URL.
+    if (is_wp_error($result)) { wp_send_json_error(null,503); }
+    wp_send_json_success();
+}
+add_action('wp_ajax_westeros_podcast_background_refresh','westeros_podcast_background_refresh');
+add_action('wp_ajax_nopriv_westeros_podcast_background_refresh','westeros_podcast_background_refresh');
 
 function westeros_podcast_episodes() {
     $episodes=westeros_podcast_cache()['episodes'];$visible=array();

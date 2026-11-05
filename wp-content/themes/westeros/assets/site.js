@@ -1,6 +1,16 @@
 /* Westeros: native disclosure menus and manually controlled editorial shelves. */
 (() => {
   'use strict';
+  // Keep feed network work out of the document request and initial page load.
+  const podcastRefresh = window.westerosPodcastRefresh;
+  if (podcastRefresh && typeof window.fetch === 'function') {
+    const refresh = () => window.fetch(podcastRefresh.url, {
+      method: 'POST', credentials: 'same-origin', cache: 'no-store',
+      body: new URLSearchParams({action: 'westeros_podcast_background_refresh', nonce: podcastRefresh.nonce})
+    }).catch(() => {}); // Keep the last good feed; a later visit may retry.
+    if (document.readyState === 'complete') window.setTimeout(refresh, 0);
+    else window.addEventListener('load', refresh, {once: true});
+  }
   const motion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
   const nav = document.querySelector('.ws-nav');
   const menuToggle = nav?.querySelector('.ws-mobile-toggle');

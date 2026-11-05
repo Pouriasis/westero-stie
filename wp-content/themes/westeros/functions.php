@@ -12,6 +12,7 @@ require_once __DIR__ . '/inc/discovery.php';
 require_once __DIR__ . '/inc/spoilers.php';
 require_once __DIR__ . '/inc/search.php';
 require_once __DIR__ . '/inc/assets.php';
+require_once __DIR__ . '/inc/forms.php';
 require_once __DIR__ . '/inc/polish.php';
 require_once __DIR__ . '/inc/legacy-downloads.php';
 require_once __DIR__ . '/inc/downloads.php';
